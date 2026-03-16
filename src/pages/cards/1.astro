@@ -1,0 +1,37 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import BigNumber from '../../components/BigNumber.astro'
+---
+
+<Layout title="FACT 1: 小中一貫を求める市民は1.9% | 須坂の学校データ">
+  <a href="/" class="text-sm text-muted hover:underline">&larr; ホームに戻る</a>
+
+  <article class="mt-6">
+    <div class="text-sm font-bold text-accent mb-1">FACT 1</div>
+    <h1 class="text-3xl font-black text-primary mb-6">小中一貫教育を求めている市民は 1.9%</h1>
+
+    <div class="grid grid-cols-3 gap-4 my-8">
+      <BigNumber value="1.9%" label="市民が小中一貫を優先する割合" source="市民アンケート" />
+      <BigNumber value="73%" label="児童が「今の学校のまま」を希望" source="児童アンケート" />
+      <BigNumber value="27%" label="「進めるべき」と答えた保護者" source="保護者アンケート" />
+    </div>
+
+    <section class="bg-card rounded-lg p-6 shadow-sm mb-6">
+      <h2 class="font-bold text-lg mb-3">何がわかるか</h2>
+      <ul class="space-y-2 text-sm">
+        <li>市民アンケートで「小中一貫教育」を優先事項に挙げた人は <strong>1.9%</strong>（最下位付近）</li>
+        <li>市民が本当に求めているのは「安全・安心」（16.6%）と「学力向上」（14.8%）</li>
+        <li>児童自身の <strong>73%</strong> が「今の学校のままでいい」と回答</li>
+        <li>「進めるべき」は27%のみ。「やむを得ない」が49%で、積極的支持ではない</li>
+      </ul>
+    </section>
+
+    <section class="bg-card rounded-lg p-6 shadow-sm mb-6">
+      <h2 class="font-bold text-lg mb-3">出典</h2>
+      <ul class="space-y-1 text-sm text-muted">
+        <li>須坂市教育委員会「須坂市の教育に関する保護者・市民アンケート」（答申書掲載データ）</li>
+        <li>須坂市適正規模審議会 答申書 Q&A</li>
+      </ul>
+    </section>
+  </article>
+</Layout>

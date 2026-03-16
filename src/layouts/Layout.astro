@@ -1,0 +1,40 @@
+---
+import '../styles/global.css'
+
+interface Props {
+  title?: string
+  description?: string
+}
+
+const { title = '須坂の学校データ', description = '須坂学園構想をデータで検証する市民シンクタンク' } = Astro.props
+---
+
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+  </head>
+  <body class="bg-bg font-sans text-gray-900 min-h-screen">
+    <header class="bg-primary text-white py-4 px-6">
+      <div class="max-w-4xl mx-auto flex items-center justify-between">
+        <a href="/" class="text-xl font-bold hover:opacity-80">須坂の学校データ</a>
+        <nav class="flex gap-4 text-sm">
+          <a href="/" class="hover:underline">ホーム</a>
+          <a href="/about" class="hover:underline">このサイトについて</a>
+        </nav>
+      </div>
+    </header>
+    <main class="max-w-4xl mx-auto px-6 py-8">
+      <slot />
+    </main>
+    <footer class="border-t border-gray-200 py-6 px-6 text-center text-sm text-muted">
+      <p>調査・分析: 須坂市民有志 ｜ 引用・転載自由（出典記載をお願いします）</p>
+      <p class="mt-1">
+        <a href="https://github.com/" class="underline hover:text-gray-900" target="_blank">ソースコード (GitHub)</a>
+        ｜ データの誤りを見つけた方は Issue でお知らせください
+      </p>
+    </footer>
+  </body>
+</html>

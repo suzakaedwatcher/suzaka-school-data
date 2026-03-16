@@ -1,0 +1,70 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import BigNumber from '../../components/BigNumber.astro'
+---
+
+<Layout title="FACT 5: 統廃合しなくても学校は再生できる | 須坂の学校データ">
+  <a href="/" class="text-sm text-muted hover:underline">&larr; ホームに戻る</a>
+
+  <article class="mt-6">
+    <div class="text-sm font-bold text-accent mb-1">FACT 5</div>
+    <h1 class="text-3xl font-black text-primary mb-6">統廃合しなくても学校は再生できる</h1>
+
+    <div class="grid grid-cols-3 gap-4 my-8">
+      <BigNumber value="700+" label="全国の小規模特認校" source="日本経済新聞 2024" />
+      <BigNumber value="7.5倍" label="佐渡市松ヶ崎の児童数回復" source="文科省・経産省" />
+      <BigNumber value="12校" label="山県市が統廃合せず維持" source="山県市" />
+    </div>
+
+    <div class="space-y-6 mb-6">
+      <section class="bg-card rounded-lg p-6 shadow-sm border-l-4 border-green-500">
+        <h2 class="font-bold text-lg mb-2">小規模特認校 — 全国700校超で急速拡大中</h2>
+        <ul class="space-y-2 text-sm">
+          <li>全国<strong>270以上の市区町村</strong>が導入。4分の1が2021年度以降に新設</li>
+          <li>360校中130校（31.6%）で<strong>児童数が増加</strong></li>
+          <li>須坂市教育委員会も「短い期間で可能」「教育委員会が認めればいい」と認めている（3月議会答弁）</li>
+        </ul>
+      </section>
+
+      <section class="bg-card rounded-lg p-6 shadow-sm border-l-4 border-green-500">
+        <h2 class="font-bold text-lg mb-2">佐渡市松ヶ崎 — 児童4名から30名へ</h2>
+        <ul class="space-y-2 text-sm">
+          <li>廃校寸前の児童<strong>4名 → 30名（7.5倍）</strong></li>
+          <li>学校を「株式会社」に見立てた運営で地産地消ビジネスも黒字化</li>
+          <li><strong>文部科学省・経済産業省「優秀賞」</strong>受賞</li>
+        </ul>
+      </section>
+
+      <section class="bg-card rounded-lg p-6 shadow-sm border-l-4 border-green-500">
+        <h2 class="font-bold text-lg mb-2">山県方式（岐阜県）— 統廃合せず一体運営</h2>
+        <ul class="space-y-2 text-sm">
+          <li>人口約2.5万人（須坂と近い規模）で<strong>12校を統廃合せず一体運営</strong></li>
+          <li>学習内容に応じてスクールバスで他校に移動し合同授業</li>
+          <li><strong>2023年度ベスト育児制度賞</strong>受賞</li>
+          <li><strong>東京学芸大学</strong>と連携協定を締結（学術的裏付け）</li>
+          <li>須坂市議会は<strong>山県市を行政視察済み</strong>。なぜ検討しないのか</li>
+        </ul>
+      </section>
+
+      <section class="bg-card rounded-lg p-6 shadow-sm border-l-4 border-green-500">
+        <h2 class="font-bold text-lg mb-2">三鷹市（東京都）— 統廃合なしで小中一貫の成果</h2>
+        <ul class="space-y-2 text-sm">
+          <li>全7学園が<strong>施設分離型</strong>、<strong>統廃合なし</strong>、<strong>義務教育学校にもしていない</strong></li>
+          <li>それでも学力向上・不登校減少の成果</li>
+          <li>つまり<strong>統廃合も義務教育学校化も、小中一貫教育の成功に必須ではない</strong></li>
+        </ul>
+      </section>
+    </div>
+
+    <section class="bg-card rounded-lg p-6 shadow-sm mb-6">
+      <h2 class="font-bold text-lg mb-3">出典</h2>
+      <ul class="space-y-1 text-sm text-muted">
+        <li><a href="https://www.nikkei.com/article/DGXZQOCC0516M0V01C24A2000000/" class="underline" target="_blank">日本経済新聞「小規模特認校700校超」（2024年12月）</a></li>
+        <li><a href="https://prtimes.jp/main/html/rd/p/000000020.000056370.html" class="underline" target="_blank">佐渡市松ヶ崎小中学校 — PR TIMES</a></li>
+        <li><a href="https://www.ikuhaku.com/best/2023/idea.html" class="underline" target="_blank">ベスト育児制度賞 2023 — 山県市</a></li>
+        <li><a href="https://www2.u-gakugei.ac.jp/~eduwell/localgov-yamagata/" class="underline" target="_blank">東京学芸大学 — 山県市との連携</a></li>
+        <li><a href="https://www.city.mitaka.lg.jp/c_service/105/105110.html" class="underline" target="_blank">三鷹市の教育政策</a></li>
+      </ul>
+    </section>
+  </article>
+</Layout>

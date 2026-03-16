@@ -1,0 +1,79 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import BigNumber from '../../components/BigNumber.astro'
+---
+
+<Layout title="FACT 6: 学校が消えると地域が消える | 須坂の学校データ">
+  <a href="/" class="text-sm text-muted hover:underline">&larr; ホームに戻る</a>
+
+  <article class="mt-6">
+    <div class="text-sm font-bold text-accent mb-1">FACT 6</div>
+    <h1 class="text-3xl font-black text-primary mb-6">学校が消えると地域が消える</h1>
+
+    <p class="text-sm text-muted mb-6">
+      学校閉鎖が地域の人口減少を引き起こすことは、日本だけでなく世界中の研究で証明されています。
+    </p>
+
+    <div class="grid grid-cols-3 gap-4 my-8">
+      <BigNumber value="1%" label="学校消滅で人口減少（6年間）" source="三菱UFJリサーチ" />
+      <BigNumber value="25%" label="学校がある農村の住宅価格プレミアム" source="Harvard" />
+      <BigNumber value="69億円" label="京都東山の投資額（それでも衰退）" source="京都市" />
+    </div>
+
+    <div class="space-y-6 mb-6">
+      <section class="bg-card rounded-lg p-6 shadow-sm">
+        <h2 class="font-bold text-lg mb-2">三菱UFJリサーチ&コンサルティング（2019年）</h2>
+        <ul class="space-y-2 text-sm">
+          <li>高校統廃合の直前6年間で、人口10,000人の市町村では<strong>毎年22人の転出超過</strong></li>
+          <li>6年間で<strong>132人の転出超過</strong>（総人口の約1%）</li>
+          <li>学校を「人口流出装置」から「人口留置装置」にすることの重要性を指摘</li>
+        </ul>
+        <p class="text-xs text-muted mt-2">※ 三菱UFJリサーチ&コンサルティングは三菱UFJフィナンシャル・グループのシンクタンクです</p>
+      </section>
+
+      <section class="bg-card rounded-lg p-6 shadow-sm">
+        <h2 class="font-bold text-lg mb-2">ハーバード大学 Political Review（2020年）</h2>
+        <ul class="space-y-2 text-sm">
+          <li>学校のある小規模農村集落は、ない集落に比べ<strong>住宅価格が約25%高い</strong></li>
+          <li>貧困地域は小規模校から恩恵を受けやすく、統合によるダメージが不可逆的</li>
+        </ul>
+      </section>
+
+      <section class="bg-card rounded-lg p-6 shadow-sm">
+        <h2 class="font-bold text-lg mb-2">イタリアの実証研究（2024年、査読付き学術論文）</h2>
+        <ul class="space-y-2 text-sm">
+          <li>学校閉鎖 → 人口と所得が有意に減少する<strong>因果関係を証明</strong></li>
+          <li>効果は経済中心地から遠い周辺自治体ほど顕著</li>
+          <li>「相関」ではなく「因果」を統計的に立証した点で極めて重要な研究</li>
+        </ul>
+      </section>
+
+      <section class="bg-card rounded-lg p-6 shadow-sm">
+        <h2 class="font-bold text-lg mb-2">RIETI — 経済産業研究所</h2>
+        <ul class="space-y-2 text-sm">
+          <li>統廃合による節約の約半分は<strong>県レベルで発生</strong>（教員人件費は県負担）</li>
+          <li><strong>市町村にはメリットが少ない</strong>のに、統合費用は市町村が負担する「財政外部性」の問題</li>
+        </ul>
+      </section>
+    </div>
+
+    <section class="bg-card rounded-lg p-6 shadow-sm mb-6 bg-red-50">
+      <h2 class="font-bold text-lg mb-2">須坂市への示唆</h2>
+      <p class="text-sm">
+        須坂学園構想で豊丘・仁礼地域から学校が消滅した場合、
+        これらの研究が示すように<strong>子育て世帯の流出が加速し、さらなる少子化を招く</strong>可能性があります。
+        学校を閉じることは、地域に「出て行ってください」と言うことに等しいのです。
+      </p>
+    </section>
+
+    <section class="bg-card rounded-lg p-6 shadow-sm mb-6">
+      <h2 class="font-bold text-lg mb-3">出典</h2>
+      <ul class="space-y-1 text-sm text-muted">
+        <li><a href="https://www.murc.jp/report/rc/policy_rearch/politics/seiken_191122_1/" class="underline" target="_blank">三菱UFJリサーチ&コンサルティング「高校存続・統廃合が市町村に及ぼす影響」（2019年）</a></li>
+        <li><a href="https://harvardpolitics.com/ruralconsolidation/" class="underline" target="_blank">Harvard Political Review "Rural School Consolidation is Not the Answer"（2020年）</a></li>
+        <li><a href="https://www.sciencedirect.com/science/article/pii/S0166046224000887" class="underline" target="_blank">ScienceDirect "Rational cuts? The local impact of closing undersized schools"（2024年）</a></li>
+        <li><a href="https://www.rieti.go.jp/jp/publications/nts/23e002.html" class="underline" target="_blank">RIETI「学校統廃合の意思決定における非効率性」</a></li>
+      </ul>
+    </section>
+  </article>
+</Layout>

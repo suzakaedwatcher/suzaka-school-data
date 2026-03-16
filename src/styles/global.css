@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #1e3a5f;
+  --color-accent: #dc2626;
+  --color-bg: #fafafa;
+  --color-card: #ffffff;
+  --color-muted: #6b7280;
+  --font-sans: "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+}

@@ -1,0 +1,17 @@
+---
+interface Props {
+  number: number
+  title: string
+  subtitle: string
+  href: string
+  color?: string
+}
+
+const { number, title, subtitle, href, color = 'border-accent' } = Astro.props
+---
+
+<a href={href} class={`block bg-card rounded-lg border-l-4 ${color} shadow-sm hover:shadow-md transition-shadow p-6`}>
+  <div class="text-sm font-bold text-muted mb-1">FACT {number}</div>
+  <h2 class="text-xl font-bold text-primary mb-2">{title}</h2>
+  <p class="text-muted text-sm">{subtitle}</p>
+</a>

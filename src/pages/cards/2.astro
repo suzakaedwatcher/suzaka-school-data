@@ -1,0 +1,51 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import BigNumber from '../../components/BigNumber.astro'
+---
+
+<Layout title="FACT 2: 須坂型の義務教育学校は全国にゼロ | 須坂の学校データ">
+  <a href="/" class="text-sm text-muted hover:underline">&larr; ホームに戻る</a>
+
+  <article class="mt-6">
+    <div class="text-sm font-bold text-accent mb-1">FACT 2</div>
+    <h1 class="text-3xl font-black text-primary mb-6">須坂型の義務教育学校は全国にゼロ</h1>
+
+    <div class="grid grid-cols-3 gap-4 my-8">
+      <BigNumber value="0.91%" label="全小中学校に占める義務教育学校の割合" source="文科省 学校基本統計 2025" />
+      <BigNumber value="≈10校" label="施設分離型の義務教育学校（全国）" source="国立教育政策研究所" />
+      <BigNumber value="0件" label="1-4年/5-9年分離型の成功事例" source="全数調査" />
+    </div>
+
+    <section class="bg-card rounded-lg p-6 shadow-sm mb-6">
+      <h2 class="font-bold text-lg mb-3">何がわかるか</h2>
+      <ul class="space-y-2 text-sm">
+        <li>義務教育学校は全国261校。全小中学校28,700校のうち <strong>0.91%</strong></li>
+        <li>「10倍に増えた」は事実だが、ゼロに近い数からの倍率。<strong>絶対数は1%未満</strong></li>
+        <li>義務教育学校の80%は施設一体型。<strong>施設分離型はわずか約10校</strong></li>
+        <li>須坂が目指す「1〜4年と5〜9年で校舎を分ける」型の成功事例は <strong>全国に確認できない</strong></li>
+        <li>人口5万人規模で4学園を同時に義務教育学校化した前例も <strong>ゼロ</strong></li>
+        <li>私立の義務教育学校は9年間ずっと <strong>1校だけ</strong>（市場原理で選ばれていない）</li>
+      </ul>
+    </section>
+
+    <section class="bg-card rounded-lg p-6 shadow-sm mb-6">
+      <h2 class="font-bold text-lg mb-3">教育長の「10倍に増えている」発言について</h2>
+      <p class="text-sm">
+        勝山教育長は3月議会で「義務教育学校は232校で10倍に増えている」と答弁しました。
+        2016年の22校から2024年の232校への増加は事実です。
+        しかし久保田議員が指摘した通り、これは<strong>全体の0.8%にすぎません</strong>。
+        「10倍」という表現は、制度開始直後のゼロに近い数からの倍率であり、
+        義務教育学校が主流になりつつあるかのような印象を与えますが、実態は異なります。
+      </p>
+    </section>
+
+    <section class="bg-card rounded-lg p-6 shadow-sm mb-6">
+      <h2 class="font-bold text-lg mb-3">出典</h2>
+      <ul class="space-y-1 text-sm text-muted">
+        <li><a href="https://www.mext.go.jp/content/20251226-mxt_chousa01-000044291_01.pdf" class="underline" target="_blank">文科省「令和7年度学校基本統計」確定値（2025年12月）</a></li>
+        <li><a href="https://www.nier.go.jp/shisetsu/pdf/compulsory_education_schools_summary_h3008.pdf" class="underline" target="_blank">国立教育政策研究所「義務教育学校等の施設計画の推進に関する調査研究」</a></li>
+        <li><a href="https://www.e-stat.go.jp/stat-search/files?tstat=000001011528" class="underline" target="_blank">学校基本調査（e-Stat）</a></li>
+      </ul>
+    </section>
+  </article>
+</Layout>

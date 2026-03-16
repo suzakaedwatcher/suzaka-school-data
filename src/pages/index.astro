@@ -1,0 +1,56 @@
+---
+import Layout from '../layouts/Layout.astro'
+import FactCard from '../components/FactCard.astro'
+---
+
+<Layout>
+  <section class="text-center mb-12">
+    <h1 class="text-3xl font-black text-primary mb-3">須坂の学校データ</h1>
+    <p class="text-muted max-w-2xl mx-auto">
+      須坂学園構想をデータで検証します。主張ではなく、数字と出典で事実を示します。
+    </p>
+  </section>
+
+  <section class="grid gap-4 md:grid-cols-2">
+    <FactCard
+      number={1}
+      title="小中一貫を求める市民は 1.9%"
+      subtitle="市民も児童も求めていない施策に、なぜ数十億円をかけるのか"
+      href="/cards/1"
+    />
+    <FactCard
+      number={2}
+      title="須坂型の義務教育学校は全国にゼロ"
+      subtitle="前例のない実験を、やり直しの効かない形で行うのか"
+      href="/cards/2"
+    />
+    <FactCard
+      number={3}
+      title="文科省の方針と須坂の計画は真逆"
+      subtitle="国が2026年3月に「結論ありきで評価するな」と明記"
+      href="/cards/3"
+    />
+    <FactCard
+      number={4}
+      title="先行した自治体は方針転換・深刻な事態に"
+      subtitle="つくば市は「5校目はつくらない」と方針転換した"
+      href="/cards/4"
+    />
+    <FactCard
+      number={5}
+      title="統廃合しなくても学校は再生できる"
+      subtitle="全国700校超の小規模特認校。佐渡では児童が7.5倍に"
+      href="/cards/5"
+    />
+    <FactCard
+      number={6}
+      title="学校が消えると地域が消える"
+      subtitle="三菱UFJリサーチ・ハーバード大学の実証データ"
+      href="/cards/6"
+    />
+  </section>
+
+  <section class="mt-12 text-center text-sm text-muted">
+    <p>すべてのデータに出典を明記しています。誤りがあればご指摘ください。</p>
+  </section>
+</Layout>
