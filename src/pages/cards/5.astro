@@ -10,11 +10,14 @@ import BigNumber from '../../components/BigNumber.astro'
     <div class="text-sm font-bold text-accent mb-1">FACT 5</div>
     <h1 class="text-3xl font-black text-primary mb-6">統廃合しなくても学校は再生できる</h1>
 
-    <div class="grid grid-cols-3 gap-4 my-8">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 my-8">
       <BigNumber value="700+" label="全国の小規模特認校" source="日本経済新聞 2024" />
+      <BigNumber value="261" label="義務教育学校（比較）" source="文科省 2025" />
       <BigNumber value="7.5倍" label="佐渡市松ヶ崎の児童数回復" source="文科省・経産省" />
       <BigNumber value="12校" label="山県市が統廃合せず維持" source="山県市" />
     </div>
+
+    <p class="text-sm text-muted mb-6 text-center">小規模特認校（700校超）は義務教育学校（261校）の<strong>約2.7倍</strong>。全国的に選ばれているのは統廃合ではなく特認校制度です。</p>
 
     <div class="space-y-6 mb-6">
       <section class="bg-card rounded-lg p-6 shadow-sm border-l-4 border-green-500">
