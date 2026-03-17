@@ -1,0 +1,29 @@
+---
+import Layout from './Layout.astro'
+
+interface Props {
+  title: string
+  backTo: string
+  backLabel: string
+}
+
+const { title, backTo, backLabel } = Astro.props
+---
+
+<Layout title={`${title} | 須坂の学校データ`}>
+  <a href={backTo} class="text-sm text-muted hover:underline">&larr; {backLabel}</a>
+  <article class="mt-6 prose prose-sm max-w-none
+    [&_h1]:text-2xl [&_h1]:font-black [&_h1]:text-primary [&_h1]:mb-4
+    [&_h2]:text-lg [&_h2]:font-bold [&_h2]:text-primary [&_h2]:mt-8 [&_h2]:mb-3
+    [&_h3]:text-base [&_h3]:font-bold [&_h3]:mt-6 [&_h3]:mb-2
+    [&_table]:text-sm [&_table]:w-full
+    [&_th]:text-left [&_th]:py-2 [&_th]:border-b
+    [&_td]:py-2 [&_td]:border-b [&_td]:border-gray-100
+    [&_a]:text-blue-600 [&_a]:underline
+    [&_blockquote]:border-l-4 [&_blockquote]:border-accent [&_blockquote]:pl-4 [&_blockquote]:italic
+    [&_ul]:space-y-1 [&_li]:text-sm
+    [&_strong]:text-primary
+  ">
+    <slot />
+  </article>
+</Layout>
