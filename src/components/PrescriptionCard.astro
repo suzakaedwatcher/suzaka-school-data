@@ -1,0 +1,18 @@
+---
+interface Props {
+  number: number
+  problem: string
+  solution: string
+  cost: string
+  href: string
+}
+
+const { number, problem, solution, cost, href } = Astro.props
+---
+
+<a href={href} class="block bg-card rounded-lg border-l-4 border-green-600 shadow-sm hover:shadow-md transition-shadow p-6">
+  <div class="text-sm font-bold text-green-700 mb-1">処方箋 {number}</div>
+  <h2 class="text-xl font-bold text-primary mb-2">{problem}</h2>
+  <p class="text-sm text-gray-700 mb-2">{solution}</p>
+  <p class="text-xs text-muted">{cost}</p>
+</a>

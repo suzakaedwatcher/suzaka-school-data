@@ -1,0 +1,121 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import BigNumber from '../../components/BigNumber.astro'
+---
+
+<Layout title="処方箋4: 校舎が古い（築35年〜） | 須坂の学校データ">
+  <a href="/" class="text-sm text-muted hover:underline">&larr; ホームに戻る</a>
+
+  <article class="mt-6">
+    <div class="text-sm font-bold text-green-700 mb-1">処方箋 4</div>
+    <h1 class="text-3xl font-black text-primary mb-6">校舎が古い（築35年〜）</h1>
+
+    <section class="bg-card rounded-lg p-6 shadow-sm mb-6">
+      <h2 class="font-bold text-lg mb-3">何が起きているか</h2>
+      <p class="text-sm">11小学校すべてが築35年以上。老朽化は事実です。</p>
+    </section>
+
+    <section class="bg-yellow-50 rounded-lg p-6 mb-6">
+      <h2 class="font-bold text-lg mb-3">須坂市自身の計画と比べてみてください</h2>
+      <p class="text-sm mb-4">
+        須坂市教育委員会は2020年3月に「学校施設長寿命化計画」を策定しています。
+      </p>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b">
+              <th class="text-left py-2">須坂市の長寿命化計画</th>
+              <th class="text-left py-2">学園構想</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b">
+              <td class="py-2">RC造の目標使用年数＝<strong>80年</strong></td>
+              <td class="py-2">築35年で「老朽化」</td>
+            </tr>
+            <tr class="border-b">
+              <td class="py-2">「新しくつくる」から「<strong>賢くつかう</strong>」へ</td>
+              <td class="py-2">統合して建て替え</td>
+            </tr>
+            <tr class="border-b">
+              <td class="py-2">長寿命化で40年間に<strong>37億円削減</strong></td>
+              <td class="py-2">統合新設で55〜88億円</td>
+            </tr>
+            <tr>
+              <td class="py-2">2025年度まで<strong>施設廃止は行わない</strong></td>
+              <td class="py-2">11校を廃校にする計画</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <div class="grid grid-cols-2 gap-4 my-8">
+      <BigNumber value="44%" label="80年のうちまだ44%しか使っていない" source="須坂市長寿命化計画" />
+      <BigNumber value="37億円" label="長寿命化で40年間に削減できる額" source="須坂市長寿命化計画" />
+    </div>
+
+    <section class="bg-card rounded-lg p-6 shadow-sm mb-6">
+      <h2 class="font-bold text-lg mb-3">やるべきこと</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b">
+              <th class="text-left py-2">方法</th>
+              <th class="text-left py-2">コスト</th>
+              <th class="text-left py-2">内容</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="py-2 font-bold">長寿命化改修（須坂市の計画通り）</td>
+              <td class="py-2">年間10億円（分散）</td>
+              <td class="py-2">築40年で大規模改修。建て替えの約6割の経費で同等の教育環境を確保</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="bg-card rounded-lg p-6 shadow-sm mb-6">
+      <h2 class="font-bold text-lg mb-3">費用比較（須坂市自身の計算）</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b">
+              <th class="text-left py-2">手法</th>
+              <th class="text-left py-2">40年間の総額</th>
+              <th class="text-left py-2">年間平均</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b">
+              <td class="py-2">従来型（築40年で改築）</td>
+              <td class="py-2">423億円</td>
+              <td class="py-2">10.6億円/年</td>
+            </tr>
+            <tr>
+              <td class="py-2 font-bold text-green-700">長寿命化型（築80年まで使用）</td>
+              <td class="py-2 font-bold text-green-700">386億円</td>
+              <td class="py-2 font-bold text-green-700">10億円/年</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="bg-green-50 rounded-lg p-6 mb-6">
+      <p class="text-sm font-bold text-green-800">
+        須坂市自身が策定した計画に沿って進めるだけです。老朽化の解決策は「建て替え」か「長寿命化改修」であり、「統合」は別の次元の判断です。
+      </p>
+    </section>
+
+    <section class="text-sm text-muted">
+      <h2 class="font-bold text-lg text-primary mb-3">出典</h2>
+      <ul class="space-y-1">
+        <li>須坂市「学校施設長寿命化計画」（2020年3月）</li>
+        <li>文科省「学校施設の長寿命化計画策定に係る手引」（2015年）</li>
+      </ul>
+    </section>
+  </article>
+</Layout>

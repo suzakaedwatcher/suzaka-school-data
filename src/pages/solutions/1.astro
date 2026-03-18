@@ -1,0 +1,115 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import BigNumber from '../../components/BigNumber.astro'
+---
+
+<Layout title="処方箋1: 先生が足りない（東中 2031年） | 須坂の学校データ">
+  <a href="/" class="text-sm text-muted hover:underline">&larr; ホームに戻る</a>
+
+  <article class="mt-6">
+    <div class="text-sm font-bold text-green-700 mb-1">処方箋 1</div>
+    <h1 class="text-3xl font-black text-primary mb-6">先生が足りない（東中 2031年問題）</h1>
+
+    <section class="bg-card rounded-lg p-6 shadow-sm mb-6">
+      <h2 class="font-bold text-lg mb-3">何が起きているか</h2>
+      <p class="text-sm mb-3">
+        東中学校は2031年に全校89人・全学年単級の見込み。教員9人で10教科をカバーする必要がありますが、
+        特に実技4教科（音楽・美術・技術・家庭科）は<strong>週1〜2コマしかなく、専任教員を置けません</strong>。
+      </p>
+      <p class="text-sm">
+        ただし、実技教科の教員不足は全国の小規模中学校の構造問題であり、須坂だけの問題ではありません。
+        免許外教科担任は全国で年間6,263件発生し、その80%が実技教科に集中しています。
+      </p>
+    </section>
+
+    <section class="bg-card rounded-lg p-6 shadow-sm mb-6">
+      <h2 class="font-bold text-lg mb-3">今すぐできること</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b">
+              <th class="text-left py-2">方法</th>
+              <th class="text-left py-2">コスト</th>
+              <th class="text-left py-2">内容</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b">
+              <td class="py-2 font-bold">相森中・墨坂中との兼務発令</td>
+              <td class="py-2">0円</td>
+              <td class="py-2">不足教科の教員が週1〜2回東中へ。県教委への内申で可能</td>
+            </tr>
+            <tr class="border-b">
+              <td class="py-2 font-bold">ICT遠隔授業</td>
+              <td class="py-2">数百万円</td>
+              <td class="py-2">他校の専門教員の授業を配信。2024年制度改正で受信側は免許外でもOK</td>
+            </tr>
+            <tr class="border-b">
+              <td class="py-2 font-bold">市費で非常勤講師</td>
+              <td class="py-2">年100〜200万円</td>
+              <td class="py-2">3教科分の非常勤。既に東中で実績あり</td>
+            </tr>
+            <tr>
+              <td class="py-2 font-bold">特別非常勤講師</td>
+              <td class="py-2">年数十万円</td>
+              <td class="py-2">地域の音楽家・画家・IT技術者を活用。教員免許不要</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="bg-card rounded-lg p-6 shadow-sm mb-6">
+      <h2 class="font-bold text-lg mb-3">統合した場合との比較</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b">
+              <th class="text-left py-2"></th>
+              <th class="text-left py-2 text-accent">統合</th>
+              <th class="text-left py-2 text-green-700">この方法</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b">
+              <td class="py-2 font-bold">費用</td>
+              <td class="py-2">6億円〜</td>
+              <td class="py-2">年間数百万円</td>
+            </tr>
+            <tr class="border-b">
+              <td class="py-2 font-bold">実現時期</td>
+              <td class="py-2">6〜7年後</td>
+              <td class="py-2">今すぐ〜半年</td>
+            </tr>
+            <tr class="border-b">
+              <td class="py-2 font-bold">教員増</td>
+              <td class="py-2">9人→11人（+2人）</td>
+              <td class="py-2">兼務＋非常勤で同等以上</td>
+            </tr>
+            <tr>
+              <td class="py-2 font-bold">リスク</td>
+              <td class="py-2">不可逆</td>
+              <td class="py-2">いつでも調整可能</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="bg-green-50 rounded-lg p-6 mb-6">
+      <p class="text-sm font-bold text-green-800">
+        教育委員会は既に東中に市費で専門教員を配置しています。この延長です。
+      </p>
+    </section>
+
+    <section class="text-sm text-muted">
+      <h2 class="font-bold text-lg text-primary mb-3">出典</h2>
+      <ul class="space-y-1">
+        <li>須坂市教育委員会「基本方針（案）Q&A」</li>
+        <li>文科省「教員の免許外教科担任に関する調査」</li>
+        <li>文科省「遠隔教育の推進に向けた施策方針」（2024年改正）</li>
+        <li>須坂市 地域説明会 発言記録</li>
+      </ul>
+    </section>
+  </article>
+</Layout>

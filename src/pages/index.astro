@@ -1,56 +1,183 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import FactCard from '../components/FactCard.astro'
+import PrescriptionCard from '../components/PrescriptionCard.astro'
 ---
 
-<Layout>
+<Layout title="須坂の学校、まず小さく試してみませんか？" description="須坂学園構想への提案 — 問題ごとに安い方法から試して、検証してから進めませんか">
+
+  <!-- ヒーロー -->
   <section class="text-center mb-12">
-    <h1 class="text-3xl font-black text-primary mb-3">須坂の学校データ</h1>
-    <p class="text-muted max-w-2xl mx-auto">
-      須坂学園構想をデータで検証します。主張ではなく、数字と出典で事実を示します。
+    <h1 class="text-3xl font-black text-primary mb-4">須坂の学校、まず小さく試してみませんか？</h1>
+    <p class="text-muted max-w-2xl mx-auto text-sm">
+      須坂学園構想について、データと全国事例をもとに、もう一つの選択肢を提案します。
     </p>
   </section>
 
-  <section class="grid gap-4 md:grid-cols-2">
-    <FactCard
-      number={1}
-      title="小中一貫を求める市民は 1.9%"
-      subtitle="市民も児童も求めていない施策。費用は6億〜88億円で10倍以上のブレ"
-      href="/cards/1"
-    />
-    <FactCard
-      number={2}
-      title="須坂型の義務教育学校は全国にゼロ"
-      subtitle="前例のない実験を、やり直しの効かない形で行うのか"
-      href="/cards/2"
-    />
-    <FactCard
-      number={3}
-      title="文科省の方針と須坂の計画は真逆"
-      subtitle="国が2026年3月に「結論ありきで評価するな」と明記"
-      href="/cards/3"
-    />
-    <FactCard
-      number={4}
-      title="先行した自治体は方針転換・深刻な事態に"
-      subtitle="つくば市は「5校目はつくらない」と方針転換した"
-      href="/cards/4"
-    />
-    <FactCard
-      number={5}
-      title="統廃合しなくても学校は再生できる"
-      subtitle="全国700校超の小規模特認校。佐渡では児童が7.5倍に"
-      href="/cards/5"
-    />
-    <FactCard
-      number={6}
-      title="学校が消えると地域が消える"
-      subtitle="三菱UFJリサーチ・ハーバード大学の実証データ"
-      href="/cards/6"
-    />
+  <!-- 教育委員会は既にやっている -->
+  <section class="bg-card rounded-lg p-6 shadow-sm mb-10">
+    <h2 class="font-bold text-lg text-primary mb-3">教育委員会は、既に答えを持っています</h2>
+    <p class="text-sm mb-3">
+      須坂市教育委員会は、豊丘小学校に<strong>市費で音楽専科教員</strong>を、東中学校に<strong>市費で専門教員</strong>を配置しています。
+      統合ではなく、必要な場所に必要な人を届けるという方法です。そして、それは機能しています。
+    </p>
+    <p class="text-sm font-bold text-green-700">
+      この実践を、もう少し広げてみませんか？
+    </p>
   </section>
 
-  <section class="mt-12 text-center text-sm text-muted">
+  <!-- 処方箋カード -->
+  <section class="mb-10">
+    <h2 class="text-xl font-bold text-primary mb-2">問題ごとに、解決策があります</h2>
+    <p class="text-sm text-muted mb-5">それぞれの問題に、統合より安く、今すぐ始められる方法があります。</p>
+
+    <div class="grid gap-4 md:grid-cols-2">
+      <PrescriptionCard
+        number={1}
+        problem="先生が足りない（東中 2031年）"
+        solution="近隣校との兼務発令・ICT遠隔授業・非常勤講師で対応可能"
+        cost="年間数百万円（統合は6億円〜）"
+        href="/solutions/1"
+      />
+      <PrescriptionCard
+        number={2}
+        problem="生徒が減った（豊丘小の複式学級）"
+        solution="県費講師の配置確認・小規模特認校・山村留学で対応可能"
+        cost="0円〜数百万円（統合は6億円〜）"
+        href="/solutions/2"
+      />
+      <PrescriptionCard
+        number={3}
+        problem="先生が大変（1人で何役も）"
+        solution="ICTで教員間ネットワーク・校務分掌の共有・市費教員の追加"
+        cost="年間数千万円（統合は6〜88億円）"
+        href="/solutions/3"
+      />
+      <PrescriptionCard
+        number={4}
+        problem="校舎が古い（築35年〜）"
+        solution="須坂市自身の長寿命化計画どおりに改修（目標80年）"
+        cost="年間10億円・分散投資（統合新設は55〜88億円）"
+        href="/solutions/4"
+      />
+    </div>
+  </section>
+
+  <!-- 費用比較 -->
+  <section class="bg-card rounded-lg p-6 shadow-sm mb-10">
+    <h2 class="font-bold text-lg text-primary mb-3">費用を比べてみてください</h2>
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="border-b">
+            <th class="text-left py-2"></th>
+            <th class="text-left py-2 text-accent">学園構想（統合）</th>
+            <th class="text-left py-2 text-green-700">この提案</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b">
+            <td class="py-2 font-bold">費用</td>
+            <td class="py-2">6〜88億円（未公表）</td>
+            <td class="py-2">年間数千万円の追加</td>
+          </tr>
+          <tr class="border-b">
+            <td class="py-2 font-bold">いつから</td>
+            <td class="py-2">6〜14年後</td>
+            <td class="py-2">今すぐ〜1年</td>
+          </tr>
+          <tr class="border-b">
+            <td class="py-2 font-bold">リスク</td>
+            <td class="py-2">不可逆。元に戻せない</td>
+            <td class="py-2">いつでも調整可能</td>
+          </tr>
+          <tr class="border-b">
+            <td class="py-2 font-bold">全国の前例</td>
+            <td class="py-2">須坂型はゼロ</td>
+            <td class="py-2">特認校700校超、兼務発令は全国標準</td>
+          </tr>
+          <tr>
+            <td class="py-2 font-bold">子どもの声</td>
+            <td class="py-2">73%が「今のまま」と回答</td>
+            <td class="py-2">現状を維持しながら改善</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 全国の選択肢 -->
+  <section class="mb-10">
+    <h2 class="text-xl font-bold text-primary mb-2">全国にはこんな方法があります</h2>
+    <p class="text-sm text-muted mb-5">須坂だけが少子化に悩んでいるわけではありません。統合以外の方法で学校を良くしている自治体があります。</p>
+
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm bg-card rounded-lg shadow-sm">
+        <thead>
+          <tr class="border-b">
+            <th class="text-left p-3">方法</th>
+            <th class="text-left p-3">事例</th>
+            <th class="text-left p-3">内容</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b">
+            <td class="p-3 font-bold">小規模特認校</td>
+            <td class="p-3">全国700校超</td>
+            <td class="p-3">学区外から児童を受入。急速に拡大中</td>
+          </tr>
+          <tr class="border-b">
+            <td class="p-3 font-bold">山村留学</td>
+            <td class="p-3">長野県「信州自然留学」</td>
+            <td class="p-3">県外から子どもを受入。地域活性化にも</td>
+          </tr>
+          <tr class="border-b">
+            <td class="p-3 font-bold">ICT遠隔合同授業</td>
+            <td class="p-3">長野県喬木村（文科大臣賞）</td>
+            <td class="p-3">2校をTV会議で接続し合同授業</td>
+          </tr>
+          <tr class="border-b">
+            <td class="p-3 font-bold">統合しない一体運営</td>
+            <td class="p-3">岐阜県山県市（育児制度賞）</td>
+            <td class="p-3">12校を統廃合せず一体運営。須坂市議会が視察済み</td>
+          </tr>
+          <tr class="border-b">
+            <td class="p-3 font-bold">兼務発令</td>
+            <td class="p-3">全国の小規模中学校</td>
+            <td class="p-3">近隣校の教員が週数回訪問。追加コストゼロ</td>
+          </tr>
+          <tr>
+            <td class="p-3 font-bold">共同学校事務室</td>
+            <td class="p-3">文科省が推奨</td>
+            <td class="p-3">複数校の事務を共同化し先生の負担軽減</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 3つの提案 -->
+  <section class="mb-10">
+    <h2 class="text-xl font-bold text-primary mb-5">3つの提案</h2>
+    <div class="space-y-4">
+      <div class="bg-card rounded-lg p-5 shadow-sm border-l-4 border-green-600">
+        <h3 class="font-bold mb-1">1. 今すぐ困っている子どもと先生に、今すぐ手を打ってください</h3>
+        <p class="text-sm text-muted">豊丘小の複式学級は県費講師で今すぐ解消できるはずです。東中の教科不足は兼務発令で今すぐ補えます。</p>
+      </div>
+      <div class="bg-card rounded-lg p-5 shadow-sm border-l-4 border-green-600">
+        <h3 class="font-bold mb-1">2. 安い方法から順に試して、検証してください</h3>
+        <p class="text-sm text-muted">全15校を一気に4学園にするのではなく、東中学校区で試してみてください。うまくいけば数十億円を節約できます。</p>
+      </div>
+      <div class="bg-card rounded-lg p-5 shadow-sm border-l-4 border-green-600">
+        <h3 class="font-bold mb-1">3. 費用と選択肢を公開して、市民と一緒に考えてください</h3>
+        <p class="text-sm text-muted">4つのパターンそれぞれの費用を公開してください。統合以外の選択肢も比較検討の俎上に載せてください。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 根拠データへのリンク -->
+  <section class="text-center text-sm text-muted mb-8">
+    <p class="mb-2">この提案の根拠となるデータ分析は<a href="/evidence" class="text-primary hover:underline font-bold">根拠データ</a>で公開しています。</p>
     <p>すべてのデータに出典を明記しています。誤りがあればご指摘ください。</p>
   </section>
+
 </Layout>
