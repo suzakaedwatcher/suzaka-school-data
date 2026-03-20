@@ -1,0 +1,737 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import BigNumber from '../../components/BigNumber.astro'
+---
+
+<Layout title="学園構想、教育だけでは説明がつかないデータ — 須坂の学校データ" description="須坂学園構想を施設・財政の観点から検証する">
+
+  <!-- ヒーロー -->
+  <section class="text-center mb-12">
+    <h1 class="text-3xl font-black text-primary mb-4">学園構想、教育だけでは説明がつかないデータ</h1>
+    <p class="text-muted max-w-2xl mx-auto text-sm">
+      教育委員会は「教育のため」と説明しています。<br>
+      しかしデータを並べると、<strong>教育だけでは説明がつかない事実</strong>が見えてきます。<br>
+      施設と財政の面から、学園構想を検証してみます。
+    </p>
+  </section>
+
+  <!-- セクション1: 公共施設の43%が学校 -->
+  <section class="bg-card rounded-lg p-6 shadow-sm mb-10">
+    <h2 class="font-bold text-lg text-primary mb-4">公共施設の半分近くが学校</h2>
+
+    <BigNumber value="43.2%" label="学校が公共施設全体に占める割合" source="須坂市 公共施設等総合管理計画（2024年改訂）" />
+
+    <div class="mt-4 overflow-x-auto">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="border-b">
+            <th class="text-left py-2">施設類型</th>
+            <th class="text-right py-2">延床面積</th>
+            <th class="text-right py-2">割合</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b bg-yellow-50 font-bold">
+            <td class="py-2">学校教育系施設（15校）</td>
+            <td class="py-2 text-right">97,645 m²</td>
+            <td class="py-2 text-right text-accent">43.2%</td>
+          </tr>
+          <tr class="border-b">
+            <td class="py-2">公営住宅</td>
+            <td class="py-2 text-right">約45,000 m²</td>
+            <td class="py-2 text-right">約20%</td>
+          </tr>
+          <tr class="border-b">
+            <td class="py-2">その他（庁舎・体育館・集会所等）</td>
+            <td class="py-2 text-right">約83,000 m²</td>
+            <td class="py-2 text-right">約37%</td>
+          </tr>
+          <tr class="font-bold">
+            <td class="py-2">合計</td>
+            <td class="py-2 text-right">226,019 m²</td>
+            <td class="py-2 text-right">100%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="mt-4 bg-gray-50 rounded p-4 text-sm">
+      <p>公共施設等総合管理計画では、コスト試算の前提として<strong>延床面積の2割削減</strong>が使われています。</p>
+      <p class="mt-2">2割 = 約45,000 m²。学校以外の廃止候補は集会所や格納庫で、合計しても数千m²にしかなりません。<strong>学校を削らない限り、2割削減は数字上不可能です。</strong></p>
+    </div>
+  </section>
+
+  <!-- セクション2: 3つの計画の矛盾 -->
+  <section class="bg-card rounded-lg p-6 shadow-sm mb-10">
+    <h2 class="font-bold text-lg text-primary mb-4">須坂市は3つの計画を持っています。3つは矛盾しています。</h2>
+
+    <div class="space-y-4">
+      <!-- 計画1 -->
+      <div class="rounded-lg border-l-4 border-blue-500 bg-blue-50 p-4">
+        <div class="text-xs text-blue-700 font-bold mb-1">2016年策定 → 2024年改訂 → 2026年方針転換</div>
+        <h3 class="font-bold mb-1">公共施設等総合管理計画</h3>
+        <p class="text-sm">「新しくつくる」から「賢くつかう」へ。数値目標は設定しない、と明記。</p>
+        <p class="text-sm mt-1">ただしモデルケースとして<strong>延床面積2割削減</strong>でコスト試算。</p>
+        <p class="text-sm mt-1 text-accent font-bold">→ 2026年3月議会で「具体的な数値目標を掲げる」に方針転換。</p>
+      </div>
+
+      <!-- 計画2 -->
+      <div class="rounded-lg border-l-4 border-green-500 bg-green-50 p-4">
+        <div class="text-xs text-green-700 font-bold mb-1">2020年策定</div>
+        <h3 class="font-bold mb-1">学校施設長寿命化計画</h3>
+        <p class="text-sm">RC造の目標使用年数 = <strong>80年</strong>。築40年で長寿命化改修、80年まで使う。</p>
+        <p class="text-sm mt-1">40年間の費用: 386億円。従来型より<strong>37億円安い</strong>。</p>
+        <p class="text-sm mt-1 font-bold">→ 15校すべてを改修して使い続ける計画。</p>
+      </div>
+
+      <!-- 計画3 -->
+      <div class="rounded-lg border-l-4 border-accent bg-red-50 p-4">
+        <div class="text-xs text-accent font-bold mb-1">2024年策定</div>
+        <h3 class="font-bold mb-1">学園構想 基本方針案</h3>
+        <p class="text-sm">15校を4学園に統合。「小規模校の課題」「老朽化」を理由に。</p>
+        <p class="text-sm mt-1 font-bold">→ 11校を段階的に廃校。延床面積が大幅に減る。</p>
+      </div>
+    </div>
+
+    <!-- 矛盾の図解 -->
+    <div class="mt-6 bg-gray-50 rounded p-4 text-sm">
+      <p class="font-bold mb-2">矛盾のポイント:</p>
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="border-b">
+            <th class="text-left py-2">論点</th>
+            <th class="text-left py-2">長寿命化計画（2020年）</th>
+            <th class="text-left py-2">学園構想（2024年）</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b">
+            <td class="py-2 font-bold">校舎の方針</td>
+            <td class="py-2 text-green-700">80年使う</td>
+            <td class="py-2 text-accent">統合して廃校にする</td>
+          </tr>
+          <tr class="border-b">
+            <td class="py-2 font-bold">築35年の校舎</td>
+            <td class="py-2 text-green-700">目標使用年数の44%地点</td>
+            <td class="py-2 text-accent">「老朽化」</td>
+          </tr>
+          <tr class="border-b">
+            <td class="py-2 font-bold">コスト</td>
+            <td class="py-2 text-green-700">年10億の改修計画</td>
+            <td class="py-2 text-accent">費用未公開</td>
+          </tr>
+          <tr>
+            <td class="py-2 font-bold">学校数</td>
+            <td class="py-2 text-green-700">15校を維持</td>
+            <td class="py-2 text-accent">15校→4校</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="mt-3"><strong>学園構想の基本方針案には、長寿命化計画との関係が説明されていません。</strong>80年使う計画はどうなったのでしょうか。</p>
+    </div>
+  </section>
+
+  <!-- セクション3: 時系列 — 何が起きてきたか -->
+  <section class="bg-card rounded-lg p-6 shadow-sm mb-10">
+    <h2 class="font-bold text-lg text-primary mb-4">時系列で見る — 何が起きてきたか</h2>
+
+    <div class="space-y-3 text-sm">
+      <div class="flex gap-4 items-start">
+        <div class="text-muted font-mono text-xs w-16 shrink-0 pt-0.5">2016年</div>
+        <div class="border-l-2 border-blue-300 pl-4 pb-4">
+          <p>公共施設等総合管理計画を策定。「学校は面積の43%。モデルケースで2割削減」</p>
+        </div>
+      </div>
+      <div class="flex gap-4 items-start">
+        <div class="text-muted font-mono text-xs w-16 shrink-0 pt-0.5">2020年</div>
+        <div class="border-l-2 border-green-300 pl-4 pb-4">
+          <p>学校施設長寿命化計画を策定。「RC造80年使う。15校すべて改修する」</p>
+        </div>
+      </div>
+      <div class="flex gap-4 items-start">
+        <div class="text-muted font-mono text-xs w-16 shrink-0 pt-0.5">2022年</div>
+        <div class="border-l-2 border-gray-300 pl-4 pb-4">
+          <p>小中学校適正規模等審議会を設置。会長は勝山教育長自身。</p>
+        </div>
+      </div>
+      <div class="flex gap-4 items-start">
+        <div class="text-muted font-mono text-xs w-16 shrink-0 pt-0.5">2023年</div>
+        <div class="border-l-2 border-gray-300 pl-4 pb-4">
+          <p>審議会が「統合」を答申。</p>
+        </div>
+      </div>
+      <div class="flex gap-4 items-start">
+        <div class="text-muted font-mono text-xs w-16 shrink-0 pt-0.5">2024年</div>
+        <div class="border-l-2 border-red-300 pl-4 pb-4">
+          <p>学園構想 基本方針案（15校→4学園）。長寿命化計画には一切言及なし。費用未公開。</p>
+        </div>
+      </div>
+      <div class="flex gap-4 items-start">
+        <div class="text-muted font-mono text-xs w-16 shrink-0 pt-0.5">2025年</div>
+        <div class="border-l-2 border-purple-300 pl-4 pb-4">
+          <p>大和リース（大和ハウス子会社）と公民連携協定を締結。職員向けに「須坂市の公共施設マネジメント」研修を実施。</p>
+          <p class="mt-1">国の制度変更: 統合に伴う旧校舎の解体にも交付税措置50%が新設。</p>
+        </div>
+      </div>
+      <div class="flex gap-4 items-start">
+        <div class="text-muted font-mono text-xs w-16 shrink-0 pt-0.5">2026年</div>
+        <div class="border-l-2 border-accent pl-4 pb-4">
+          <p class="font-bold">公共施設計画に「具体的な数値目標を掲げる」と方針転換（3月議会）。</p>
+          <p class="mt-1">学園構想のパブリックコメントと、公共施設計画の見直しが同じ年度に進行中。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- セクション4: 学校ごとに状況が違う -->
+  <section class="bg-card rounded-lg p-6 shadow-sm mb-10">
+    <h2 class="font-bold text-lg text-primary mb-4">15校を一律に語れない — 学校ごとに状況が全く違う</h2>
+
+    <p class="text-sm mb-4">学園構想は15校を一律に4学園にする計画です。しかし、学校ごとの児童数の推移を見ると、状況はバラバラです。</p>
+
+    <div class="overflow-x-auto mb-4">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="border-b">
+            <th class="text-left py-2">中学校区</th>
+            <th class="text-right py-2">2016年</th>
+            <th class="text-right py-2">2028年(推計)</th>
+            <th class="text-right py-2">減少率</th>
+            <th class="text-left py-2">状況</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b">
+            <td class="py-2 font-bold">常盤中学校区</td>
+            <td class="py-2 text-right">356</td>
+            <td class="py-2 text-right">350</td>
+            <td class="py-2 text-right text-green-700 font-bold">-1.7%</td>
+            <td class="py-2 text-green-700">ほぼ横ばい</td>
+          </tr>
+          <tr class="border-b">
+            <td class="py-2 font-bold">墨坂中学校区</td>
+            <td class="py-2 text-right">555</td>
+            <td class="py-2 text-right">461</td>
+            <td class="py-2 text-right">-16.9%</td>
+            <td class="py-2">緩やかな減少</td>
+          </tr>
+          <tr class="border-b">
+            <td class="py-2 font-bold">相森中学校区</td>
+            <td class="py-2 text-right">373</td>
+            <td class="py-2 text-right">272</td>
+            <td class="py-2 text-right">-27.1%</td>
+            <td class="py-2">減少傾向</td>
+          </tr>
+          <tr class="bg-yellow-50">
+            <td class="py-2 font-bold">東中学校区</td>
+            <td class="py-2 text-right">206</td>
+            <td class="py-2 text-right">115</td>
+            <td class="py-2 text-right text-accent font-bold">-44.2%</td>
+            <td class="py-2 text-accent">急激な減少</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="space-y-3 text-sm">
+      <div class="bg-green-50 rounded p-4">
+        <p class="font-bold text-green-700 mb-1">常盤中学校区: 生徒数ほぼ横ばい</p>
+        <p>12年間で-1.7%。<strong>統合の教育的根拠が薄い</strong>学校区です。ここを急いで統合する理由は何でしょうか。</p>
+      </div>
+      <div class="bg-yellow-50 rounded p-4">
+        <p class="font-bold text-accent mb-1">東中学校区: 深刻な減少</p>
+        <p>12年間で-44%。2031年に全学年単級。<strong>ここは対策が必要</strong>です。ただし統合以外の方法（兼務発令・ICT・市費教員）で対応可能であることは<a href="/solutions/1" class="text-primary underline">別ページ</a>で分析しています。</p>
+      </div>
+    </div>
+
+    <div class="mt-4 bg-gray-50 rounded p-4 text-sm">
+      <p class="font-bold mb-1">問題は「一律」であること</p>
+      <p>生徒数がほぼ横ばいの学校区も、急減している学校区も、同じ「4学園に統合」の対象になっています。<strong>状況が全く違うのに、処方箋が同じ。</strong>これは施設の延床面積を一括で削減するための設計であり、各学校区の教育的必要性に基づく判断ではありません。</p>
+    </div>
+  </section>
+
+  <!-- セクション6: 急ぐ必要があるのか -->
+  <section class="bg-card rounded-lg p-6 shadow-sm mb-10">
+    <h2 class="font-bold text-lg text-primary mb-4">学園構想のスケジュールと、段階的に対応した場合の比較</h2>
+
+    <p class="text-sm mb-4">学園構想も実は「段階的に進める」計画です。では、自然に任せた場合とどれだけ違うのでしょうか。</p>
+
+    <!-- 学園構想のスケジュール -->
+    <div class="bg-gray-50 rounded p-4 text-sm mb-4">
+      <p class="font-bold mb-2">学園構想のスケジュール（基本方針案より）:</p>
+      <div class="space-y-2">
+        <div class="flex gap-3 items-start">
+          <span class="font-mono text-xs text-muted w-20 shrink-0">2026年</span>
+          <span>基本方針を決定</span>
+        </div>
+        <div class="flex gap-3 items-start">
+          <span class="font-mono text-xs text-muted w-20 shrink-0">2031〜32年</span>
+          <span>第一学園 開校（東中学校区。施設分離型）</span>
+        </div>
+        <div class="flex gap-3 items-start">
+          <span class="font-mono text-xs text-muted w-20 shrink-0">2037〜39年</span>
+          <span>第二学園 開校（常盤中学校区。施設一体型）</span>
+        </div>
+        <div class="flex gap-3 items-start">
+          <span class="font-mono text-xs text-muted w-20 shrink-0">2040年〜</span>
+          <span>第三・第四学園 順次開校（相森中・墨坂中学校区。<strong>時期未定</strong>）</span>
+        </div>
+      </div>
+      <p class="mt-2 text-xs text-muted">※ 具体的な年度は示されておらず「基本方針策定から6〜7年後」「第一学園から6〜7年後」という表現。カリキュラム・費用・通学ルート・廃校後の利用も未定。</p>
+    </div>
+
+    <!-- 並べて比較 -->
+    <div class="overflow-x-auto mb-4">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="border-b">
+            <th class="text-left py-2">時期</th>
+            <th class="text-left py-2 text-accent">学園構想</th>
+            <th class="text-left py-2 text-green-700">統合以外の対応</th>
+            <th class="text-left py-2">差</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b">
+            <td class="py-2 font-bold">2031〜32年</td>
+            <td class="py-2 text-accent">第一学園（東中区）開校</td>
+            <td class="py-2 text-green-700">東中に兼務発令+市費教員で対応</td>
+            <td class="py-2">方法が違う。東中に対策が必要な点は同じ</td>
+          </tr>
+          <tr class="border-b bg-yellow-50">
+            <td class="py-2 font-bold">2037〜39年</td>
+            <td class="py-2 text-accent">第二学園（常盤区）開校</td>
+            <td class="py-2 text-green-700">常盤区は生徒数横ばい。統合の必要なし</td>
+            <td class="py-2 font-bold">ここが最大の違い</td>
+          </tr>
+          <tr class="border-b">
+            <td class="py-2 font-bold">2040年〜</td>
+            <td class="py-2 text-accent">第三・四学園（時期未定）</td>
+            <td class="py-2 text-green-700">児童数が減り統合が合理的に</td>
+            <td class="py-2">ほぼ同じ時期</td>
+          </tr>
+          <tr>
+            <td class="py-2 font-bold">2050年</td>
+            <td class="py-2 text-accent">4学園で運営中</td>
+            <td class="py-2 text-green-700">8〜10校体制に自然に移行</td>
+            <td class="py-2">どちらも学校数は減っている</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="bg-yellow-50 rounded p-4 text-sm mb-4">
+      <p class="font-bold mb-1">本当に差があるのは「第二学園」だけ</p>
+      <p>第一学園（東中区）は、方法は違えどどちらも対策が必要。第三・第四学園は、学園構想でも「時期未定」で、児童数の減少で統合が合理的になる時期とほぼ重なります。</p>
+      <p class="mt-2"><strong>差が出るのは第二学園（常盤中学校区）のみ。</strong>生徒数がほぼ横ばいの学校区を2037年に統合する根拠は何でしょうか。</p>
+    </div>
+
+    <!-- 延床の削減 -->
+    <div class="bg-gray-50 rounded p-4 text-sm mb-4">
+      <p class="font-bold mb-2">延床2割削減も、急がなくても達成できる:</p>
+      <ul class="list-disc list-inside space-y-1">
+        <li>必要な削減量: 約45,000 m²（226,019 m²の2割）</li>
+        <li>学校1校の平均延床: 6,510 m²</li>
+        <li><strong>7校閉じれば 6,510 × 7 = 45,570 m² ≒ ちょうど2割</strong></li>
+        <li>2050年頃には児童数の減少で5〜7校が自然に閉じる見込み</li>
+      </ul>
+      <p class="mt-2">延床面積の削減目標に法的義務はなく、達成期限もありません。</p>
+    </div>
+
+    <div class="bg-gray-50 rounded p-4 text-sm">
+      <p class="font-bold mb-1">急ぐ理由があるとすれば:</p>
+      <ul class="list-disc list-inside space-y-1">
+        <li>補助金の制度が変わる前に使いたい</li>
+        <li>公共施設計画の数値目標を早く達成したい</li>
+      </ul>
+      <p class="mt-2">どちらも行政の都合であり、児童の教育的必要性とは関係ありません。特に<strong>人口が増えている学校区まで含めて統合する理由は、施設削減以外に見当たりません。</strong></p>
+    </div>
+  </section>
+
+  <!-- セクション6: 補助金の仕組み -->
+  <section class="bg-card rounded-lg p-6 shadow-sm mb-10">
+    <h2 class="font-bold text-lg text-primary mb-4">補助金の仕組み — なぜ「統合」が選ばれやすいのか</h2>
+
+    <p class="text-sm mb-4">急ぐ理由の一つは補助金です。ひとことで言えば: <strong>学校を統合すると国が改修費の約7割を負担してくれます。統合しないと5〜6割。</strong>この差が自治体を統合に誘導する仕組みです。</p>
+
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="border-b">
+            <th class="text-left py-2">やること</th>
+            <th class="text-left py-2">文科省補助</th>
+            <th class="text-left py-2">総務省の事業債</th>
+            <th class="text-right py-2 font-bold">市の実質負担率</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b bg-red-50">
+            <td class="py-2 font-bold">統合して改修</td>
+            <td class="py-2">1/2</td>
+            <td class="py-2">集約化（交付税措置50%）</td>
+            <td class="py-2 text-right font-bold text-accent">約27.5%</td>
+          </tr>
+          <tr class="border-b bg-green-50">
+            <td class="py-2 font-bold">統合せず長寿命化改修</td>
+            <td class="py-2">1/3</td>
+            <td class="py-2">長寿命化（交付税措置30〜50%）</td>
+            <td class="py-2 text-right font-bold text-green-700">約37〜49%</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="py-2 text-muted">事業債を使わない場合</td>
+            <td class="py-2 text-muted">1/3</td>
+            <td class="py-2 text-muted">なし</td>
+            <td class="py-2 text-right text-muted">約66.7%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="mt-4 bg-yellow-50 rounded p-4 text-sm">
+      <p class="font-bold mb-1">重要: 須坂市は統合しなくても使える補助を使えない状態にしている可能性</p>
+      <p class="mt-1">長寿命化事業債（表の2行目）は、制度上は統合しなくても使えます。ただし「個別施設計画等に位置づけられた事業」が条件です。</p>
+      <p class="mt-1"><strong>須坂市は学校を個別施設計画の「対象外」にしています。</strong>このため、統合しなくても使えるはずの有利な起債が使えない可能性があります。</p>
+      <p class="mt-1">もし使えないなら、<strong>「個別施設計画に学校を含める」だけで市の負担率が66.7%→37〜49%に下がります。</strong>統合の議論以前に、今すぐできる改善です。</p>
+    </div>
+
+    <div class="mt-4 bg-gray-50 rounded p-4 text-sm">
+      <p class="font-bold mb-2">10億円の改修を行う場合:</p>
+      <ul class="list-disc list-inside space-y-1">
+        <li>統合あり: 市負担 <strong class="text-accent">2.75億円</strong></li>
+        <li>統合なし: 市負担 <strong class="text-green-700">3.7〜4.9億円</strong></li>
+        <li>差額: 約1〜2億円</li>
+      </ul>
+      <p class="mt-3">この差額は「教育的に統合が正しいから」ではなく、<strong>「延床面積を減らしてほしい」という国の政策誘導</strong>によるものです。総務省自身がこれを「強力なインセンティブ」と呼んでいます。</p>
+    </div>
+
+    <div class="mt-4 bg-blue-50 rounded p-4 text-sm">
+      <p class="font-bold mb-2">2025年度の制度変更:</p>
+      <p>統合後5年以内に旧校舎を解体する場合、<strong>解体費にも交付税措置50%</strong>が適用されるようになりました（従来は0%）。学園構想のタイミングとちょうど重なります。</p>
+    </div>
+  </section>
+
+  <!-- セクション7: 時系列シミュレーション -->
+  <section class="bg-card rounded-lg p-6 shadow-sm mb-10">
+    <h2 class="font-bold text-lg text-primary mb-4">向こう40年のコスト — 2つのシナリオ</h2>
+
+    <p class="text-sm mb-4">学園構想どおりに統合する場合と、段階的に対応する場合で、40年間にいくらかかるかを比較します。</p>
+
+    <!-- 合計テーブルを先に -->
+    <div class="bg-primary text-white rounded-lg p-5 mb-4">
+      <h3 class="font-bold mb-3">40年間の市負担（推計）</h3>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-white/30">
+              <th class="text-left py-2">期間</th>
+              <th class="text-right py-2">A. 統合</th>
+              <th class="text-right py-2">B. 段階的に対応</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-white/20">
+              <td class="py-2">2026〜2030年</td>
+              <td class="py-2 text-right">3〜5億</td>
+              <td class="py-2 text-right">4〜8億</td>
+            </tr>
+            <tr class="border-b border-white/20">
+              <td class="py-2">2031〜2040年</td>
+              <td class="py-2 text-right">20〜40億</td>
+              <td class="py-2 text-right">25〜70億</td>
+            </tr>
+            <tr class="border-b border-white/20">
+              <td class="py-2">2041〜2050年</td>
+              <td class="py-2 text-right">25〜40億</td>
+              <td class="py-2 text-right">25〜45億</td>
+            </tr>
+            <tr class="border-b border-white/20">
+              <td class="py-2">2051〜2065年</td>
+              <td class="py-2 text-right">15〜30億</td>
+              <td class="py-2 text-right">30〜50億</td>
+            </tr>
+            <tr class="font-bold text-lg">
+              <td class="py-3">合計（40年）</td>
+              <td class="py-3 text-right">63〜115億</td>
+              <td class="py-3 text-right">84〜173億</td>
+            </tr>
+            <tr>
+              <td class="py-2">年平均</td>
+              <td class="py-2 text-right">1.6〜2.9億/年</td>
+              <td class="py-2 text-right">2.1〜4.3億/年</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 意外な事実: 国からの補助総額 -->
+    <div class="bg-blue-50 rounded p-4 text-sm mb-4">
+      <p class="font-bold mb-1">意外な事実: 国からの補助は統合しない方が多い</p>
+      <p class="mt-1">統合すると市の負担<strong>率</strong>は下がります（27.5% vs 37〜49%）。しかし統合しない場合は改修の事業費自体が大きいため、国からもらう補助の<strong>総額</strong>は大きくなります。</p>
+      <div class="overflow-x-auto mt-2">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b">
+              <th class="text-left py-2"></th>
+              <th class="text-right py-2 text-accent">A. 統合</th>
+              <th class="text-right py-2 text-green-700">B. 段階的に対応</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b">
+              <td class="py-2">市の負担率</td>
+              <td class="py-2 text-right">27.5%</td>
+              <td class="py-2 text-right">37〜49%</td>
+            </tr>
+            <tr>
+              <td class="py-2 font-bold">国からの補助合計</td>
+              <td class="py-2 text-right">約84億</td>
+              <td class="py-2 text-right font-bold text-green-700">約95〜130億</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-2 text-muted">「補助金を最大限もらう」と「市の持ち出しを最小化する」は同じではありません。</p>
+    </div>
+
+    <!-- Bの幅の説明 -->
+    <div class="bg-yellow-50 rounded p-4 text-sm mb-4">
+      <p class="font-bold mb-2">なぜBの幅がこんなに広いのか:</p>
+      <ul class="list-disc list-inside space-y-1">
+        <li><strong>改修グレード</strong>: 1校13.7億のフル改修 vs 5〜7億の最小限改修（給排水・電気・屋根のみ）で倍以上の差</li>
+        <li><strong>長寿命化事業債</strong>: 使えれば市負担率が66.7%→37〜49%に下がる。須坂市が個別施設計画に学校を含めるかどうかで変わる</li>
+        <li><strong>交付税の算定基礎</strong>: Aでは学校数が15→4に減るため、基準財政需要額の学校分（約5.6億/年）が減る可能性。これはAのコストに上乗せされるが、額は「算出不能」（総務部長答弁）</li>
+      </ul>
+      <p class="mt-2"><strong>前提の置き方次第で、AとBの差は「年0.5億」程度まで縮まりえます。だからこそ、前提を明示した比較検討が必要です。</strong></p>
+    </div>
+
+    <!-- 数字以外の違い -->
+    <div class="bg-gray-50 rounded p-4 text-sm mb-4">
+      <p class="font-bold mb-2">数字以外の違い:</p>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b">
+              <th class="text-left py-2"></th>
+              <th class="text-left py-2 text-accent">A. 統合</th>
+              <th class="text-left py-2 text-green-700">B. 段階的に対応</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b">
+              <td class="py-2 font-bold">教員数</td>
+              <td class="py-2">6〜8人減（不可逆）</td>
+              <td class="py-2">維持</td>
+            </tr>
+            <tr class="border-b">
+              <td class="py-2 font-bold">避難所</td>
+              <td class="py-2">11箇所を失う</td>
+              <td class="py-2">維持</td>
+            </tr>
+            <tr class="border-b">
+              <td class="py-2 font-bold">通学</td>
+              <td class="py-2">バス必須（年数千万円）</td>
+              <td class="py-2">徒歩圏を維持</td>
+            </tr>
+            <tr class="border-b">
+              <td class="py-2 font-bold">判断の柔軟性</td>
+              <td class="py-2">今すぐ全部決める</td>
+              <td class="py-2">状況を見て段階的に</td>
+            </tr>
+            <tr>
+              <td class="py-2 font-bold">40年後の学校数</td>
+              <td class="py-2">4校</td>
+              <td class="py-2">6〜8校</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 折りたたみ: 各期間の詳細 -->
+    <details class="mb-4">
+      <summary class="cursor-pointer text-sm font-bold text-primary hover:underline">各期間の詳細を見る</summary>
+      <div class="mt-4 space-y-6">
+
+        <div class="bg-gray-50 rounded p-4 text-sm">
+          <p class="font-bold mb-1">前提データ:</p>
+          <ul class="list-disc list-inside space-y-1 text-muted">
+            <li>児童生徒数: 3,500人（2026年）→ 約1,200人（2065年）</li>
+            <li>校舎: 全15校が築31〜57年。目標使用年数80年（市の長寿命化計画）</li>
+            <li>財政調整基金: 約2億円。ふるさと納税除外で年23億円の減収</li>
+          </ul>
+        </div>
+
+        <!-- 2026-2030 -->
+        <div>
+          <h4 class="font-bold text-primary mb-2">2026〜2030年: 直近5年間</h4>
+          <div class="grid md:grid-cols-2 gap-3">
+            <div class="rounded border-l-4 border-accent bg-red-50 p-3 text-sm">
+              <p class="font-bold text-accent mb-1">A. 統合</p>
+              <p>パブコメ→方針決定→第一学園の設計。須坂小改修。</p>
+              <p class="font-bold mt-1">支出: 約3〜5億円</p>
+            </div>
+            <div class="rounded border-l-4 border-green-600 bg-green-50 p-3 text-sm">
+              <p class="font-bold text-green-700 mb-1">B. 段階的に対応</p>
+              <p>須坂小改修。豊丘小・東中に即時対応。共同学校事務室の導入。</p>
+              <p class="font-bold mt-1">支出: 約4〜8億円</p>
+            </div>
+          </div>
+          <p class="text-xs text-muted mt-1">この時期はほぼ同じ。</p>
+        </div>
+
+        <!-- 2031-2040 -->
+        <div>
+          <h4 class="font-bold text-primary mb-2">2031〜2040年: 最大の分岐点</h4>
+          <div class="grid md:grid-cols-2 gap-3">
+            <div class="rounded border-l-4 border-accent bg-red-50 p-3 text-sm">
+              <p class="font-bold text-accent mb-1">A. 統合</p>
+              <p>4学園を順次統合。増改築12〜20億＋解体8〜16億＋バス6億。<strong>教員6〜8人減。</strong></p>
+              <p class="font-bold mt-1">支出: 約20〜40億円</p>
+            </div>
+            <div class="rounded border-l-4 border-green-600 bg-green-50 p-3 text-sm">
+              <p class="font-bold text-green-700 mb-1">B. 段階的に対応</p>
+              <p>築40年超の5校を順次改修（1校5〜13.7億）。豊丘小は統合の要否を判断。教員維持。</p>
+              <p class="font-bold mt-1">支出: 約25〜70億円</p>
+            </div>
+          </div>
+          <p class="text-xs text-muted mt-1">Aは廃校にして改修費を回避。Bは改修グレードと事業債で幅が大きい。</p>
+        </div>
+
+        <!-- 2041-2050 -->
+        <div>
+          <h4 class="font-bold text-primary mb-2">2041〜2050年: Bでも統合が始まる</h4>
+          <div class="grid md:grid-cols-2 gap-3">
+            <div class="rounded border-l-4 border-accent bg-red-50 p-3 text-sm">
+              <p class="font-bold text-accent mb-1">A. 統合</p>
+              <p>4学園稼働中。残した4校の改修が必要（55億）。バス・廃校管理継続。</p>
+              <p class="font-bold mt-1">支出: 約25〜40億円</p>
+            </div>
+            <div class="rounded border-l-4 border-green-600 bg-green-50 p-3 text-sm">
+              <p class="font-bold text-green-700 mb-1">B. 段階的に対応</p>
+              <p>児童減で2〜4校の統合が合理的に。残り校舎の改修継続。10〜12校体制に。</p>
+              <p class="font-bold mt-1">支出: 約25〜45億円</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2051-2065 -->
+        <div>
+          <h4 class="font-bold text-primary mb-2">2051〜2065年: 校舎が80年に到達</h4>
+          <div class="grid md:grid-cols-2 gap-3">
+            <div class="rounded border-l-4 border-accent bg-red-50 p-3 text-sm">
+              <p class="font-bold text-accent mb-1">A. 統合</p>
+              <p>4学園で1学園300人。校舎も築70〜80年に。建替えか2度目の改修。</p>
+              <p class="font-bold mt-1">支出: 約15〜30億円</p>
+            </div>
+            <div class="rounded border-l-4 border-green-600 bg-green-50 p-3 text-sm">
+              <p class="font-bold text-green-700 mb-1">B. 段階的に対応</p>
+              <p>6〜8校体制に収束。最古の校舎が80年到達。校舎ごとに建替え/廃校を判断。</p>
+              <p class="font-bold mt-1">支出: 約30〜50億円</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </details>
+
+    <div class="bg-yellow-50 rounded p-5 text-sm border-l-4 border-yellow-500">
+      <p class="font-bold mb-1">結局のところ:</p>
+      <p>市の持ち出しはAの方が少なく見えます。しかしその理由は<strong>「まだ使える校舎を廃校にして改修費を回避する」</strong>ことと、<strong>「統合すると補助率が上がる国の制度」</strong>の2つです。</p>
+      <p class="mt-2">Bの幅が大きいのは、改修グレードと事業債の活用次第で大幅にコストが変わるから。<strong>この幅の中のどこに着地するかを検討するのが本来の「計画」のはずですが、その検討資料は公開されていません。</strong></p>
+    </div>
+  </section>
+
+  <!-- PFIへのリンク -->
+  <section class="bg-gray-50 rounded-lg p-4 mb-10 text-sm">
+    <p>学園構想の周辺で進んでいるPFI（民間資金活用）事業者の動きについては、<a href="/facility/pfi" class="text-primary hover:underline font-bold">背景: PFI事業者と公共施設</a>で整理しています。</p>
+  </section>
+
+  <!-- セクション8: 問い -->
+  <section class="bg-card rounded-lg p-6 shadow-sm mb-10 border-l-4 border-primary">
+    <h2 class="font-bold text-lg text-primary mb-4">この理解で合っていますか？</h2>
+
+    <p class="text-sm mb-4">以上のデータを整理して、私たちが理解したことです。</p>
+
+    <div class="space-y-3 text-sm">
+      <div class="bg-gray-50 rounded p-4">
+        <p><strong>1. 学園構想は施設の話です。</strong></p>
+        <p class="mt-1 text-muted">公共施設の43%を占める学校を減らすことで延床面積を削減する計画としての側面を持っています。学校以外に大きな削減余地はありません。</p>
+      </div>
+      <div class="bg-gray-50 rounded p-4">
+        <p><strong>2. 自分で作った計画と矛盾しています。</strong></p>
+        <p class="mt-1 text-muted">2020年の長寿命化計画（80年使用・15校改修）を、2024年の学園構想（統合して廃校）が否定しています。なぜ方針を変えたのか説明がありません。</p>
+      </div>
+      <div class="bg-gray-50 rounded p-4">
+        <p><strong>3. コストは前提次第で結論が変わります。</strong></p>
+        <p class="mt-1 text-muted">改修グレード、長寿命化事業債の活用、交付税算定基礎の変動を考慮すると、統合と非統合のコスト差は130億円差〜ほぼゼロまで変動します。この比較検討は公開されていません。</p>
+      </div>
+      <div class="bg-gray-50 rounded p-4">
+        <p><strong>4. 「適正規模」が判断基準として機能していません。</strong></p>
+        <p class="mt-1 text-muted">学園構想は「適正規模を下回る学校がある」ことを根拠にしています。しかし適正規模を満たしている常盤中学校区（-1.7%）や墨坂中学校区も統合の対象です。基準を満たしていても統合されるなら、適正規模は判断基準ではなく、統合の正当化に使われているだけです。</p>
+        <p class="mt-1 text-muted">なお全国の小学校の約半数が文科省の「適正規模」を満たしていません。長野県では48.5%が小規模校です。この基準を機械的に当てはめれば、日本の学校の半分は「不適正」になります。</p>
+      </div>
+      <div class="bg-gray-50 rounded p-4">
+        <p><strong>5. 急ぐ必要があるのは東中学校区だけです。</strong></p>
+        <p class="mt-1 text-muted">学園構想自体も段階的な計画で、第三・第四学園は2040年以降（時期未定）。これは児童数の減少で統合が合理的になる時期とほぼ同じです。今すぐ「15校→4校」と決める必要はありません。少子化は長期的に全学校区に影響しますが、タイミングは学校区ごとに10〜20年の差があります。</p>
+      </div>
+      <div class="bg-gray-50 rounded p-4">
+        <p><strong>6. 今すぐ困っている子どもへの対応が後回しになっています。</strong></p>
+        <p class="mt-1 text-muted">豊丘小の複式学級も東中の教科不足も、統合を待たずに対応できます。教育委員会自身が市費教員を配置して対応中です。10年後の統合を議論する前に、今の子どもを助ける方法があります。</p>
+      </div>
+    </div>
+
+    <div class="mt-6 bg-primary text-white rounded p-5 text-sm">
+      <p class="font-bold mb-2">今決めるべきこと:</p>
+      <p>「15校を4校にする」という結論ではなく、<strong>「どういう基準で、いつ、どの学校の将来を判断するか」というプロセス</strong>です。</p>
+      <ul class="list-disc list-inside mt-3 space-y-2">
+        <li><strong>判断基準を明確にしてください。</strong>児童数が何人を下回ったら統合を検討するのか。校舎の劣化がどのレベルに達したら建替え/統合を判断するのか。適正規模を満たしている学校区は対象外とするのか。学級数だけでなく、児童数の推移・校舎の状態・コスト・地域の事情を含めた基準を示してください。</li>
+        <li><strong>コスト比較を公開してください。</strong>統合・長寿命化改修・部分統合のそれぞれについて、補助金・事業債・交付税の変動・改修グレードを含むシミュレーションを示してください。</li>
+        <li><strong>学園構想と公共施設計画の関係を説明してください。</strong>同じ年度に進行している2つの計画の関係が不明確です。</li>
+        <li><strong>今すぐ必要な対策を、統合とは切り離して実施してください。</strong>豊丘小の複式学級も東中の教科不足も、10年後の統合を待つ必要はありません。</li>
+      </ul>
+      <p class="mt-3">もしこの理解に誤りがあれば、根拠とともにお示しください。</p>
+    </div>
+  </section>
+
+  <!-- 出典 -->
+  <section class="text-sm text-muted mb-8">
+    <h2 class="font-bold text-primary mb-3">出典</h2>
+    <p class="mb-2">すべてのデータに出典を明記しています。リンク先は2026年3月時点で確認済みです。</p>
+    <ul class="list-disc list-inside space-y-2">
+      <li><strong>須坂市の計画・方針</strong>
+        <ul class="list-disc list-inside ml-4 mt-1 space-y-1">
+          <li><a href="https://www.city.suzaka.nagano.jp/material/files/group/2/koukyousisetsu_sougou.pdf" class="text-primary hover:underline" target="_blank">公共施設等総合管理計画（2016年策定、2024年12月改訂）</a></li>
+          <li><a href="https://www.city.suzaka.nagano.jp/material/files/group/2/koukyousisetsu_kobetsu.pdf" class="text-primary hover:underline" target="_blank">公共施設等個別施設計画（2024年度版）</a></li>
+          <li><a href="https://www.city.suzaka.nagano.jp/material/files/group/25/gakkoshisetsu_chojumyouka202003.pdf" class="text-primary hover:underline" target="_blank">学校施設長寿命化計画（2020年3月）</a></li>
+          <li><a href="https://www.city.suzaka.nagano.jp/soshiki/10010/5/5525.html" class="text-primary hover:underline" target="_blank">須坂学園構想 基本方針検討委員会（基本方針案を含む）</a></li>
+          <li><a href="https://www.city.suzaka.nagano.jp/material/files/group/25/kihonhoushinanQA.pdf" class="text-primary hover:underline" target="_blank">須坂学園構想 基本方針（案）Q&amp;A</a></li>
+        </ul>
+      </li>
+      <li><strong>須坂市議会・市長</strong>
+        <ul class="list-disc list-inside ml-4 mt-1 space-y-1">
+          <li>2026年3月定例会 久保田議員一般質問・山岸総務部長答弁（公共施設の縮減・統廃合等の計画づくり）</li>
+          <li><a href="https://www.city.suzaka.nagano.jp/soshiki/1020/1/1/2025/7042.html" class="text-primary hover:underline" target="_blank">須坂市長コラム（2025年5月）大和リース協定・研修に関する記載</a></li>
+        </ul>
+      </li>
+      <li><strong>国の制度・統計</strong>
+        <ul class="list-disc list-inside ml-4 mt-1 space-y-1">
+          <li><a href="https://www.soumu.go.jp/main_content/000609778.pdf" class="text-primary hover:underline" target="_blank">総務省「公共施設等適正管理推進事業債」制度概要</a></li>
+          <li><a href="https://www.soumu.go.jp/main_content/001002600.pdf" class="text-primary hover:underline" target="_blank">総務省「令和7年度地方債同意等基準運用要綱」</a></li>
+          <li><a href="https://www.soumu.go.jp/main_content/000638148.pdf" class="text-primary hover:underline" target="_blank">総務省「小中高等学校の統廃合の現状と課題」</a></li>
+          <li><a href="https://www.soumu.go.jp/iken/ruiji/ruijiR05.html" class="text-primary hover:underline" target="_blank">総務省「令和5年度類似団体別市町村財政指数表」</a></li>
+          <li><a href="https://www.mext.go.jp/b_menu/toukei/001/005/1418002_00010.htm" class="text-primary hover:underline" target="_blank">文科省「令和5年度地方教育費調査（確定値）」</a></li>
+          <li><a href="https://www.pref.nagano.lg.jp/kyoiku/kyoiku02/gyose/zenpan/tokei/kyoikuhi/r5.html" class="text-primary hover:underline" target="_blank">長野県教育委員会「令和5年度地方教育費調査」</a></li>
+          <li><a href="https://www.ipss.go.jp/pp-shicyoson/j/shicyoson18/t-page.asp" class="text-primary hover:underline" target="_blank">国立社会保障・人口問題研究所「日本の地域別将来推計人口」</a></li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  <!-- 他のページへの導線 -->
+  <section class="text-center text-sm text-muted mb-8">
+    <p class="mb-2">教育面の課題と代替案については<a href="/" class="text-primary hover:underline font-bold">ホーム</a>をご覧ください。</p>
+    <p>すべてのデータに出典を明記しています。誤りがあればご指摘ください。</p>
+  </section>
+
+</Layout>
