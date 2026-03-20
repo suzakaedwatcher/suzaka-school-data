@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import PrescriptionCard from '../components/PrescriptionCard.astro'
+import CallToAction from '../components/CallToAction.astro'
 ---
 
 <Layout title="須坂の学校、まず小さく試してみませんか？" description="須坂学園構想への提案 — 問題ごとに安い方法から試して、検証してから進めませんか">
@@ -59,6 +60,15 @@ import PrescriptionCard from '../components/PrescriptionCard.astro'
         cost="年間10億円・分散投資（統合新設は55〜88億円）"
         href="/solutions/4"
       />
+    </div>
+
+    <div class="mt-4">
+      <a href="/solutions/5" class="block bg-card rounded-lg border-l-4 border-blue-600 shadow-sm hover:shadow-md transition-shadow p-6">
+        <div class="text-sm font-bold text-blue-700 mb-1">財政データ</div>
+        <h2 class="text-xl font-bold text-primary mb-2">須坂市の教育費 — 似た規模の市と比べてみる</h2>
+        <p class="text-sm text-gray-700 mb-2">教育施設投資は類似団体平均の29%。義務教育学校で教員は全体で6〜8人減。</p>
+        <p class="text-xs text-muted">総務省「類似団体別財政指数表」・義務標準法に基づく分析</p>
+      </a>
     </div>
   </section>
 
@@ -175,9 +185,14 @@ import PrescriptionCard from '../components/PrescriptionCard.astro'
   </section>
 
   <!-- 根拠データへのリンク -->
-  <section class="text-center text-sm text-muted mb-8">
+  <section class="text-center text-sm text-muted mb-10">
     <p class="mb-2">この提案の根拠となるデータ分析は<a href="/evidence" class="text-primary hover:underline font-bold">根拠データ</a>で公開しています。</p>
     <p>すべてのデータに出典を明記しています。誤りがあればご指摘ください。</p>
+  </section>
+
+  <!-- CTA -->
+  <section class="mb-8">
+    <CallToAction title="須坂の学校、まず小さく試してみませんか？ — 須坂の学校データ" />
   </section>
 
 </Layout>

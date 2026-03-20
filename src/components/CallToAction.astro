@@ -1,0 +1,44 @@
+---
+import ShareButtons from './ShareButtons.astro'
+
+interface Props {
+  title?: string
+}
+
+const { title } = Astro.props
+---
+
+<section class="bg-card rounded-lg p-6 shadow-sm border border-gray-100">
+  <h2 class="font-bold text-lg text-primary mb-4">あなたにできること</h2>
+  <div class="grid gap-3 sm:grid-cols-2 text-sm mb-6">
+    <div class="flex gap-3 items-start">
+      <span class="text-xl leading-none mt-0.5">1</span>
+      <div>
+        <p class="font-bold">このサイトを知り合いに教える</p>
+        <p class="text-muted text-xs mt-0.5">データを広めることが最初の一歩です</p>
+      </div>
+    </div>
+    <div class="flex gap-3 items-start">
+      <span class="text-xl leading-none mt-0.5">2</span>
+      <div>
+        <p class="font-bold">パブリックコメントを書く</p>
+        <p class="text-muted text-xs mt-0.5">意見募集時にデータを添えて提出できます</p>
+      </div>
+    </div>
+    <div class="flex gap-3 items-start">
+      <span class="text-xl leading-none mt-0.5">3</span>
+      <div>
+        <p class="font-bold">説明会で質問する</p>
+        <p class="text-muted text-xs mt-0.5">このサイトのデータは自由に引用できます</p>
+      </div>
+    </div>
+    <div class="flex gap-3 items-start">
+      <span class="text-xl leading-none mt-0.5">4</span>
+      <div>
+        <p class="font-bold">地元の議員に伝える</p>
+        <p class="text-muted text-xs mt-0.5">議会での質問材料として使えます</p>
+      </div>
+    </div>
+  </div>
+  <ShareButtons title={title} />
+</section>

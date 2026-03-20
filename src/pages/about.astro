@@ -50,6 +50,21 @@ import Layout from '../layouts/Layout.astro'
         このサイトのソースコードと変更履歴はすべてGitHubで公開しています。
         データの追加・修正の過程を誰でも確認できます。
       </p>
+
+      <h2 class="font-bold text-lg mt-8">このサイトを広める</h2>
+      <p>
+        チラシや回覧板にQRコードを印刷してご利用ください。
+      </p>
+      <div class="mt-4 flex flex-col items-center gap-2">
+        <img
+          src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https%3A%2F%2Fsuzaka-school.vercel.app%2F"
+          alt="須坂の学校データ QRコード"
+          width="200"
+          height="200"
+          class="border border-gray-200 rounded"
+        />
+        <span class="text-xs text-muted">suzaka-school.vercel.app</span>
+      </div>
     </section>
   </article>
 </Layout>

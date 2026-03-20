@@ -6,7 +6,9 @@ interface Props {
   description?: string
 }
 
+const SITE_URL = 'https://suzaka-school.vercel.app'
 const { title = '須坂の学校データ', description = '須坂学園構想をデータで検証する市民シンクタンク' } = Astro.props
+const canonicalUrl = new URL(Astro.url.pathname, SITE_URL).href
 ---
 
 <html lang="ja">
@@ -15,23 +17,99 @@ const { title = '須坂の学校データ', description = '須坂学園構想を
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <title>{title}</title>
+    <!-- OGP -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:site_name" content="須坂の学校データ" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
   </head>
   <body class="bg-bg font-sans text-gray-900 min-h-screen">
     <header class="bg-primary text-white py-4 px-6">
       <div class="max-w-4xl mx-auto flex items-center justify-between">
         <a href="/" class="text-xl font-bold hover:opacity-80">須坂の学校データ</a>
-        <nav class="flex gap-4 text-sm">
+        <!-- デスクトップナビ -->
+        <nav class="hidden sm:flex gap-4 text-sm">
           <a href="/" class="hover:underline">ホーム</a>
           <a href="/facility" class="hover:underline">施設と財政</a>
           <a href="/evidence" class="hover:underline">根拠データ</a>
           <a href="/about" class="hover:underline">このサイトについて</a>
         </nav>
+        <!-- モバイルハンバーガー -->
+        <button
+          id="mobile-menu-btn"
+          class="sm:hidden p-1"
+          aria-label="メニューを開く"
+          aria-expanded="false"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path id="hamburger-icon" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            <path id="close-icon" class="hidden" stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
       </div>
+      <!-- モバイルメニュー -->
+      <nav id="mobile-menu" class="hidden sm:hidden mt-4 pb-2 border-t border-white/20 pt-4">
+        <div class="max-w-4xl mx-auto flex flex-col gap-3 text-sm">
+          <a href="/" class="hover:underline">ホーム</a>
+          <a href="/facility" class="hover:underline">施設と財政</a>
+          <a href="/evidence" class="hover:underline">根拠データ</a>
+          <a href="/about" class="hover:underline">このサイトについて</a>
+        </div>
+      </nav>
     </header>
+    <script>
+      const btn = document.getElementById('mobile-menu-btn')!;
+      const menu = document.getElementById('mobile-menu')!;
+      const hamburger = document.getElementById('hamburger-icon')!;
+      const close = document.getElementById('close-icon')!;
+      btn.addEventListener('click', () => {
+        const open = menu.classList.toggle('hidden');
+        btn.setAttribute('aria-expanded', String(!open));
+        hamburger.classList.toggle('hidden');
+        close.classList.toggle('hidden');
+      });
+    </script>
     <main class="max-w-4xl mx-auto px-6 py-8">
       <slot />
     </main>
-    <footer class="border-t border-gray-200 py-6 px-6 text-center text-sm text-muted">
+    <footer class="border-t border-gray-200 py-8 px-6 text-center text-sm text-muted">
+      <p class="mb-3">このページが参考になったら、ぜひ広めてください</p>
+      <div class="flex justify-center gap-2 mb-4">
+        <a
+          href={`https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(canonicalUrl)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-bold text-white hover:opacity-80 transition-opacity"
+          style="background-color: #06C755;"
+        >
+          LINE
+        </a>
+        <a
+          href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(canonicalUrl)}&text=${encodeURIComponent(title)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-bold text-white hover:opacity-80 transition-opacity"
+          style="background-color: #1DA1F2;"
+        >
+          X
+        </a>
+        <a
+          href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(canonicalUrl)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-bold text-white hover:opacity-80 transition-opacity"
+          style="background-color: #1877F2;"
+        >
+          Facebook
+        </a>
+      </div>
       <p>調査・分析: 須坂市民有志 ｜ 引用・転載自由（出典記載をお願いします）</p>
       <p class="mt-1">データの誤りを見つけた方はお知らせください</p>
     </footer>
