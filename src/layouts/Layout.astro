@@ -6,7 +6,7 @@ interface Props {
   description?: string
 }
 
-const SITE_URL = 'https://suzaka-school.vercel.app'
+const SITE_URL = 'https://suzaka-school-data.vercel.app'
 const { title = '須坂の学校データ', description = '須坂学園構想をデータで検証する市民シンクタンク' } = Astro.props
 const canonicalUrl = new URL(Astro.url.pathname, SITE_URL).href
 ---

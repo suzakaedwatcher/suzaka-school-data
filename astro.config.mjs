@@ -7,7 +7,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://suzaka-school.vercel.app',
+  site: 'https://suzaka-school-data.vercel.app',
   integrations: [mdx(), sitemap()],
 
   vite: {
