@@ -4,12 +4,18 @@ import Cite from '../components/Cite.astro'
 import RefList from '../components/RefList.astro'
 
 const refs = [
-  { n: 1, label: '須坂市教育委員会「新しい学校づくり」ページ', url: 'https://www.city.suzaka.nagano.jp/soshiki/10010/5/5525.html' },
-  { n: 2, label: '須坂学園構想 基本方針（案）Q&A（2025年4月）', url: 'https://www.city.suzaka.nagano.jp/material/files/group/25/kihonhoushinanQA.pdf', detail: '全28問中10問が「今後検討」' },
-  { n: 3, label: '答申書 資料10-1 p.21 問4-1', url: 'https://www.city.suzaka.nagano.jp/soshiki/10010/5/5525.html', detail: '市民アンケート「学校で取り組む課題の優先度」' },
-  { n: 4, label: '答申書 資料10-5 p.86 問2-3', url: 'https://www.city.suzaka.nagano.jp/soshiki/10010/5/5525.html', detail: '児童アンケート「全校児童の数について」' },
+  { n: 1, label: '須坂市教育委員会「新しい学校づくり」ページ', url: 'https://www.city.suzaka.nagano.jp/soshiki/10010/5/5525.html', detail: '基本方針案・答申書・検討委員会議事録・説明会会議録を掲載' },
+  { n: 2, label: '基本方針（案）Q&A（2025年4月）', url: 'https://www.city.suzaka.nagano.jp/material/files/group/25/kihonhoushinanQA.pdf', detail: '全28問中10問が「今後検討」（Q8,13,15,20,22,23,24,26,27,28）' },
+  { n: 3, label: '答申書 資料10-1 p.21 問4-1「学校で取り組む課題の優先度」', url: 'https://www.city.suzaka.nagano.jp/soshiki/10010/5/5525.html', detail: '13項目中「小中連携・小中一貫教育の推進」は構成比1.9%で最下位から2番目' },
+  { n: 4, label: '答申書 資料10-5 p.86 問2-3「全校児童の数について」', url: 'https://www.city.suzaka.nagano.jp/soshiki/10010/5/5525.html', detail: '今のままでよい=524人/721人(72.7%)' },
   { n: 5, label: '須坂市 2026年度予算案', url: 'https://www.city.suzaka.nagano.jp/', detail: '財政健全化実行宣言を発出済み' },
   { n: 6, label: '文科省 手引き改訂 議論のまとめ（案）概要（第9回 2026年3月11日）', url: 'https://www.mext.go.jp/content/20260310-mtx_syoto02-000047969-3.pdf' },
+  { n: 7, label: '須坂市議会だより No.185', url: 'https://www.city.suzaka.nagano.jp/soshiki/10020/2/5944.html', detail: '2026年3月議会の学園構想関連質問を掲載' },
+  { n: 8, label: '基本方針（案）（2024年12月）', url: 'https://www.city.suzaka.nagano.jp/soshiki/10010/5/5525.html', detail: '15校→4学園（義務教育学校）の構想' },
+  { n: 9, label: '新しい学校づくりだより 1〜9号', url: 'https://www.city.suzaka.nagano.jp/soshiki/10010/5/5875.html', detail: '教育委員会が市民向けに発行' },
+  { n: 10, label: '地域説明会 会議録（2025年7〜8月 全8回）', url: 'https://www.city.suzaka.nagano.jp/soshiki/10010/5/5525.html', detail: '全12ブロック・8回開催の質疑応答を収録' },
+  { n: 11, label: '検討委員会・策定委員会 議事録（2024〜2025年度）', url: 'https://www.city.suzaka.nagano.jp/soshiki/10010/5/5525.html', detail: '検討委員会3回＋策定委員会3回＋2025年度検討委員会1回' },
+  { n: 12, label: '答申書（2023年12月13日）', url: 'https://www.city.suzaka.nagano.jp/soshiki/10010/5/5525.html', detail: '須坂市小中学校適正規模等審議会。資料10-1〜10-6にアンケート全数データ' },
 ]
 ---
 
@@ -124,12 +130,13 @@ const refs = [
   <!-- これまでの経緯 -->
   <section class="bg-card rounded-lg p-6 shadow-sm mb-8">
     <h2 class="font-bold text-lg text-primary mb-4">📅 これまでの経緯</h2>
+    <p class="text-xs text-muted mb-4">各項目のリンクから原文資料を直接確認できます。</p>
     <div class="space-y-0">
       <div class="flex gap-4 pb-4 border-l-2 border-primary/20 ml-2 pl-6 relative">
         <div class="absolute -left-[5px] top-1 w-2.5 h-2.5 rounded-full bg-primary"></div>
         <div>
           <div class="text-xs text-muted">2026年3月</div>
-          <div class="text-sm font-bold">3月議会で学園構想関連の質問<span class="ml-2 text-xs text-accent font-normal">NEW</span></div>
+          <div class="text-sm font-bold"><a href="https://www.city.suzaka.nagano.jp/soshiki/10020/2/5944.html" target="_blank" class="underline hover:text-accent">3月議会で学園構想関連の質問</a><Cite n={7} /><span class="ml-2 text-xs text-accent font-normal">NEW</span></div>
           <div class="text-xs text-muted">教育長「反対の方がほとんどの話し合いには行けない」と答弁</div>
         </div>
       </div>
@@ -137,38 +144,47 @@ const refs = [
         <div class="absolute -left-[5px] top-1 w-2.5 h-2.5 rounded-full bg-primary"></div>
         <div>
           <div class="text-xs text-muted">2026年3月11日</div>
-          <div class="text-sm font-bold">文科省が手引き改訂の議論まとめ（案）を公表<Cite n={6} /></div>
+          <div class="text-sm font-bold"><a href="https://www.mext.go.jp/content/20260310-mtx_syoto02-000047969-3.pdf" target="_blank" class="underline hover:text-accent">文科省が手引き改訂の議論まとめ（案）を公表</a><Cite n={6} /></div>
           <div class="text-xs text-muted">「結論ありきで評価することを避けなければならない」「機械的に適用することは適当ではない」</div>
         </div>
       </div>
       <div class="flex gap-4 pb-4 border-l-2 border-primary/20 ml-2 pl-6 relative">
         <div class="absolute -left-[5px] top-1 w-2.5 h-2.5 rounded-full bg-primary/50"></div>
         <div>
-          <div class="text-xs text-muted">2025年11月</div>
-          <div class="text-sm font-bold">検討委員会 第1回（2025年度）</div>
+          <div class="text-xs text-muted">2025年11月6日</div>
+          <div class="text-sm font-bold"><a href="https://www.city.suzaka.nagano.jp/soshiki/10010/5/5525.html" target="_blank" class="underline hover:text-accent">検討委員会 第1回（2025年度）</a><Cite n={11} /></div>
+          <div class="text-xs text-muted">議事録は市HPで公開</div>
         </div>
       </div>
       <div class="flex gap-4 pb-4 border-l-2 border-primary/20 ml-2 pl-6 relative">
         <div class="absolute -left-[5px] top-1 w-2.5 h-2.5 rounded-full bg-primary/50"></div>
         <div>
           <div class="text-xs text-muted">2025年7〜8月</div>
-          <div class="text-sm font-bold">地域説明会（全12ブロック・8回開催）</div>
-          <div class="text-xs text-muted">説明会の会議録は市HPで公開</div>
+          <div class="text-sm font-bold"><a href="https://www.city.suzaka.nagano.jp/soshiki/10010/5/5525.html" target="_blank" class="underline hover:text-accent">地域説明会（全12ブロック・8回開催）</a><Cite n={10} /></div>
+          <div class="text-xs text-muted"><a href="https://www.city.suzaka.nagano.jp/soshiki/10010/5/5525.html" target="_blank" class="underline">会議録PDF（全8回分）</a>を市HPで公開</div>
         </div>
       </div>
       <div class="flex gap-4 pb-4 border-l-2 border-primary/20 ml-2 pl-6 relative">
         <div class="absolute -left-[5px] top-1 w-2.5 h-2.5 rounded-full bg-primary/50"></div>
         <div>
           <div class="text-xs text-muted">2025年4月</div>
-          <div class="text-sm font-bold">基本方針（案）Q&A 公表</div>
+          <div class="text-sm font-bold"><a href="https://www.city.suzaka.nagano.jp/material/files/group/25/kihonhoushinanQA.pdf" target="_blank" class="underline hover:text-accent">基本方針（案）Q&A 公表</a><Cite n={2} /></div>
           <div class="text-xs text-muted">全28問。うち10問が「今後検討」</div>
         </div>
       </div>
       <div class="flex gap-4 pb-4 border-l-2 border-primary/20 ml-2 pl-6 relative">
         <div class="absolute -left-[5px] top-1 w-2.5 h-2.5 rounded-full bg-primary/50"></div>
         <div>
+          <div class="text-xs text-muted">2025年</div>
+          <div class="text-sm font-bold"><a href="https://www.city.suzaka.nagano.jp/soshiki/10010/5/5875.html" target="_blank" class="underline hover:text-accent">新しい学校づくりだより（1〜9号）</a><Cite n={9} /></div>
+          <div class="text-xs text-muted">教育委員会が市民向けに発行したニュースレター</div>
+        </div>
+      </div>
+      <div class="flex gap-4 pb-4 border-l-2 border-primary/20 ml-2 pl-6 relative">
+        <div class="absolute -left-[5px] top-1 w-2.5 h-2.5 rounded-full bg-primary/50"></div>
+        <div>
           <div class="text-xs text-muted">2024年12月</div>
-          <div class="text-sm font-bold">基本方針（案）公表</div>
+          <div class="text-sm font-bold"><a href="https://www.city.suzaka.nagano.jp/soshiki/10010/5/5525.html" target="_blank" class="underline hover:text-accent">基本方針（案）公表</a><Cite n={8} /></div>
           <div class="text-xs text-muted">15校→4学園（義務教育学校）の構想</div>
         </div>
       </div>
@@ -176,23 +192,24 @@ const refs = [
         <div class="absolute -left-[5px] top-1 w-2.5 h-2.5 rounded-full bg-primary/30"></div>
         <div>
           <div class="text-xs text-muted">2024年度</div>
-          <div class="text-sm font-bold">検討委員会 3回＋策定委員会 3回</div>
+          <div class="text-sm font-bold"><a href="https://www.city.suzaka.nagano.jp/soshiki/10010/5/5525.html" target="_blank" class="underline hover:text-accent">検討委員会 3回＋策定委員会 3回</a><Cite n={11} /></div>
+          <div class="text-xs text-muted">議事録は市HPで公開</div>
         </div>
       </div>
       <div class="flex gap-4 pb-4 border-l-2 border-primary/20 ml-2 pl-6 relative">
         <div class="absolute -left-[5px] top-1 w-2.5 h-2.5 rounded-full bg-primary/30"></div>
         <div>
-          <div class="text-xs text-muted">2023年12月</div>
-          <div class="text-sm font-bold">適正規模等審議会 答申書</div>
-          <div class="text-xs text-muted">市民・保護者・教職員・児童・生徒へのアンケート結果を掲載</div>
+          <div class="text-xs text-muted">2023年12月13日</div>
+          <div class="text-sm font-bold"><a href="https://www.city.suzaka.nagano.jp/soshiki/10010/5/5525.html" target="_blank" class="underline hover:text-accent">適正規模等審議会 答申書</a><Cite n={12} /></div>
+          <div class="text-xs text-muted">資料10-1〜10-6に市民・保護者・教職員・児童・生徒アンケートの全数データを掲載</div>
         </div>
       </div>
       <div class="flex gap-4 ml-2 pl-6 relative">
         <div class="absolute -left-[5px] top-1 w-2.5 h-2.5 rounded-full bg-primary/30"></div>
         <div>
           <div class="text-xs text-muted">2022年9〜11月</div>
-          <div class="text-sm font-bold">市民・保護者・教職員・児童・生徒アンケート実施</div>
-          <div class="text-xs text-muted">回収率58.1%（3,464/5,958人）</div>
+          <div class="text-sm font-bold">市民・保護者・教職員・児童・生徒アンケート実施<Cite n={12} /></div>
+          <div class="text-xs text-muted">配布5,958人、回収3,464人（回収率58.1%）。結果は<a href="https://www.city.suzaka.nagano.jp/soshiki/10010/5/5525.html" target="_blank" class="underline">答申書</a>に収録</div>
         </div>
       </div>
     </div>
