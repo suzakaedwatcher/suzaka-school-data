@@ -1,0 +1,150 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Cite from '../components/Cite.astro'
+import RefList from '../components/RefList.astro'
+
+const refs = [
+  { n: 1, label: '答申書 資料10-1 p.21 問4-1', url: 'https://www.city.suzaka.nagano.jp/soshiki/10010/5/5525.html', detail: '市民の優先課題で「小中一貫」は構成比1.9%。最下位から2番目' },
+  { n: 2, label: '答申書 資料10-5 p.86 問2-3', url: 'https://www.city.suzaka.nagano.jp/soshiki/10010/5/5525.html', detail: '児童の72.7%が「今のままでよい」' },
+  { n: 3, label: '基本方針（案）Q&A（2025年4月）', url: 'https://www.city.suzaka.nagano.jp/material/files/group/25/kihonhoushinanQA.pdf', detail: '全28問中10問が「今後検討」' },
+  { n: 4, label: '須坂市 公共施設等総合管理計画（2024年12月改訂）', url: 'https://www.city.suzaka.nagano.jp/material/files/group/2/koukyousisetsu_sougou.pdf', detail: '公共施設の延床面積のうち学校が約43%' },
+  { n: 5, label: '須坂市 学校施設長寿命化計画（2020年3月）', url: 'https://www.city.suzaka.nagano.jp/material/files/group/25/gakkoshisetsu_chojumyouka202003.pdf', detail: '校舎の目標使用年数80年' },
+  { n: 6, label: '文科省 手引き改訂 議論のまとめ（案）概要（第9回 2026年3月11日）', url: 'https://www.mext.go.jp/content/20260310-mtx_syoto02-000047969-3.pdf', detail: '「結論ありきで評価することを避けなければならない」' },
+  { n: 7, label: '総務省「類似団体別市町村財政指数表」令和5年度', detail: '須坂市の教育施設投資は類似団体平均の29%' },
+  { n: 8, label: '須坂市 2026年度予算案', url: 'https://www.city.suzaka.nagano.jp/', detail: '財政調整基金2026年度末 約2億円。ふるさと納税除外▲23.3億円/年' },
+  { n: 9, label: '文科省建設単価基準（2025年度 RC造35.41万円/㎡）・須坂小改修実績による試算', detail: 'パターンにより市負担6億〜88億円。起債による分割負担は未考慮' },
+  { n: 10, label: '3月議会答弁', url: 'https://www.city.suzaka.nagano.jp/soshiki/10020/2/5944.html', detail: '教育長「反対の方がほとんどの話し合いには行けない」' },
+  { n: 11, label: '須坂市議会 山県市行政視察報告', url: 'https://www.city.suzaka.nagano.jp/shigikai/gikaikatsudo/1/5644.html', detail: '統廃合を撤回し12校一体運営の「山県方式」を視察' },
+]
+---
+
+<Layout title="何が問題なのか — 須坂学園構想ウォッチ" description="須坂学園構想の真の問題は「統合すべきか」ではなく「比較検討なしに結論が出ている」こと">
+  <a href="/" class="text-sm text-muted hover:underline">&larr; ホームに戻る</a>
+
+  <article class="mt-6">
+    <h1 class="text-3xl font-black text-primary mb-3">何が問題なのか</h1>
+    <p class="text-sm text-muted mb-8">
+      問題は「統合すべきか否か」ではありません。<br />
+      <strong>費用も選択肢も示さないまま、方針だけ決めようとしている</strong>ことが問題です。
+    </p>
+
+    <!-- 問題は本物 -->
+    <section class="bg-card rounded-lg p-6 shadow-sm mb-8">
+      <h2 class="font-bold text-lg text-primary mb-3">須坂の学校が課題を抱えていることは事実です</h2>
+      <ul class="space-y-2 text-sm">
+        <li>東中学校は2031年に全学年単級となり、教員配置が難しくなる</li>
+        <li>豊丘小学校では複式学級が発生している</li>
+        <li>11小学校すべてが築35年以上</li>
+        <li>教育施設への投資額は、似た規模の市の<strong>29%</strong><Cite n={7} /></li>
+      </ul>
+      <p class="text-sm mt-3">教育委員会がこの状況に危機感を持っているのは当然です。<strong>何かしなければいけない、という認識は正しい。</strong></p>
+    </section>
+
+    <!-- しかし -->
+    <section class="bg-card rounded-lg p-6 shadow-sm mb-8 border-l-4 border-accent">
+      <h2 class="font-bold text-lg text-accent mb-3">しかし、こうなっています</h2>
+
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-bold text-sm mb-2">1. 答えが先に決まっている</h3>
+          <p class="text-sm text-muted">
+            市民アンケートで小中一貫教育を優先課題に挙げた人は<strong>1.9%</strong>（最下位付近）。<Cite n={1} />
+            児童の<strong>73%</strong>が「今のままでよい」と回答。<Cite n={2} />
+            にもかかわらず「15校→4学園の義務教育学校化」という結論が先にあり、住民の要望からボトムアップで出てきたものではありません。
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-bold text-sm mb-2">2. 費用がわからない</h3>
+          <p class="text-sm text-muted">
+            建設・改修にいくらかかるのか、未公表です。<Cite n={3} />
+            パターンによって市の負担は<strong>6億〜88億円</strong>と10倍以上の幅があります。<Cite n={9} />
+            財政調整基金が<strong>約2億円</strong>まで減る中で<Cite n={8} />、金額を示さずに方針を決めることはできないはずです。
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-bold text-sm mb-2">3. 他の選択肢が検討されていない</h3>
+          <p class="text-sm text-muted">
+            統合以外にも方法はあります。小規模特認校（全国700校超）、合同授業（山県方式）、ICT遠隔授業（文科省実証済み）。
+            須坂市議会自身が山県市を視察し<Cite n={11} />、統廃合を撤回して12校一体運営する方法を調査しています。しかしこれらは基本方針案で検討されていません。
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-bold text-sm mb-2">4. 「教育改革」の裏に「施設削減」がある</h3>
+          <p class="text-sm text-muted">
+            須坂市の公共施設の<strong>約43%</strong>が学校です。<Cite n={4} />
+            公共施設の延床面積を減らすには、学校を削るのが最も効果的です。
+            一方で2020年に策定した長寿命化計画は「校舎を80年使う」方針。<Cite n={5} />
+            「80年使う計画」と「統合して捨てる計画」が同時に存在し、この矛盾は説明されていません。
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-bold text-sm mb-2">5. 合意形成を放棄している</h3>
+          <p class="text-sm text-muted">
+            教育長は3月議会で「反対の方がほとんどの話し合いには行けない」と答弁しました。<Cite n={10} />
+            反対意見のある場に行かないということは、合意形成のプロセス自体を放棄しているということです。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 国はどう言っているか -->
+    <section class="bg-card rounded-lg p-6 shadow-sm mb-8">
+      <h2 class="font-bold text-lg text-primary mb-3">国（文科省）はどう言っているか</h2>
+      <p class="text-sm text-muted mb-3">2026年3月11日に公表された手引き改訂の議論まとめ（案）<Cite n={6} />:</p>
+      <div class="space-y-3">
+        <blockquote class="border-l-4 border-primary/30 pl-4 text-sm italic">
+          「統合と存続の一方を予め結論ありきで評価することを避けなければならない」
+        </blockquote>
+        <blockquote class="border-l-4 border-primary/30 pl-4 text-sm italic">
+          「機械的に手引の考え方を適用することは適当ではない」
+        </blockquote>
+        <blockquote class="border-l-4 border-primary/30 pl-4 text-sm italic">
+          「こどもの意見反映」は法的義務（こども基本法）
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- 本当の問い -->
+    <section class="bg-card rounded-lg p-6 shadow-sm mb-8 border-l-4 border-green-600">
+      <h2 class="font-bold text-lg text-primary mb-3">必要なのは、比較検討です</h2>
+      <p class="text-sm mb-4">問うべきは「統合するか/しないか」ではなく——</p>
+
+      <div class="bg-green-50 rounded p-4 mb-4">
+        <p class="text-sm font-bold text-center">
+          「15校をどう運営するのが、<br class="sm:hidden" />子どもにとって最も良く、財政的に持続可能か」
+        </p>
+      </div>
+
+      <p class="text-sm text-muted mb-3">そのために、少なくとも以下が公開されるべきです:</p>
+      <ol class="space-y-2 text-sm list-decimal pl-5">
+        <li><strong>全パターンの費用</strong> — 新設・改修・増改築・現状維持、それぞれの市負担額</li>
+        <li><strong>統合以外の選択肢の検討結果</strong> — 特認校・合同授業・ICT・兼務発令を検討したのか、なぜ採用しなかったのか</li>
+        <li><strong>長寿命化計画との整合</strong> — 「80年使う」計画と「統合して捨てる」計画のどちらが正しいのか</li>
+        <li><strong>子どもの意見</strong> — 73%が「今のまま」と言っている事実をどう受け止めたのか</li>
+      </ol>
+    </section>
+
+    <!-- 私たちの立場 -->
+    <section class="bg-card rounded-lg p-6 shadow-sm mb-8">
+      <h2 class="font-bold text-lg text-primary mb-3">このサイトの立場</h2>
+      <p class="text-sm text-muted mb-3">
+        このサイトは「統合反対」のサイトではありません。
+      </p>
+      <p class="text-sm text-muted mb-3">
+        統合が最善なら統合すればいい。でも<strong>「統合が最善である」ことを示すデータが、まだ出ていません。</strong>
+        費用も、他の選択肢との比較も、子どもの声への応答も。
+      </p>
+      <p class="text-sm text-muted">
+        このサイトでは、公開されている資料を整理し、出典を明記して掲載しています。
+        データの誤りがあればご指摘ください。
+        教育委員会が比較検討の資料を公開すれば、それも掲載します。
+      </p>
+    </section>
+
+    <RefList refs={refs} />
+  </article>
+</Layout>
