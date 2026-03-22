@@ -1,6 +1,17 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 import BigNumber from '../../components/BigNumber.astro'
+import Cite from '../../components/Cite.astro'
+import RefList from '../../components/RefList.astro'
+
+const refs = [
+  { n: 1, label: '須坂市適正規模等審議会 答申書（2023年12月）資料10-1 p.21 問4-1', url: 'https://www.city.suzaka.nagano.jp/soshiki/10010/5/5525.html', detail: '市民アンケート「学校で取り組む課題の優先度」。13項目中「小中連携・小中一貫教育の推進」は構成比1.9%で最下位から2番目' },
+  { n: 2, label: '同 答申書 資料10-5 p.86 問2-3', url: 'https://www.city.suzaka.nagano.jp/soshiki/10010/5/5525.html', detail: '児童アンケート「あなたの学校の全校児童の数について」。今のままでよい=524人/721人(72.7%)' },
+  { n: 3, label: '同 答申書 資料10-1 p.23 問5-1', url: 'https://www.city.suzaka.nagano.jp/soshiki/10010/5/5525.html', detail: '市民アンケート「少子化の中で学校数について」。進めるべき27%、やむを得ない49%、現状維持21%' },
+  { n: 4, label: '須坂学園構想 基本方針（案）Q&A（2025年4月）', url: 'https://www.city.suzaka.nagano.jp/material/files/group/25/kihonhoushinanQA.pdf', detail: '全28問中10問が「今後検討」と回答（Q8,13,15,20,22,23,24,26,27,28）' },
+  { n: 5, label: '文科省建設単価基準（2025年度 RC造35.41万円/㎡）、須坂小改修実績（2.27億円）による試算', detail: '国庫補助1/2、解体費は全国平均。詳細は財政シミュレーション参照' },
+  { n: 6, label: '須坂市 2026年度予算案', url: 'https://www.city.suzaka.nagano.jp/', detail: '財政調整基金2026年度末 約2億円。須坂市は「財政健全化実行宣言」を発出済み' },
+]
 ---
 
 <Layout title="FACT 1: 小中一貫を求める市民は1.9% | 須坂の学校データ">
@@ -11,24 +22,24 @@ import BigNumber from '../../components/BigNumber.astro'
     <h1 class="text-3xl font-black text-primary mb-6">小中一貫教育を求めている市民は 1.9%</h1>
 
     <div class="grid grid-cols-3 gap-4 my-8">
-      <BigNumber value="1.9%" label="市民が小中一貫を優先する割合" source="市民アンケート" />
-      <BigNumber value="73%" label="児童が「今の学校のまま」を希望" source="児童アンケート" />
-      <BigNumber value="27%" label="「進めるべき」と答えた保護者" source="保護者アンケート" />
+      <BigNumber value="1.9%" label="市民が小中一貫を優先する割合" source="市民アンケート 問4-1" />
+      <BigNumber value="73%" label="児童が「今の学校のまま」を希望" source="児童アンケート 問2-3" />
+      <BigNumber value="27%" label="「進めるべき」と答えた市民" source="市民アンケート 問5-1" />
     </div>
 
     <section class="bg-card rounded-lg p-6 shadow-sm mb-6">
       <h2 class="font-bold text-lg mb-3">何がわかるか</h2>
       <ul class="space-y-2 text-sm">
-        <li>市民アンケートで「小中一貫教育」を優先事項に挙げた人は <strong>1.9%</strong>（最下位付近）</li>
-        <li>市民が本当に求めているのは「安全・安心」（16.6%）と「学力向上」（14.8%）</li>
-        <li>児童自身の <strong>73%</strong> が「今の学校のままでいい」と回答</li>
-        <li>「進めるべき」は27%のみ。「やむを得ない」が49%で、積極的支持ではない</li>
+        <li>市民アンケートで「小中一貫教育」を優先事項に挙げた割合は <strong>1.9%</strong>（13項目中、最下位から2番目）<Cite n={1} /></li>
+        <li>市民が本当に求めているのは「安全・安心」（16.6%）と「学力向上」（14.8%）<Cite n={1} /></li>
+        <li>児童自身の <strong>73%</strong> が「今の学校のままでいい」と回答<Cite n={2} /></li>
+        <li>「進めるべき」は27%のみ。「やむを得ない」が49%で、積極的支持ではない<Cite n={3} /></li>
       </ul>
     </section>
 
     <section class="bg-card rounded-lg p-6 shadow-sm mb-6">
       <h2 class="font-bold text-lg mb-3">費用はいくらかかるのか？</h2>
-      <p class="text-sm mb-3">教育委員会は具体的な費用を「今後検討」としていますが、パターンによって市の負担額は大きく異なります。</p>
+      <p class="text-sm mb-3">教育委員会は具体的な費用を「今後検討」としていますが<Cite n={4} />、パターンによって市の負担額は大きく異なります。</p>
       <table class="w-full text-sm">
         <thead>
           <tr class="border-b">
@@ -51,16 +62,9 @@ import BigNumber from '../../components/BigNumber.astro'
           </tr>
         </tbody>
       </table>
-      <p class="text-xs text-muted mt-3">市負担が6億〜88億円と<strong>10倍以上のブレ</strong>がある。どのパターンを想定しているかすら明かさないまま方針だけ決めようとしている。なお財政調整基金は2026年度末に約2億円まで減少する見込み。</p>
-      <p class="text-xs text-muted mt-1">※ 試算根拠: 文科省建設単価基準（2025年度 RC造35.41万円/㎡）、国庫補助1/2、須坂小改修実績（2.27億円）、解体費全国平均。詳細は財政シミュレーション参照</p>
+      <p class="text-xs text-muted mt-3">市負担が6億〜88億円と<strong>10倍以上のブレ</strong>がある。どのパターンを想定しているかすら明かさないまま方針だけ決めようとしている。<Cite n={5} /> なお財政調整基金は2026年度末に約2億円まで減少する見込み。<Cite n={6} /></p>
     </section>
 
-    <section class="bg-card rounded-lg p-6 shadow-sm mb-6">
-      <h2 class="font-bold text-lg mb-3">出典</h2>
-      <ul class="space-y-1 text-sm text-muted">
-        <li><a href="https://www.city.suzaka.nagano.jp/contents/item.php?id=5e3cfe9214ea8" class="underline" target="_blank">須坂市教育委員会「須坂市の教育に関する保護者・市民アンケート」（答申書掲載データ）</a></li>
-        <li><a href="https://www.city.suzaka.nagano.jp/contents/item.php?id=5e3cfe9214ea8" class="underline" target="_blank">須坂市適正規模審議会 答申書 Q&A</a></li>
-      </ul>
-    </section>
+    <RefList refs={refs} />
   </article>
 </Layout>

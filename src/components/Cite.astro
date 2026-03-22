@@ -1,0 +1,17 @@
+---
+interface Props {
+  n: number
+  url?: string
+  label?: string
+}
+const { n, url, label } = Astro.props
+---
+<sup class="inline-block ml-0.5">
+  <a
+    href={url ? url : `#ref-${n}`}
+    target={url ? '_blank' : undefined}
+    title={label}
+    class="text-accent/70 hover:text-accent text-[10px] no-underline"
+    rel={url ? 'noopener noreferrer' : undefined}
+  >[{n}]</a>
+</sup>

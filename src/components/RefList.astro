@@ -1,0 +1,30 @@
+---
+interface Ref {
+  n: number
+  label: string
+  url?: string
+  detail?: string
+}
+interface Props {
+  refs: Ref[]
+}
+const { refs } = Astro.props
+---
+<section class="bg-card rounded-lg p-6 shadow-sm mb-6">
+  <h2 class="font-bold text-lg mb-3">出典</h2>
+  <ol class="space-y-2 text-sm text-muted list-none pl-0">
+    {refs.map(ref => (
+      <li id={`ref-${ref.n}`} class="flex gap-2">
+        <span class="text-accent/70 font-mono text-xs mt-0.5 shrink-0">[{ref.n}]</span>
+        <span>
+          {ref.url ? (
+            <a href={ref.url} class="underline hover:text-primary" target="_blank" rel="noopener noreferrer">{ref.label}</a>
+          ) : (
+            ref.label
+          )}
+          {ref.detail && <span class="text-muted/70"> — {ref.detail}</span>}
+        </span>
+      </li>
+    ))}
+  </ol>
+</section>
