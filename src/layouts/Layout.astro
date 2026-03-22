@@ -37,8 +37,10 @@ const canonicalUrl = new URL(Astro.url.pathname, SITE_URL).href
         <!-- デスクトップナビ -->
         <nav class="hidden sm:flex gap-4 text-sm">
           <a href="/" class="hover:underline">ホーム</a>
+          <a href="/core" class="hover:underline">何が問題か</a>
+          <a href="/detail/shisaku-hikaku" class="hover:underline">施策比較</a>
           <a href="/facility" class="hover:underline">施設と財政</a>
-          <a href="/evidence" class="hover:underline">根拠データ</a>
+          <a href="/detail" class="hover:underline">資料</a>
           <a href="/about" class="hover:underline">このサイトについて</a>
         </nav>
         <!-- モバイルハンバーガー -->
@@ -58,8 +60,10 @@ const canonicalUrl = new URL(Astro.url.pathname, SITE_URL).href
       <nav id="mobile-menu" class="hidden sm:hidden mt-4 pb-2 border-t border-white/20 pt-4">
         <div class="max-w-4xl mx-auto flex flex-col gap-3 text-sm">
           <a href="/" class="hover:underline">ホーム</a>
+          <a href="/core" class="hover:underline">何が問題か</a>
+          <a href="/detail/shisaku-hikaku" class="hover:underline">施策比較</a>
           <a href="/facility" class="hover:underline">施設と財政</a>
-          <a href="/evidence" class="hover:underline">根拠データ</a>
+          <a href="/detail" class="hover:underline">資料</a>
           <a href="/about" class="hover:underline">このサイトについて</a>
         </div>
       </nav>
