@@ -2,53 +2,78 @@
 import Layout from '../layouts/Layout.astro'
 ---
 
-<Layout title="このサイトについて | 須坂の学校データ">
+<Layout title="このサイトについて | 須坂学園構想ウォッチ">
   <article class="max-w-2xl">
     <h1 class="text-3xl font-black text-primary mb-6">このサイトについて</h1>
 
     <section class="space-y-4 text-sm">
-      <h2 class="font-bold text-lg">目的</h2>
+      <h2 class="font-bold text-lg">何をしているサイトか</h2>
       <p>
-        須坂市の学校が課題を抱えていることは事実です。
-        このサイトは、その課題に対して<strong>統合以外にどんな選択肢があるか</strong>を、
-        データと全国の事例をもとに整理し、提案します。
+        須坂学園構想について、教育委員会が公開している資料を整理し、
+        タイムライン・未回答の質問・全国事例・財政データを誰でも追えるようにしています。
       </p>
       <p>
-        批判ではなく設計。「反対」ではなく「こうすればよくない？」を提案するサイトです。
+        すべての主張に出典（公式資料のページ番号・URL）を明記しています。
+        リンクをクリックすれば、原文を直接確認できます。
       </p>
 
-      <h2 class="font-bold text-lg mt-8">考え方</h2>
+      <h2 class="font-bold text-lg mt-8">このサイトの立場</h2>
       <p>
-        教育委員会は既に市費教員を配置して、日々の課題に対応しています。
-        私たちの提案は、<strong>この実践をもう少し広げてみませんか？</strong>というものです。
+        「統合反対」のサイトではありません。
+        統合が最善なら統合すればいい。
+        ただし<strong>「統合が最善である」ことを示す資料が、まだ公開されていません</strong>。
       </p>
-      <ul class="list-disc list-inside space-y-1">
-        <li>統合を否定していません。<strong>順番の提案</strong>です</li>
-        <li>安い方法から試して、検証して、ダメなら統合</li>
-        <li>問題ごとに最適な解決策を組み合わせる</li>
-      </ul>
+      <p>
+        費用も、他の選択肢との比較も、子どもの声への応答も。
+        教育委員会が比較検討の資料を公開すれば、それも掲載します。
+      </p>
+
+      <h2 class="font-bold text-lg mt-8">このサイトの限界</h2>
+      <div class="bg-card rounded-lg p-4 shadow-sm">
+        <ul class="list-disc list-inside space-y-2">
+          <li><strong>整理であり、設計ではありません。</strong>代替案の方向性は示していますが、「須坂でこうやる」という具体的な実行計画（教員配置・通学区域・費用見積）までは落とし込めていません</li>
+          <li><strong>個人が作っています。</strong>専門家のレビューを受けたものではありません。分析の視点に偏りがある可能性があります</li>
+          <li><strong>教育委員会側の非公開情報は含まれていません。</strong>公開資料から読み取れる範囲の分析です。教育委員会が内部で検討している内容は反映されていません</li>
+          <li><strong>数字はファクトチェック済みですが、解釈は議論の余地があります。</strong>例えば「1.9%」は構成比であり回答者比率（7.7%）とは異なります。このような注意点は各ページに記載しています</li>
+        </ul>
+      </div>
 
       <h2 class="font-bold text-lg mt-8">運営</h2>
-      <p>須坂市在住、小学生の父親が運営する個人シンクタンクです。特定の政党・団体とは無関係です。</p>
+      <p>須坂市在住、小学生の父親が個人で運営しています。特定の政党・団体とは無関係です。</p>
 
-      <h2 class="font-bold text-lg mt-8">方針</h2>
-      <ul class="list-disc list-inside space-y-1">
-        <li>コンテンツ比率: 設計5割、数字3割、解説2割</li>
-        <li>「こうすればいい」の具体的な提案を中心に</li>
-        <li>出典のないデータは掲載しない</li>
-        <li>誤りの指摘は歓迎し、速やかに修正する</li>
-      </ul>
+      <h2 class="font-bold text-lg mt-8">誤りの指摘・ご意見</h2>
+      <p>
+        データの誤り、出典の間違い、解釈への異論、追加すべき情報など、
+        どんなフィードバックでも歓迎します。
+      </p>
+      <div class="bg-card rounded-lg p-4 shadow-sm mt-3 space-y-3">
+        <div>
+          <div class="font-bold text-sm mb-1">メールで連絡</div>
+          <p class="text-muted">
+            <a href="mailto:suzaka.school.data@gmail.com" class="text-primary underline">suzaka.school.data@gmail.com</a>
+          </p>
+        </div>
+        <div>
+          <div class="font-bold text-sm mb-1">GitHubで指摘</div>
+          <p class="text-muted">
+            ソースコードと変更履歴はGitHubで公開しています。Issueやプルリクエストで直接修正を提案できます。<br />
+            <a href="https://github.com/suzaka-school/suzaka-school-data" target="_blank" class="text-primary underline">github.com/suzaka-school/suzaka-school-data</a>
+          </p>
+        </div>
+        <div>
+          <div class="font-bold text-sm mb-1">Googleフォームで匿名で送る</div>
+          <p class="text-muted">
+            名前を出したくない方はこちらから。<br />
+            <a href="https://forms.gle/XXXXXXXXXXXXX" target="_blank" class="text-primary underline">匿名フィードバックフォーム</a>
+            <span class="text-xs">（準備中）</span>
+          </p>
+        </div>
+      </div>
 
       <h2 class="font-bold text-lg mt-8">引用・転載</h2>
       <p>
         本サイトの内容は、出典を記載していただければ自由に引用・転載できます。
         議会質問、パブリックコメント、説明会資料などにご活用ください。
-      </p>
-
-      <h2 class="font-bold text-lg mt-8">ソースコード</h2>
-      <p>
-        このサイトのソースコードと変更履歴はすべてGitHubで公開しています。
-        データの追加・修正の過程を誰でも確認できます。
       </p>
 
       <h2 class="font-bold text-lg mt-8">このサイトを広める</h2>
