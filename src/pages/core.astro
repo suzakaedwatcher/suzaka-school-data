@@ -27,74 +27,147 @@ const refs = [
 
   <article class="mt-6">
     <h1 class="text-3xl font-black text-primary mb-3">何が問題なのか</h1>
-    <p class="text-sm text-muted mb-8">
+    <p class="text-base leading-relaxed text-muted mb-10">
       問題は「統合すべきか否か」ではありません。<br />
-      <strong>費用も選択肢も示さないまま、方針だけ決めようとしている</strong>ことが問題です。
+      <strong class="text-gray-900">費用も選択肢も示さないまま、方針だけ決めようとしている</strong>ことが問題です。
     </p>
 
     <!-- 問題は本物 -->
-    <section class="bg-card rounded-lg p-6 shadow-sm mb-8">
-      <h2 class="font-bold text-lg text-primary mb-3">須坂の学校が課題を抱えていることは事実です</h2>
-      <ul class="space-y-2 text-sm">
-        <li>東中学校は2031年に全学年単級となり、教員配置が難しくなる</li>
-        <li>豊丘小学校では複式学級が発生している</li>
-        <li>11小学校すべてが築35年以上</li>
-        <li>教育施設への投資額は、似た規模の市の<strong>29%</strong><Cite n={7} /></li>
-      </ul>
-      <p class="text-sm mt-3">この状況を見れば、<strong>何らかの対応が必要だという点では、おそらく誰も異論がない</strong>のではないでしょうか。</p>
+    <section class="bg-card rounded-lg p-6 shadow-sm mb-10">
+      <h2 class="font-bold text-lg text-primary mb-4">須坂の学校が課題を抱えていることは事実です</h2>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
+        <div class="text-center">
+          <div class="text-2xl font-black text-primary">2031年</div>
+          <div class="text-xs text-muted mt-1">東中が全学年単級に<br />教員配置が困難</div>
+        </div>
+        <div class="text-center">
+          <div class="text-2xl font-black text-primary">47人</div>
+          <div class="text-xs text-muted mt-1">豊丘小の児童数<br />複式学級が発生中</div>
+        </div>
+        <div class="text-center">
+          <div class="text-2xl font-black text-primary">築35年〜</div>
+          <div class="text-xs text-muted mt-1">11小学校すべて<br />老朽化が進行</div>
+        </div>
+        <div class="text-center">
+          <div class="text-2xl font-black text-accent">29%</div>
+          <div class="text-xs text-muted mt-1">教育施設投資<br />類似市の3割以下<Cite n={7} /></div>
+        </div>
+      </div>
+
+      <p class="text-sm leading-relaxed">この状況を見れば、<strong>何らかの対応が必要だという点では、おそらく誰も異論がない</strong>のではないでしょうか。</p>
     </section>
 
     <!-- 進め方への疑問 -->
-    <section class="bg-card rounded-lg p-6 shadow-sm mb-8 border-l-4 border-primary">
-      <h2 class="font-bold text-lg text-primary mb-3">現在の進め方への疑問</h2>
+    <section class="mb-10">
+      <h2 class="font-bold text-xl text-primary mb-6 border-b-2 border-primary pb-2">現在の進め方への疑問</h2>
 
       <div class="space-y-6">
-        <div>
-          <h3 class="font-bold text-sm mb-2">1. 結論に至るプロセスが見えない</h3>
-          <p class="text-sm text-muted">
-            市民アンケートで小中一貫教育を優先課題に挙げた人は<strong>1.9%</strong>（最下位付近）。<Cite n={1} />
-            児童の<strong>73%</strong>が「今のままでよい」と回答。<Cite n={2} />
+        <!-- 1 -->
+        <div class="bg-card rounded-lg p-6 shadow-sm border-l-4 border-primary">
+          <div class="flex items-baseline gap-3 mb-3">
+            <span class="text-2xl font-black text-primary/30">1</span>
+            <h3 class="font-bold">結論に至るプロセスが見えない</h3>
+          </div>
+
+          <div class="flex flex-wrap gap-4 mb-4">
+            <div class="bg-gray-50 rounded-lg px-4 py-3 text-center">
+              <div class="text-xl font-black text-primary">1.9%</div>
+              <div class="text-xs text-muted">小中一貫を優先課題に<br />挙げた市民の割合<Cite n={1} /></div>
+            </div>
+            <div class="bg-gray-50 rounded-lg px-4 py-3 text-center">
+              <div class="text-xl font-black text-primary">73%</div>
+              <div class="text-xs text-muted">「今のままでよい」<br />と答えた児童<Cite n={2} /></div>
+            </div>
+          </div>
+
+          <p class="text-sm leading-relaxed text-muted mb-3">
             にもかかわらず「15校→4学園の義務教育学校化」という方向性が示されており、この方向性がどのように導き出されたのかが見えにくい状況です。
           </p>
-          <p class="text-sm text-muted mt-2">
-            実際、2020〜2021年度の2つの検討会議の提言には「小中一貫」の文言が一切ありません。教育委員会は「提言を具体化した」と説明していますが、「須坂モデル」の中身は2021年2月の<strong>国立教育政策研究所（NIER）講演会の内容と酷似</strong>しています。一方で文科省「手引き」第4章（小規模校存続の選択肢）は検討された形跡がありません。<a href="/detail/nier-analysis" class="text-primary underline">詳しい分析はこちら</a>
+          <p class="text-sm leading-relaxed text-muted">
+            2020〜2021年度の2つの検討会議の提言には「小中一貫」の文言が一切ありません。「須坂モデル」の中身は2021年2月の<strong>NIER講演会の内容と酷似</strong>しており、文科省「手引き」第4章（小規模校存続の選択肢）は検討された形跡がありません。
+            <a href="/detail/nier-analysis" class="text-primary underline">詳しい分析 →</a>
           </p>
         </div>
 
-        <div>
-          <h3 class="font-bold text-sm mb-2">2. 費用の全体像が見えない</h3>
-          <p class="text-sm text-muted">
+        <!-- 2 -->
+        <div class="bg-card rounded-lg p-6 shadow-sm border-l-4 border-primary">
+          <div class="flex items-baseline gap-3 mb-3">
+            <span class="text-2xl font-black text-primary/30">2</span>
+            <h3 class="font-bold">費用の全体像が見えない</h3>
+          </div>
+
+          <div class="flex flex-wrap gap-4 mb-4">
+            <div class="bg-gray-50 rounded-lg px-4 py-3 text-center">
+              <div class="text-xl font-black text-primary">6億〜88億</div>
+              <div class="text-xs text-muted">パターンによる<br />市負担の振れ幅<Cite n={9} /></div>
+            </div>
+            <div class="bg-gray-50 rounded-lg px-4 py-3 text-center">
+              <div class="text-xl font-black text-accent">約2億</div>
+              <div class="text-xs text-muted">財政調整基金の<br />残高見込み<Cite n={8} /></div>
+            </div>
+          </div>
+
+          <p class="text-sm leading-relaxed text-muted mb-3">
             建設・改修にいくらかかるのか、現時点で公表されていません。<Cite n={3} />
-            パターンによって市の負担は<strong>6億〜88億円</strong>と10倍以上の幅があります。<Cite n={9} />
-            財政調整基金が<strong>約2億円</strong>まで減る中で<Cite n={8} />、金額を示さずに方針を決めることはできないはずです。
+            金額を示さずに方針を決めることはできないはずです。
           </p>
-          <p class="text-sm text-muted mt-2">
-            また、現計画の30年総負担73.5億円には<strong>使い続ける5校舎の改修費68.5億円が含まれていません。</strong>5校とも10年以内に長寿命化改修が必要で、これを含めると実質92〜119億円になります。他の選択肢と合わせた比較が必要です。<a href="/detail/cost-comparison" class="text-primary underline">5つの選択肢の比較はこちら</a>
+          <p class="text-sm leading-relaxed text-muted">
+            現計画の30年総負担73.5億円には<strong>使い続ける5校舎の改修費68.5億円が含まれていません。</strong>これを含めると実質92〜119億円になります。
+            <a href="/detail/cost-comparison" class="text-primary underline">5つの選択肢の比較 →</a>
           </p>
         </div>
 
-        <div>
-          <h3 class="font-bold text-sm mb-2">3. 他の選択肢が検討されていない</h3>
-          <p class="text-sm text-muted">
-            統合以外にも方法はあります。小規模特認校（全国700校超）、合同授業（山県方式）、ICT遠隔授業（文科省実証済み）。
+        <!-- 3 -->
+        <div class="bg-card rounded-lg p-6 shadow-sm border-l-4 border-primary">
+          <div class="flex items-baseline gap-3 mb-3">
+            <span class="text-2xl font-black text-primary/30">3</span>
+            <h3 class="font-bold">他の選択肢が検討されていない</h3>
+          </div>
+          <p class="text-sm leading-relaxed text-muted mb-3">
+            統合以外にも方法はあります。
+          </p>
+          <div class="flex flex-wrap gap-2 mb-3">
+            <span class="bg-gray-100 text-xs font-bold px-3 py-1 rounded-full">小規模特認校（全国700校超）</span>
+            <span class="bg-gray-100 text-xs font-bold px-3 py-1 rounded-full">合同授業・山県方式</span>
+            <span class="bg-gray-100 text-xs font-bold px-3 py-1 rounded-full">ICT遠隔授業</span>
+          </div>
+          <p class="text-sm leading-relaxed text-muted">
             須坂市議会自身が山県市を視察し<Cite n={11} />、統廃合を撤回して12校一体運営する方法を調査しています。しかしこれらは基本方針案で検討されていません。
           </p>
         </div>
 
-        <div>
-          <h3 class="font-bold text-sm mb-2">4. 「教育改革」の裏に「施設削減」がある</h3>
-          <p class="text-sm text-muted">
-            須坂市の公共施設の<strong>約43%</strong>が学校です。<Cite n={4} />
-            公共施設の延床面積を減らすには、学校を削るのが最も効果的です。
-            一方で2020年に策定した長寿命化計画は「校舎を80年使う」方針。<Cite n={5} />
+        <!-- 4 -->
+        <div class="bg-card rounded-lg p-6 shadow-sm border-l-4 border-primary">
+          <div class="flex items-baseline gap-3 mb-3">
+            <span class="text-2xl font-black text-primary/30">4</span>
+            <h3 class="font-bold">「教育改革」と「施設削減」の関係</h3>
+          </div>
+
+          <div class="flex flex-wrap gap-4 mb-4">
+            <div class="bg-gray-50 rounded-lg px-4 py-3 text-center">
+              <div class="text-xl font-black text-primary">43%</div>
+              <div class="text-xs text-muted">公共施設に占める<br />学校の割合<Cite n={4} /></div>
+            </div>
+          </div>
+
+          <p class="text-sm leading-relaxed text-muted">
+            公共施設の延床面積を減らすには、学校を削るのが最も効果的です。一方で2020年策定の長寿命化計画は「校舎を80年使う」方針。<Cite n={5} />
             「80年使う計画」と「統合して役割を終える計画」が同時に存在しており、この関係が整理されていません。
           </p>
         </div>
 
-        <div>
-          <h3 class="font-bold text-sm mb-2">5. 対話のプロセスが止まっている</h3>
-          <p class="text-sm text-muted">
-            教育長は3月議会で「反対の方がほとんどの話し合いには行けない」と答弁しました。<Cite n={10} />
+        <!-- 5 -->
+        <div class="bg-card rounded-lg p-6 shadow-sm border-l-4 border-primary">
+          <div class="flex items-baseline gap-3 mb-3">
+            <span class="text-2xl font-black text-primary/30">5</span>
+            <h3 class="font-bold">対話のプロセスが止まっている</h3>
+          </div>
+          <blockquote class="bg-gray-50 rounded-lg p-4 text-sm italic border-l-4 border-primary/30">
+            「反対の方がほとんどの話し合いには行けない」
+            <span class="block text-xs text-muted not-italic mt-1">— 教育長、2026年3月議会答弁<Cite n={10} /></span>
+          </blockquote>
+          <p class="text-sm leading-relaxed text-muted mt-3">
             異なる意見を持つ市民との対話の場が設けられていない状況です。
           </p>
         </div>
@@ -102,42 +175,34 @@ const refs = [
     </section>
 
     <!-- 意思決定の構造 -->
-    <section class="bg-card rounded-lg p-6 shadow-sm mb-8">
-      <h2 class="font-bold text-lg text-primary mb-3">誰が決めているのか</h2>
-      <p class="text-sm text-muted mb-4">
-        教育委員会に費用を聞くと「予算は我々の範囲外」と言われます。
-        しかし法律上、学校の設置・廃止の決定権は教育委員会にあります（地教行法第21条）。<Cite n={14} />
-        一方で予算編成権は市長にあります（地方自治法第149条）。
-      </p>
+    <section class="bg-card rounded-lg p-6 shadow-sm mb-10">
+      <h2 class="font-bold text-lg text-primary mb-4">誰が決めているのか</h2>
 
-      <div class="bg-card border rounded p-4 mb-4 text-sm">
-        <div class="space-y-2">
-          <div class="flex items-start gap-2">
-            <span class="font-bold shrink-0">市長</span>
-            <span class="text-muted">— 予算編成権、教育大綱の策定、教育長の任命、総合教育会議の招集<Cite n={14} /></span>
+      <div class="bg-gray-50 border rounded-lg p-4 mb-6 text-sm">
+        <div class="space-y-3">
+          <div class="flex items-start gap-3">
+            <span class="bg-primary text-white text-xs font-bold px-2 py-0.5 rounded shrink-0">市長</span>
+            <span class="text-muted">予算編成権、教育大綱の策定、教育長の任命、総合教育会議の招集<Cite n={14} /></span>
           </div>
-          <div class="pl-6 border-l-2 border-primary/20">
-            <div class="flex items-start gap-2">
-              <span class="font-bold shrink-0">教育委員会</span>
-              <span class="text-muted">— 学校の設置・廃止の決定権。ただし予算編成権なし</span>
-            </div>
+          <div class="flex items-start gap-3 pl-6 border-l-2 border-primary/20">
+            <span class="bg-gray-600 text-white text-xs font-bold px-2 py-0.5 rounded shrink-0">教育委員会</span>
+            <span class="text-muted">学校の設置・廃止の決定権。ただし予算編成権なし</span>
           </div>
-          <div class="flex items-start gap-2">
-            <span class="font-bold shrink-0">議会</span>
-            <span class="text-muted">— 条例改正と予算の議決</span>
+          <div class="flex items-start gap-3">
+            <span class="bg-gray-400 text-white text-xs font-bold px-2 py-0.5 rounded shrink-0">議会</span>
+            <span class="text-muted">条例改正と予算の議決</span>
           </div>
         </div>
       </div>
 
-      <p class="text-sm text-muted mb-3">
+      <p class="text-sm leading-relaxed text-muted mb-4">
         2024年9月30日の<strong>総合教育会議</strong>で、学園構想が初めて正式に協議されました。<Cite n={12} />
-        この議事録を読むと、議論の構造が見えてきます。
       </p>
 
-      <div class="grid sm:grid-cols-2 gap-4 mb-4">
-        <div class="bg-gray-50 rounded p-3">
-          <div class="font-bold text-sm mb-2">議論されていること</div>
-          <ul class="text-xs text-muted space-y-1">
+      <div class="grid sm:grid-cols-2 gap-4 mb-6">
+        <div class="bg-gray-50 rounded-lg p-4">
+          <div class="font-bold text-sm mb-3">議論されていること</div>
+          <ul class="text-xs text-muted space-y-2">
             <li>子どもが減る（2040年に36%減）</li>
             <li>東中が喫緊（複式学級）</li>
             <li>財源の問題がある</li>
@@ -145,9 +210,9 @@ const refs = [
             <li>市民への説明が必要</li>
           </ul>
         </div>
-        <div class="bg-gray-50 rounded p-3">
-          <div class="font-bold text-sm mb-2">まだ議論されていないこと</div>
-          <ul class="text-xs text-muted space-y-1">
+        <div class="bg-gray-50 rounded-lg p-4">
+          <div class="font-bold text-sm mb-3">まだ議論されていないこと</div>
+          <ul class="text-xs text-muted space-y-2">
             <li>統合以外の選択肢（特認校・山県方式・ICTなど）</li>
             <li>費用の具体的な数字</li>
             <li>子どもの声（73%が「今のまま」のデータ）</li>
@@ -157,128 +222,132 @@ const refs = [
         </div>
       </div>
 
-      <p class="text-sm text-muted mb-3">
-        総務部長は「あと15年でそれをやるというのは驚き」「<strong>財政的理由でとん挫する可能性もある</strong>」と発言しています。<Cite n={12} />
-        市長自身も「<strong>財源の問題は切り離せない</strong>」と述べています。<Cite n={12} />
-        費用の試算が公表されれば、市民も含めた建設的な議論が可能になるはずです。
-      </p>
+      <div class="space-y-3 mb-4">
+        <blockquote class="bg-gray-50 rounded-lg p-4 text-sm italic border-l-4 border-primary/30">
+          「あと15年でそれをやるというのは驚き」「<strong>財政的理由でとん挫する可能性もある</strong>」
+          <span class="block text-xs text-muted not-italic mt-1">— 総務部長<Cite n={12} /></span>
+        </blockquote>
+        <blockquote class="bg-gray-50 rounded-lg p-4 text-sm italic border-l-4 border-primary/30">
+          「<strong>財源の問題は切り離せない</strong>」
+          <span class="block text-xs text-muted not-italic mt-1">— 市長<Cite n={12} /></span>
+        </blockquote>
+      </div>
 
-      <p class="text-sm text-muted">
-        つまり「<strong>どう統合するか</strong>」は議論されていますが、「<strong>統合以外の方法も含めてどれが最善か</strong>」という比較の議論がまだ行われていません。
+      <p class="text-sm leading-relaxed text-muted">
+        「<strong>どう統合するか</strong>」は議論されていますが、「<strong>統合以外の方法も含めてどれが最善か</strong>」という比較の議論がまだ行われていません。
+        費用の試算が公表されれば、市民も含めた建設的な議論が可能になるはずです。
       </p>
     </section>
 
     <!-- 費用はどこで議論されるのか -->
-    <section class="bg-card rounded-lg p-6 shadow-sm mb-8 border-l-4 border-primary">
-      <h2 class="font-bold text-lg text-primary mb-3">費用はどこで議論されるのか</h2>
-      <p class="text-sm text-muted mb-4">
+    <section class="bg-card rounded-lg p-6 shadow-sm mb-10 border-l-4 border-primary">
+      <h2 class="font-bold text-lg text-primary mb-4">費用はどこで議論されるのか</h2>
+      <p class="text-sm leading-relaxed text-muted mb-6">
         学園構想の費用は現時点で公表されていません。制度上、どこで議論されるべきなのでしょうか。
       </p>
 
-      <div class="space-y-4 mb-4">
-        <div class="bg-gray-50 rounded p-4">
-          <p class="text-sm"><strong>教育委員会</strong>は地域説明会で、参加者から「莫大な予算がいると思いますが、予算については触れられていないのはどうなのか」と問われ、こう答えています：</p>
-          <blockquote class="border-l-4 border-primary/30 pl-4 text-sm italic mt-2">
-            「予算については、約30年かけて段階的に進める長期計画であり、現時点で総額は示せません」<Cite n={15} />
-          </blockquote>
-        </div>
-
-        <div class="bg-gray-50 rounded p-4">
-          <p class="text-sm"><strong>総務部長</strong>は総合教育会議で：</p>
-          <blockquote class="border-l-4 border-primary/30 pl-4 text-sm italic mt-2">
-            「財政的理由でとん挫する可能性もある」<Cite n={12} />
-          </blockquote>
-        </div>
-
-        <div class="bg-gray-50 rounded p-4">
-          <p class="text-sm"><strong>市長</strong>も同じ場で：</p>
-          <blockquote class="border-l-4 border-primary/30 pl-4 text-sm italic mt-2">
-            「財源の問題は切り離せない」<Cite n={12} />
-          </blockquote>
-        </div>
+      <div class="space-y-3 mb-6">
+        <blockquote class="bg-gray-50 rounded-lg p-4 text-sm italic border-l-4 border-primary/30">
+          「予算については、約30年かけて段階的に進める長期計画であり、現時点で総額は示せません」
+          <span class="block text-xs text-muted not-italic mt-1">— 教育委員会（地域説明会）<Cite n={15} /></span>
+        </blockquote>
+        <blockquote class="bg-gray-50 rounded-lg p-4 text-sm italic border-l-4 border-primary/30">
+          「財政的理由でとん挫する可能性もある」
+          <span class="block text-xs text-muted not-italic mt-1">— 総務部長（総合教育会議）<Cite n={12} /></span>
+        </blockquote>
+        <blockquote class="bg-gray-50 rounded-lg p-4 text-sm italic border-l-4 border-primary/30">
+          「財源の問題は切り離せない」
+          <span class="block text-xs text-muted not-italic mt-1">— 市長（総合教育会議）<Cite n={12} /></span>
+        </blockquote>
       </div>
 
-      <p class="text-sm text-muted mb-3">
-        法律上、学校の設置・廃止の決定権は教育委員会にあります（地教行法第21条）。<Cite n={14} />
-        一方、予算編成権は市長にあります（地方自治法第149条）。
-      </p>
-
-      <div class="bg-yellow-50 rounded p-4 text-sm">
-        <p class="font-bold mb-2">つまり:</p>
-        <ul class="list-disc list-inside space-y-1">
+      <div class="bg-yellow-50 rounded-lg p-5 text-sm">
+        <p class="font-bold mb-3">制度上の整理:</p>
+        <ul class="list-disc list-inside space-y-2">
           <li>教育委員会は「何をやるか」を決める権限はあるが、予算データを持っていない</li>
           <li>市長部局（総務部・財政課）は費用を試算できるが、出していない</li>
           <li>総合教育会議がその調整の場だが、費用付きの議論は行われていない</li>
         </ul>
-        <p class="mt-3"><strong>費用を試算するのは市長部局（財政課）の役割であり、総合教育会議でそれを突き合わせるのが法の想定している手順です。</strong>
+        <p class="mt-4 leading-relaxed"><strong>費用を試算するのは市長部局（財政課）の役割であり、総合教育会議でそれを突き合わせるのが法の想定している手順です。</strong>
         この手順が進めば、市民にも費用を含めた判断材料が共有されるはずです。</p>
       </div>
     </section>
 
     <!-- 教育大綱 -->
-    <section class="bg-card rounded-lg p-6 shadow-sm mb-8">
-      <h2 class="font-bold text-lg text-primary mb-3">教育大綱と学園構想の関係</h2>
-      <p class="text-sm text-muted mb-3">
+    <section class="bg-card rounded-lg p-6 shadow-sm mb-10">
+      <h2 class="font-bold text-lg text-primary mb-4">教育大綱と学園構想の関係</h2>
+      <p class="text-sm leading-relaxed text-muted mb-3">
         現在の<a href="https://www.city.suzaka.nagano.jp/material/files/group/25/82056942.pdf" target="_blank" class="underline">第2次須坂市教育大綱</a>（2021〜2025年度）には「学園構想」という文言はありません。<Cite n={13} />
         記載されているのは「学校規模適正化等の教育環境の整備」という抽象的な一文のみです。
       </p>
-      <p class="text-sm text-muted">
+      <p class="text-sm leading-relaxed text-muted">
         この教育大綱は<strong>2026年3月で期限切れ</strong>です。
         第3次教育大綱にどう位置づけるのか——これは市長が策定する文書です（地教行法第1条の3）。<Cite n={14} />
       </p>
     </section>
 
     <!-- 国はどう言っているか -->
-    <section class="bg-card rounded-lg p-6 shadow-sm mb-8">
-      <h2 class="font-bold text-lg text-primary mb-3">国（文科省）はどう言っているか</h2>
-      <p class="text-sm text-muted mb-3">2026年3月11日に公表された手引き改訂の議論まとめ（案）<Cite n={6} />:</p>
+    <section class="bg-card rounded-lg p-6 shadow-sm mb-10">
+      <h2 class="font-bold text-lg text-primary mb-4">国（文科省）はどう言っているか</h2>
+      <p class="text-xs text-muted mb-4">2026年3月11日公表 — 手引き改訂の議論まとめ（案）<Cite n={6} /></p>
       <div class="space-y-3">
-        <blockquote class="border-l-4 border-primary/30 pl-4 text-sm italic">
+        <blockquote class="bg-gray-50 rounded-lg p-4 text-sm italic border-l-4 border-primary/30">
           「統合と存続の一方を予め結論ありきで評価することを避けなければならない」
         </blockquote>
-        <blockquote class="border-l-4 border-primary/30 pl-4 text-sm italic">
+        <blockquote class="bg-gray-50 rounded-lg p-4 text-sm italic border-l-4 border-primary/30">
           「機械的に手引の考え方を適用することは適当ではない」
         </blockquote>
-        <blockquote class="border-l-4 border-primary/30 pl-4 text-sm italic">
+        <blockquote class="bg-gray-50 rounded-lg p-4 text-sm italic border-l-4 border-primary/30">
           「こどもの意見反映」は法的義務（こども基本法）
         </blockquote>
       </div>
     </section>
 
     <!-- 本当の問い -->
-    <section class="bg-card rounded-lg p-6 shadow-sm mb-8 border-l-4 border-green-600">
-      <h2 class="font-bold text-lg text-primary mb-3">必要なのは、比較検討です</h2>
+    <section class="bg-card rounded-lg p-6 shadow-sm mb-10 border-l-4 border-green-600">
+      <h2 class="font-bold text-lg text-primary mb-4">必要なのは、比較検討です</h2>
       <p class="text-sm mb-4">問うべきは「統合するか/しないか」ではなく——</p>
 
-      <div class="bg-green-50 rounded p-4 mb-4">
-        <p class="text-sm font-bold text-center">
+      <div class="bg-green-50 rounded-lg p-5 mb-6">
+        <p class="text-base font-bold text-center leading-relaxed">
           「15校をどう運営するのが、<br class="sm:hidden" />子どもにとって最も良く、財政的に持続可能か」
         </p>
       </div>
 
-      <p class="text-sm text-muted mb-3">そのために、少なくとも以下が公開されるべきです:</p>
-      <ol class="space-y-2 text-sm list-decimal pl-5">
-        <li><strong>全パターンの費用</strong> — 新設・改修・増改築・現状維持、それぞれの市負担額</li>
-        <li><strong>統合以外の選択肢の検討結果</strong> — 特認校・合同授業・ICT・兼務発令を検討したのか、なぜ採用しなかったのか</li>
-        <li><strong>長寿命化計画との整合</strong> — 「80年使う」計画と「統合して捨てる」計画のどちらが正しいのか</li>
-        <li><strong>子どもの意見</strong> — 73%が「今のまま」と言っている事実をどう受け止めたのか</li>
+      <p class="text-sm text-muted mb-4">そのために、少なくとも以下が公開されるべきです:</p>
+      <ol class="space-y-3 text-sm list-none pl-0">
+        <li class="flex gap-3 items-start bg-gray-50 rounded-lg p-3">
+          <span class="bg-green-600 text-white text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center shrink-0">1</span>
+          <div><strong>全パターンの費用</strong><span class="text-muted"> — 新設・改修・増改築・現状維持、それぞれの市負担額</span></div>
+        </li>
+        <li class="flex gap-3 items-start bg-gray-50 rounded-lg p-3">
+          <span class="bg-green-600 text-white text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center shrink-0">2</span>
+          <div><strong>統合以外の選択肢の検討結果</strong><span class="text-muted"> — 特認校・合同授業・ICT・兼務発令を検討したのか、なぜ採用しなかったのか</span></div>
+        </li>
+        <li class="flex gap-3 items-start bg-gray-50 rounded-lg p-3">
+          <span class="bg-green-600 text-white text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center shrink-0">3</span>
+          <div><strong>長寿命化計画との整合</strong><span class="text-muted"> — 「80年使う」計画と「統合して捨てる」計画のどちらが正しいのか</span></div>
+        </li>
+        <li class="flex gap-3 items-start bg-gray-50 rounded-lg p-3">
+          <span class="bg-green-600 text-white text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center shrink-0">4</span>
+          <div><strong>子どもの意見</strong><span class="text-muted"> — 73%が「今のまま」と言っている事実をどう受け止めたのか</span></div>
+        </li>
       </ol>
     </section>
 
     <!-- 私たちの立場 -->
-    <section class="bg-card rounded-lg p-6 shadow-sm mb-8">
-      <h2 class="font-bold text-lg text-primary mb-3">このサイトの立場</h2>
-      <p class="text-sm text-muted mb-3">
+    <section class="bg-card rounded-lg p-6 shadow-sm mb-10">
+      <h2 class="font-bold text-lg text-primary mb-4">このサイトの立場</h2>
+      <p class="text-sm leading-relaxed text-muted mb-4">
         このサイトは「統合反対」のサイトではありません。
       </p>
-      <p class="text-sm text-muted mb-3">
+      <p class="text-sm leading-relaxed text-muted mb-4">
         統合が最善なら統合すればいい。でも<strong>「統合が最善である」ことを示すデータが、まだ出ていません。</strong>
         費用も、他の選択肢との比較も、子どもの声への応答も。
       </p>
-      <p class="text-sm text-muted">
+      <p class="text-sm leading-relaxed text-muted">
         このサイトでは、公開されている資料を整理し、出典を明記して掲載しています。
-        データの誤りがあればご指摘ください。
-        教育委員会が比較検討の資料を公開すれば、それも掲載します。
+        データの誤りがあればご指摘ください。教育委員会が比較検討の資料を公開すれば、それも掲載します。
       </p>
     </section>
 
