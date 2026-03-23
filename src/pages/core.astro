@@ -18,6 +18,7 @@ const refs = [
   { n: 12, label: '須坂市総合教育会議 議事録（2024年9月30日）', url: 'https://www.city.suzaka.nagano.jp/material/files/group/2/20240930sougoukyouiku251212.pdf', detail: '学園構想が初めて正式に協議された場。当初非公開。総務部長「財政的理由でとん挫する可能性もある」' },
   { n: 13, label: '第2次須坂市教育大綱（2021〜2025年度）', url: 'https://www.city.suzaka.nagano.jp/material/files/group/25/82056942.pdf', detail: '「学園構想」の文言なし。2026年3月で期限切れ' },
   { n: 14, label: '地方教育行政の組織及び運営に関する法律', url: 'https://elaws.e-gov.go.jp/document?lawid=331AC0000000162', detail: '第21条（教育委員会の権限）、第22条（首長の権限）、第1条の3〜4（総合教育会議・教育大綱）' },
+  { n: 15, label: '地域説明会 会議録（2025年7〜8月 全8回）', url: 'https://www.city.suzaka.nagano.jp/soshiki/10010/5/5525.html', detail: '全12ブロック・8回開催の質疑応答を収録' },
 ]
 ---
 
@@ -55,14 +56,20 @@ const refs = [
             児童の<strong>73%</strong>が「今のままでよい」と回答。<Cite n={2} />
             にもかかわらず「15校→4学園の義務教育学校化」という結論が先にあり、住民の要望からボトムアップで出てきたものではありません。
           </p>
+          <p class="text-sm text-muted mt-2">
+            実際、2020〜2021年度の2つの検討会議の提言には「小中一貫」の文言が一切ありません。教育委員会は「提言を具体化した」と説明していますが、「須坂モデル」の中身は2021年2月の<strong>国立教育政策研究所（NIER）講演会の内容と酷似</strong>しています。一方で文科省「手引き」第4章（小規模校存続の選択肢）は検討された形跡がありません。<a href="/detail/nier-analysis" class="text-primary underline">詳しい分析はこちら</a>
+          </p>
         </div>
 
         <div>
-          <h3 class="font-bold text-sm mb-2">2. 費用がわからない</h3>
+          <h3 class="font-bold text-sm mb-2">2. 費用がわからない — しかも隠れたコストがある</h3>
           <p class="text-sm text-muted">
             建設・改修にいくらかかるのか、未公表です。<Cite n={3} />
             パターンによって市の負担は<strong>6億〜88億円</strong>と10倍以上の幅があります。<Cite n={9} />
             財政調整基金が<strong>約2億円</strong>まで減る中で<Cite n={8} />、金額を示さずに方針を決めることはできないはずです。
+          </p>
+          <p class="text-sm text-muted mt-2">
+            さらに、現計画の30年総負担73.5億円には<strong>使い続ける5校舎の改修費68.5億円が含まれていません。</strong>5校とも10年以内に長寿命化改修が必要です。改修費を含めると実質92〜119億円となり、統合しない案と大差ありません。<a href="/detail/cost-comparison" class="text-primary underline">5つの選択肢の比較はこちら</a>
           </p>
         </div>
 
@@ -160,6 +167,53 @@ const refs = [
         つまり「<strong>どう統合するか</strong>」は議論されていますが、「<strong>統合すべきか、他の方法はないか</strong>」という問い自体が存在しません。
         市民への「説明」は議論されていますが、市民との「協議」は議論されていません。
       </p>
+    </section>
+
+    <!-- 費用の試算は誰の仕事か -->
+    <section class="bg-card rounded-lg p-6 shadow-sm mb-8 border-l-4 border-accent">
+      <h2 class="font-bold text-lg text-primary mb-3">費用の試算は誰の仕事か</h2>
+      <p class="text-sm text-muted mb-4">
+        学園構想の費用は公表されていません。では、誰がそれを出すべきなのでしょうか。
+      </p>
+
+      <div class="space-y-4 mb-4">
+        <div class="bg-gray-50 rounded p-4">
+          <p class="text-sm"><strong>教育委員会</strong>は地域説明会で、参加者から「莫大な予算がいると思いますが、予算については触れられていないのはどうなのか」と問われ、こう答えています：</p>
+          <blockquote class="border-l-4 border-primary/30 pl-4 text-sm italic mt-2">
+            「予算については、約30年かけて段階的に進める長期計画であり、現時点で総額は示せません」<Cite n={15} />
+          </blockquote>
+        </div>
+
+        <div class="bg-gray-50 rounded p-4">
+          <p class="text-sm"><strong>総務部長</strong>は総合教育会議で：</p>
+          <blockquote class="border-l-4 border-primary/30 pl-4 text-sm italic mt-2">
+            「財政的理由でとん挫する可能性もある」<Cite n={12} />
+          </blockquote>
+        </div>
+
+        <div class="bg-gray-50 rounded p-4">
+          <p class="text-sm"><strong>市長</strong>も同じ場で：</p>
+          <blockquote class="border-l-4 border-primary/30 pl-4 text-sm italic mt-2">
+            「財源の問題は切り離せない」<Cite n={12} />
+          </blockquote>
+        </div>
+      </div>
+
+      <p class="text-sm text-muted mb-3">
+        法律上、学校の設置・廃止の決定権は教育委員会にあります（地教行法第21条）。<Cite n={14} />
+        一方、予算編成権は市長にあります（地方自治法第149条）。
+      </p>
+
+      <div class="bg-yellow-50 rounded p-4 text-sm">
+        <p class="font-bold mb-2">つまり:</p>
+        <ul class="list-disc list-inside space-y-1">
+          <li>教育委員会は「何をやるか」を決める権限はあるが、予算データを持っていない</li>
+          <li>市長部局（総務部・財政課）は費用を試算できるが、出していない</li>
+          <li>総合教育会議がその調整の場だが、費用付きの議論は行われていない</li>
+        </ul>
+        <p class="mt-3"><strong>費用を計算すべきは市長部局（財政課）であり、総合教育会議でそれを突き合わせるのが法の想定している手順です。</strong>
+        現状は、費用を誰も公表しないまま教育委員会だけが方針を走らせています。</p>
+      </div>
     </section>
 
     <!-- 教育大綱 -->
