@@ -55,14 +55,14 @@ const refs = [
     <h2 class="font-bold text-lg text-primary mb-3"><span class="pin-drop">📍</span> 今ここ</h2>
     <div class="flex flex-wrap gap-3 mb-4">
       <span class="bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full">基本方針案 → パブコメ前</span>
-      <span class="bg-red-100 text-red-800 text-xs font-bold px-3 py-1 rounded-full">費用: 未公表</span>
-      <span class="bg-red-100 text-red-800 text-xs font-bold px-3 py-1 rounded-full">スケジュール: 未公表</span>
+      <span class="bg-gray-100 text-gray-700 text-xs font-bold px-3 py-1 rounded-full">費用: 今後公表</span>
+      <span class="bg-gray-100 text-gray-700 text-xs font-bold px-3 py-1 rounded-full">詳細スケジュール: 今後公表</span>
     </div>
     <p class="text-sm">
       須坂市は15校（小11＋中4）を<strong>4つの学園（義務教育学校）</strong>に再編する構想を進めています。<Cite n={1} />
     </p>
     <p class="text-sm mt-2">
-      基本方針（案）は2024年12月に公表されましたが、費用・通学手段・通学区域などの具体策は「今後検討」のままです。<Cite n={2} />
+      基本方針（案）は2024年12月に公表されました。費用・通学手段・通学区域などの具体策は今後検討・公表される予定です。<Cite n={2} />
     </p>
   </section>
 
@@ -92,33 +92,33 @@ const refs = [
     </div>
   </section>
 
-  <!-- まだ決まっていないこと -->
-  <section class="bg-card rounded-lg p-6 shadow-sm mb-8 border-l-4 border-accent">
-    <h2 class="font-bold text-lg text-primary mb-2">⚠️ まだ決まっていないこと</h2>
-    <p class="text-xs text-muted mb-4">教育委員会の<a href="https://www.city.suzaka.nagano.jp/material/files/group/25/kihonhoushinanQA.pdf" target="_blank" class="text-primary underline">Q&A（全28問）</a>のうち、<strong>10問が「今後検討」</strong>と回答されています。<Cite n={2} /></p>
+  <!-- これから決まること -->
+  <section class="bg-card rounded-lg p-6 shadow-sm mb-8 border-l-4 border-primary">
+    <h2 class="font-bold text-lg text-primary mb-2">これから決まること</h2>
+    <p class="text-xs text-muted mb-4">教育委員会の<a href="https://www.city.suzaka.nagano.jp/material/files/group/25/kihonhoushinanQA.pdf" target="_blank" class="text-primary underline">Q&A（全28問）</a>のうち、<strong>10問が「今後検討」</strong>と回答されています。パブリックコメント（2026年6月頃）までに情報が更新される可能性があります。<Cite n={2} /></p>
 
     <div class="grid gap-3 sm:grid-cols-2">
-      <div class="bg-red-50 rounded p-3">
+      <div class="bg-gray-50 rounded p-3">
         <div class="font-bold text-sm mb-1">💰 費用</div>
-        <p class="text-xs text-muted">教育委員会は費用を公表していない。当サイトの試算では、現計画の30年総負担は公表ベースで73.5億円、残す校舎の改修費を含めると<strong>92〜119億円</strong>。<a href="/detail/cost-comparison" class="text-primary underline">詳細</a></p>
+        <p class="text-xs text-muted">総費用は今後公表予定。当サイトの試算では、30年総負担は公表ベースで73.5億円、残す校舎の改修費を含めると<strong>92〜119億円</strong>。<a href="/detail/cost-comparison" class="text-primary underline">詳細</a></p>
       </div>
-      <div class="bg-red-50 rounded p-3">
+      <div class="bg-gray-50 rounded p-3">
         <div class="font-bold text-sm mb-1">🚌 スクールバス</div>
         <p class="text-xs text-muted">運行区域・時間・停留所など「具体的な導入方法は今後検討」（Q20）</p>
       </div>
-      <div class="bg-red-50 rounded p-3">
+      <div class="bg-gray-50 rounded p-3">
         <div class="font-bold text-sm mb-1">📍 通学区域</div>
-        <p class="text-xs text-muted">どの町がどの学園に属するか「居住する町（自治会）により決定」（Q17）。具体的な線引きは未定</p>
+        <p class="text-xs text-muted">どの町がどの学園に属するか「居住する町（自治会）により決定」（Q17）。具体的な線引きは今後検討</p>
       </div>
-      <div class="bg-red-50 rounded p-3">
+      <div class="bg-gray-50 rounded p-3">
         <div class="font-bold text-sm mb-1">📚 カリキュラム</div>
         <p class="text-xs text-muted">小中一貫の具体的な教育課程は「カリキュラム開発委員会で検討」（Q15）</p>
       </div>
-      <div class="bg-red-50 rounded p-3">
-        <div class="font-bold text-sm mb-1">🏫 廃校の使い道</div>
-        <p class="text-xs text-muted">使わなくなった校舎は「まだ決まっていません」「地域の皆様と相談しながら検討」（Q28）</p>
+      <div class="bg-gray-50 rounded p-3">
+        <div class="font-bold text-sm mb-1">🏫 閉校後の校舎</div>
+        <p class="text-xs text-muted">「地域の皆様と相談しながら検討」（Q28）</p>
       </div>
-      <div class="bg-red-50 rounded p-3">
+      <div class="bg-gray-50 rounded p-3">
         <div class="font-bold text-sm mb-1">👕 制服・校歌・PTA</div>
         <p class="text-xs text-muted">学校名・制服・校歌は「準備委員会で検討」（Q23）、PTAも「協議して決める」（Q22）</p>
       </div>

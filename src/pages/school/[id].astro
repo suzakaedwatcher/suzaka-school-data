@@ -471,10 +471,10 @@ function timeColor(min: number): string {
     </details>
   </section>
 
-  <!-- ④ まだ決まっていないこと -->
+  <!-- ④ これから決まること -->
   <section class="bg-card rounded-lg p-6 shadow-sm mb-6">
-    <h2 class="font-bold text-lg mb-3">4. まだ決まっていないこと</h2>
-    <p class="text-xs text-muted mb-3">基本方針案Q&A（2025年4月）で「今後検討」とされている項目</p>
+    <h2 class="font-bold text-lg mb-3">4. これから決まること</h2>
+    <p class="text-xs text-muted mb-3">基本方針案Q&A（2025年4月）で「今後検討」とされている項目です。回答が公表され次第、このページに反映します。</p>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
       {[
@@ -490,7 +490,7 @@ function timeColor(min: number): string {
         { q: '閉校後の校舎利用', qa: 'Q28' },
       ].map(item => (
         <div class="flex items-center gap-2 text-sm bg-gray-50 rounded px-3 py-2">
-          <span class="text-red-500 font-bold text-xs shrink-0">未定</span>
+          <span class="text-gray-500 font-bold text-xs shrink-0">検討中</span>
           <span>{item.q}</span>
           <span class="text-xs text-muted ml-auto">{item.qa}</span>
         </div>
