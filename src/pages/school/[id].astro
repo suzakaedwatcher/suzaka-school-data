@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro'
-import { schools, gakuens, distanceKm, walkDistanceKm, walkMinutes, birthYearImpact } from '../../data/schools'
+import { schools, gakuens, distanceKm, walkDistanceKm, walkMinutes, birthYearImpact, qaItems, schoolQAMap, commonQA } from '../../data/schools'
 
 export function getStaticPaths() {
   return schools.map(s => ({ params: { id: s.id } }))
@@ -471,9 +471,38 @@ function timeColor(min: number): string {
     </details>
   </section>
 
-  <!-- ④ これから決まること -->
+  <!-- ④ 教育委員会の説明 -->
+  {(() => {
+    const schoolSpecific = schoolQAMap[school.id] || []
+    const allQNums = [...new Set([...schoolSpecific, ...commonQA])]
+    const relatedQA = allQNums.map(n => qaItems.find(q => q.q === n)).filter(Boolean) as typeof qaItems
+    return relatedQA.length > 0 ? (
+      <section class="bg-card rounded-lg p-6 shadow-sm mb-6 border-l-4" style={`border-color:${gakuen.color}`}>
+        <h2 class="font-bold text-lg mb-3">4. 教育委員会の説明</h2>
+        <p class="text-xs text-muted mb-4">
+          教育委員会の<a href="https://www.city.suzaka.nagano.jp/material/files/group/25/kihonhoushinanQA.pdf" target="_blank" class="underline">Q&A（全28問）</a>から、{school.shortName}に関連する回答を抜粋します。
+        </p>
+
+        <div class="space-y-4">
+          {relatedQA.map(qa => (
+            <div class="bg-gray-50 rounded-lg p-4">
+              <p class="text-xs text-muted mb-1">Q{qa.q}</p>
+              <p class="text-sm font-bold mb-2">{qa.question}</p>
+              <p class="text-sm leading-relaxed">{qa.answer}</p>
+            </div>
+          ))}
+        </div>
+
+        <p class="text-xs text-muted mt-4">
+          出典: <a href="https://www.city.suzaka.nagano.jp/material/files/group/25/kihonhoushinanQA.pdf" target="_blank" class="underline">須坂学園構想 基本方針（案）Q&A</a>（2025年4月、須坂市教育委員会）。回答は要約しています。
+        </p>
+      </section>
+    ) : null
+  })()}
+
+  <!-- ⑤ これから決まること -->
   <section class="bg-card rounded-lg p-6 shadow-sm mb-6">
-    <h2 class="font-bold text-lg mb-3">4. これから決まること</h2>
+    <h2 class="font-bold text-lg mb-3">5. これから決まること</h2>
     <p class="text-xs text-muted mb-3">基本方針案Q&A（2025年4月）で「今後検討」とされている項目です。回答が公表され次第、このページに反映します。</p>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -500,7 +529,7 @@ function timeColor(min: number): string {
 
   <!-- ⑤ できること -->
   <section class="bg-card rounded-lg p-6 shadow-sm mb-8">
-    <h2 class="font-bold text-lg mb-3">5. 知っておきたいこと</h2>
+    <h2 class="font-bold text-lg mb-3">6. 知っておきたいこと</h2>
 
     <div class="space-y-3 text-sm">
       <p>
