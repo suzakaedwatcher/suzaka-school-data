@@ -44,17 +44,17 @@ const refs = [
       <p class="text-sm mt-3">教育委員会がこの状況に危機感を持っているのは当然です。<strong>何かしなければいけない、という認識は正しい。</strong></p>
     </section>
 
-    <!-- しかし -->
-    <section class="bg-card rounded-lg p-6 shadow-sm mb-8 border-l-4 border-accent">
-      <h2 class="font-bold text-lg text-accent mb-3">しかし、こうなっています</h2>
+    <!-- 進め方への疑問 -->
+    <section class="bg-card rounded-lg p-6 shadow-sm mb-8 border-l-4 border-primary">
+      <h2 class="font-bold text-lg text-primary mb-3">現在の進め方への疑問</h2>
 
       <div class="space-y-6">
         <div>
-          <h3 class="font-bold text-sm mb-2">1. 答えが先に決まっている</h3>
+          <h3 class="font-bold text-sm mb-2">1. 結論に至るプロセスが見えない</h3>
           <p class="text-sm text-muted">
             市民アンケートで小中一貫教育を優先課題に挙げた人は<strong>1.9%</strong>（最下位付近）。<Cite n={1} />
             児童の<strong>73%</strong>が「今のままでよい」と回答。<Cite n={2} />
-            にもかかわらず「15校→4学園の義務教育学校化」という結論が先にあり、住民の要望からボトムアップで出てきたものではありません。
+            にもかかわらず「15校→4学園の義務教育学校化」という方向性が示されており、この方向性がどのように導き出されたのかが見えにくい状況です。
           </p>
           <p class="text-sm text-muted mt-2">
             実際、2020〜2021年度の2つの検討会議の提言には「小中一貫」の文言が一切ありません。教育委員会は「提言を具体化した」と説明していますが、「須坂モデル」の中身は2021年2月の<strong>国立教育政策研究所（NIER）講演会の内容と酷似</strong>しています。一方で文科省「手引き」第4章（小規模校存続の選択肢）は検討された形跡がありません。<a href="/detail/nier-analysis" class="text-primary underline">詳しい分析はこちら</a>
@@ -62,14 +62,14 @@ const refs = [
         </div>
 
         <div>
-          <h3 class="font-bold text-sm mb-2">2. 費用がわからない — しかも隠れたコストがある</h3>
+          <h3 class="font-bold text-sm mb-2">2. 費用の全体像が見えない</h3>
           <p class="text-sm text-muted">
-            建設・改修にいくらかかるのか、未公表です。<Cite n={3} />
+            建設・改修にいくらかかるのか、現時点で公表されていません。<Cite n={3} />
             パターンによって市の負担は<strong>6億〜88億円</strong>と10倍以上の幅があります。<Cite n={9} />
             財政調整基金が<strong>約2億円</strong>まで減る中で<Cite n={8} />、金額を示さずに方針を決めることはできないはずです。
           </p>
           <p class="text-sm text-muted mt-2">
-            さらに、現計画の30年総負担73.5億円には<strong>使い続ける5校舎の改修費68.5億円が含まれていません。</strong>5校とも10年以内に長寿命化改修が必要です。改修費を含めると実質92〜119億円となり、統合しない案と大差ありません。<a href="/detail/cost-comparison" class="text-primary underline">5つの選択肢の比較はこちら</a>
+            また、現計画の30年総負担73.5億円には<strong>使い続ける5校舎の改修費68.5億円が含まれていません。</strong>5校とも10年以内に長寿命化改修が必要で、これを含めると実質92〜119億円になります。他の選択肢と合わせた比較が必要です。<a href="/detail/cost-comparison" class="text-primary underline">5つの選択肢の比較はこちら</a>
           </p>
         </div>
 
@@ -87,15 +87,15 @@ const refs = [
             須坂市の公共施設の<strong>約43%</strong>が学校です。<Cite n={4} />
             公共施設の延床面積を減らすには、学校を削るのが最も効果的です。
             一方で2020年に策定した長寿命化計画は「校舎を80年使う」方針。<Cite n={5} />
-            「80年使う計画」と「統合して捨てる計画」が同時に存在し、この矛盾は説明されていません。
+            「80年使う計画」と「統合して役割を終える計画」が同時に存在しており、この関係が整理されていません。
           </p>
         </div>
 
         <div>
-          <h3 class="font-bold text-sm mb-2">5. 合意形成を放棄している</h3>
+          <h3 class="font-bold text-sm mb-2">5. 対話のプロセスが止まっている</h3>
           <p class="text-sm text-muted">
             教育長は3月議会で「反対の方がほとんどの話し合いには行けない」と答弁しました。<Cite n={10} />
-            反対意見のある場に行かないということは、合意形成のプロセス自体を放棄しているということです。
+            異なる意見を持つ市民との対話の場が設けられていない状況です。
           </p>
         </div>
       </div>
@@ -135,7 +135,7 @@ const refs = [
       </p>
 
       <div class="grid sm:grid-cols-2 gap-4 mb-4">
-        <div class="bg-green-50 rounded p-3">
+        <div class="bg-gray-50 rounded p-3">
           <div class="font-bold text-sm mb-2">議論されていること</div>
           <ul class="text-xs text-muted space-y-1">
             <li>子どもが減る（2040年に36%減）</li>
@@ -145,13 +145,13 @@ const refs = [
             <li>市民への説明が必要</li>
           </ul>
         </div>
-        <div class="bg-red-50 rounded p-3">
-          <div class="font-bold text-sm mb-2">議論されていないこと</div>
+        <div class="bg-gray-50 rounded p-3">
+          <div class="font-bold text-sm mb-2">まだ議論されていないこと</div>
           <ul class="text-xs text-muted space-y-1">
             <li>統合以外の選択肢（特認校・山県方式・ICTなど）</li>
-            <li>費用の具体的な数字（1円も試算が出ていない）</li>
+            <li>費用の具体的な数字</li>
             <li>子どもの声（73%が「今のまま」のデータ）</li>
-            <li>長寿命化計画との矛盾の説明</li>
+            <li>長寿命化計画との整合性の説明</li>
             <li>他市の事例（松本・佐久・山県など）</li>
           </ul>
         </div>
@@ -160,20 +160,19 @@ const refs = [
       <p class="text-sm text-muted mb-3">
         総務部長は「あと15年でそれをやるというのは驚き」「<strong>財政的理由でとん挫する可能性もある</strong>」と発言しています。<Cite n={12} />
         市長自身も「<strong>財源の問題は切り離せない</strong>」と述べています。<Cite n={12} />
-        にもかかわらず、費用の試算は公表されていません。
+        費用の試算が公表されれば、市民も含めた建設的な議論が可能になるはずです。
       </p>
 
       <p class="text-sm text-muted">
-        つまり「<strong>どう統合するか</strong>」は議論されていますが、「<strong>統合すべきか、他の方法はないか</strong>」という問い自体が存在しません。
-        市民への「説明」は議論されていますが、市民との「協議」は議論されていません。
+        つまり「<strong>どう統合するか</strong>」は議論されていますが、「<strong>統合以外の方法も含めてどれが最善か</strong>」という比較の議論がまだ行われていません。
       </p>
     </section>
 
-    <!-- 費用の試算は誰の仕事か -->
-    <section class="bg-card rounded-lg p-6 shadow-sm mb-8 border-l-4 border-accent">
-      <h2 class="font-bold text-lg text-primary mb-3">費用の試算は誰の仕事か</h2>
+    <!-- 費用はどこで議論されるのか -->
+    <section class="bg-card rounded-lg p-6 shadow-sm mb-8 border-l-4 border-primary">
+      <h2 class="font-bold text-lg text-primary mb-3">費用はどこで議論されるのか</h2>
       <p class="text-sm text-muted mb-4">
-        学園構想の費用は公表されていません。では、誰がそれを出すべきなのでしょうか。
+        学園構想の費用は現時点で公表されていません。制度上、どこで議論されるべきなのでしょうか。
       </p>
 
       <div class="space-y-4 mb-4">
@@ -211,8 +210,8 @@ const refs = [
           <li>市長部局（総務部・財政課）は費用を試算できるが、出していない</li>
           <li>総合教育会議がその調整の場だが、費用付きの議論は行われていない</li>
         </ul>
-        <p class="mt-3"><strong>費用を計算すべきは市長部局（財政課）であり、総合教育会議でそれを突き合わせるのが法の想定している手順です。</strong>
-        現状は、費用を誰も公表しないまま教育委員会だけが方針を走らせています。</p>
+        <p class="mt-3"><strong>費用を試算するのは市長部局（財政課）の役割であり、総合教育会議でそれを突き合わせるのが法の想定している手順です。</strong>
+        この手順が進めば、市民にも費用を含めた判断材料が共有されるはずです。</p>
       </div>
     </section>
 
