@@ -1,0 +1,543 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import { schools, gakuens, distanceKm, walkDistanceKm, walkMinutes, birthYearImpact } from '../../data/schools'
+
+export function getStaticPaths() {
+  return schools.map(s => ({ params: { id: s.id } }))
+}
+
+const { id } = Astro.params
+const school = schools.find(s => s.id === id)!
+const gakuen = gakuens.find(g => g.id === school.gakuen)!
+const age = 2026 - school.built
+const isElementary = school.type === 'elementary'
+
+// 同じ学園の学校一覧
+const gakuenSchools = schools.filter(s => s.gakuen === school.gakuen && s.id !== school.id)
+const middleSchool = schools.find(s => s.id === gakuen.middleSchool)!
+
+// --- 通学距離の計算 ---
+interface DistanceInfo {
+  label: string
+  targetName: string
+  straightKm: number
+  walkKm: number
+  walkMin: number
+  note?: string
+}
+
+const distances: DistanceInfo[] = []
+
+if (isElementary) {
+  // 第一学園の分離型: 低学年→高甫小、高学年→東中
+  if (gakuen.lowerCampus && school.id !== gakuen.lowerCampus) {
+    const lowerSchool = schools.find(s => s.id === gakuen.lowerCampus)!
+    const straightLower = distanceKm(school.lat, school.lng, lowerSchool.lat, lowerSchool.lng)
+    const walkLower = straightLower * 1.3
+    distances.push({
+      label: '1〜4年生の校舎',
+      targetName: lowerSchool.shortName,
+      straightKm: straightLower,
+      walkKm: walkLower,
+      walkMin: walkMinutes(walkLower),
+    })
+
+    const straightUpper = distanceKm(school.lat, school.lng, middleSchool.lat, middleSchool.lng)
+    const walkUpper = straightUpper * 1.3
+    distances.push({
+      label: '5〜9年生の校舎',
+      targetName: middleSchool.shortName,
+      straightKm: straightUpper,
+      walkKm: walkUpper,
+      walkMin: walkMinutes(walkUpper),
+    })
+  } else if (gakuen.lowerCampus && school.id === gakuen.lowerCampus) {
+    // 高甫小自身は低学年キャンパスなので、自校舎に通う（低学年）
+    const straightUpper = distanceKm(school.lat, school.lng, middleSchool.lat, middleSchool.lng)
+    const walkUpper = straightUpper * 1.3
+    distances.push({
+      label: '5〜9年生の校舎',
+      targetName: middleSchool.shortName,
+      straightKm: straightUpper,
+      walkKm: walkUpper,
+      walkMin: walkMinutes(walkUpper),
+      note: '1〜4年生は現在の校舎（高甫小）にそのまま通います',
+    })
+  } else {
+    // 通常の学園: 中学校（統合先）への距離
+    const straight = distanceKm(school.lat, school.lng, middleSchool.lat, middleSchool.lng)
+    const walk = straight * 1.3
+    distances.push({
+      label: '統合先の校舎',
+      targetName: middleSchool.shortName + '付近（未定）',
+      straightKm: straight,
+      walkKm: walk,
+      walkMin: walkMinutes(walk),
+    })
+  }
+}
+
+// 豊丘小の暫定措置: 須坂小への距離
+const isToyooka = school.id === 'toyooka'
+const suzakaSho = schools.find(s => s.id === 'suzaka')!
+let toyookaToSuzaka: DistanceInfo | null = null
+let toyookaToTokiwa: DistanceInfo | null = null
+if (isToyooka) {
+  const straightS = distanceKm(school.lat, school.lng, suzakaSho.lat, suzakaSho.lng)
+  const walkS = straightS * 1.3
+  toyookaToSuzaka = {
+    label: '暫定の通学先',
+    targetName: '須坂小',
+    straightKm: straightS,
+    walkKm: walkS,
+    walkMin: walkMinutes(walkS),
+  }
+  const tokiwa = schools.find(s => s.id === 'tokiwa')!
+  const straightT = distanceKm(school.lat, school.lng, tokiwa.lat, tokiwa.lng)
+  const walkT = straightT * 1.3
+  toyookaToTokiwa = {
+    label: '第二学園（統合後）',
+    targetName: '常盤中付近（未定）',
+    straightKm: straightT,
+    walkKm: walkT,
+    walkMin: walkMinutes(walkT),
+  }
+}
+
+// --- 生年度の影響計算 ---
+const impact = birthYearImpact(gakuen.openingYear)
+// 豊丘小は暫定移行もある（第一学園開校の頃に須坂小へ）
+const toyookaTransitionYear = 2032  // 第一学園開校の頃
+const toyookaImpact = isToyooka ? birthYearImpact(toyookaTransitionYear) : null
+
+// 距離の色分けヘルパー
+function distColor(km: number): string {
+  if (km > 4) return 'text-red-600'
+  if (km > 3) return 'text-amber-600'
+  return 'text-green-700'
+}
+function timeColor(min: number): string {
+  if (min > 60) return 'text-red-600'
+  if (min > 40) return 'text-amber-600'
+  return 'text-green-700'
+}
+---
+
+<Layout title={`${school.name} — うちの子はどうなるの？`} description={`${school.name}の学園構想による影響。統合先・通学距離・タイムライン`}>
+
+  <!-- パンくず -->
+  <nav class="text-xs text-muted mb-4">
+    <a href="/" class="hover:underline">ホーム</a> &gt;
+    <a href="/school" class="hover:underline">うちの子はどうなるの？</a> &gt;
+    <span>{school.shortName}</span>
+  </nav>
+
+  <!-- 学校名ヘッダー -->
+  <section class="mb-6">
+    <div class="flex items-center gap-3 mb-2">
+      <span class="inline-block w-4 h-4 rounded-full" style={`background:${gakuen.color}`}></span>
+      <span class="text-sm font-bold" style={`color:${gakuen.color}`}>{gakuen.name}</span>
+    </div>
+    <h1 class="text-2xl font-black text-primary mb-1">{school.name}</h1>
+    <p class="text-sm text-muted">
+      児童{isElementary ? '' : '生徒'}数 <strong>{school.students}人</strong> ／
+      築<strong>{age}年</strong>（{school.built}年築、80年まであと{80 - age}年）
+    </p>
+  </section>
+
+  <!-- ① うちの子は関係ある？ -->
+  <section class="bg-card rounded-lg p-6 shadow-sm mb-6 border-l-4" style={`border-color:${gakuen.color}`}>
+    <h2 class="font-bold text-lg mb-3">1. うちの子は関係ある？</h2>
+
+    {isToyooka ? (
+      <!-- 豊丘小の特殊タイムライン -->
+      <div class="space-y-4">
+        <p class="text-sm">豊丘小は他校と異なり、<strong>2段階で変わります。</strong></p>
+
+        <div class="space-y-0">
+          <!-- Phase 1: 現在 -->
+          <div class="flex gap-4">
+            <div class="flex flex-col items-center shrink-0">
+              <div class="w-4 h-4 rounded-full bg-green-500 border-2 border-white shadow-sm shrink-0"></div>
+              <div class="w-0.5 bg-gray-300 grow"></div>
+            </div>
+            <div class="pb-6">
+              <div class="text-xs text-muted">今</div>
+              <div class="text-sm font-bold">豊丘小学校に通学</div>
+              <div class="text-xs text-muted">児童47人（2024年度）。1年5人+2年4人で複式学級が発生中</div>
+            </div>
+          </div>
+
+          <!-- Phase 2: 須坂小へ -->
+          <div class="flex gap-4">
+            <div class="flex flex-col items-center shrink-0">
+              <div class="w-4 h-4 rounded-full bg-amber-500 border-2 border-white shadow-sm shrink-0"></div>
+              <div class="w-0.5 bg-gray-300 grow"></div>
+            </div>
+            <div class="pb-6">
+              <div class="text-xs text-muted">{toyookaTransitionYear}年頃（第一学園開校の頃）</div>
+              <div class="text-sm font-bold">豊丘小が閉校 → 須坂小に通学</div>
+              <div class="text-xs text-muted">第二学園が開校するまでの暫定措置。スクールバス検討中</div>
+              <div class="mt-1 text-xs bg-amber-50 border border-amber-200 rounded p-2">
+                <strong>{toyookaImpact!.transitionStart}年度〜{toyookaImpact!.newSchoolFromStart - 1}年度生まれ</strong>のお子さんが在学中に須坂小への転校を経験
+              </div>
+            </div>
+          </div>
+
+          <!-- Phase 3: 第二学園 -->
+          <div class="flex gap-4">
+            <div class="flex flex-col items-center shrink-0">
+              <div class="w-4 h-4 rounded-full border-2 border-white shadow-sm shrink-0" style={`background:${gakuen.color}`}></div>
+            </div>
+            <div class="pb-2">
+              <div class="text-xs text-muted">{gakuen.openingYear}年頃</div>
+              <div class="text-sm font-bold">第二学園が開校</div>
+              <div class="text-xs text-muted">{gakuen.type}。通学区域は「今後検討」</div>
+              <div class="mt-1 text-xs bg-blue-50 border border-blue-200 rounded p-2">
+                <strong>{impact.newSchoolFromStart}年度以降</strong>に生まれたお子さんは、最初から第二学園に入学
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    ) : (
+      <!-- 通常の学校のタイムライン -->
+      <div class="space-y-4">
+        <div class="bg-amber-50 border border-amber-200 rounded-lg p-4">
+          <p class="text-sm font-bold text-amber-800 mb-1">{gakuen.name}の開校予定</p>
+          <p class="text-lg font-black text-amber-900">{gakuen.openingEstimate}</p>
+        </div>
+
+        <div class="space-y-0">
+          <div class="flex gap-4">
+            <div class="flex flex-col items-center shrink-0">
+              <div class="w-4 h-4 rounded-full bg-green-500 border-2 border-white shadow-sm shrink-0"></div>
+              <div class="w-0.5 bg-gray-300 grow"></div>
+            </div>
+            <div class="pb-6">
+              <div class="text-xs text-muted">{impact.graduatedBefore - 1}年度以前に生まれた子</div>
+              <div class="text-sm font-bold text-green-700">卒業済み — 影響なし</div>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <div class="flex flex-col items-center shrink-0">
+              <div class="w-4 h-4 rounded-full bg-amber-500 border-2 border-white shadow-sm shrink-0"></div>
+              <div class="w-0.5 bg-gray-300 grow"></div>
+            </div>
+            <div class="pb-6">
+              <div class="text-xs text-muted">{impact.transitionStart}〜{impact.newSchoolFromStart - 1}年度生まれ</div>
+              <div class="text-sm font-bold text-amber-700">在学中に統合を経験</div>
+              <div class="text-xs text-muted">通い慣れた学校から新しい学校へ転校することになります</div>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <div class="flex flex-col items-center shrink-0">
+              <div class="w-4 h-4 rounded-full border-2 border-white shadow-sm shrink-0" style={`background:${gakuen.color}`}></div>
+            </div>
+            <div class="pb-2">
+              <div class="text-xs text-muted">{impact.newSchoolFromStart}年度以降に生まれた子</div>
+              <div class="text-sm font-bold" style={`color:${gakuen.color}`}>最初から{gakuen.name}に入学</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-gray-50 rounded p-3 text-xs text-muted">
+          <strong>2026年度生まれ</strong>（今年生まれる子）→ {gakuen.openingYear}年に<strong>{gakuen.openingYear - 2026 - 6}〜{gakuen.openingYear - 2026 - 5}歳</strong>（{gakuen.openingYear - 2033 > 0 ? `小${Math.min(gakuen.openingYear - 2033 + 1, 6)}` : '未就学'}）。
+          {gakuen.openingYear <= 2033 ? '影響を受ける可能性があります。' : gakuen.openingYear <= 2039 ? '在学中に統合を経験する可能性があります。' : '卒業後の可能性もあります。'}
+        </div>
+
+        <div class="bg-red-50 border border-red-200 rounded-lg p-3">
+          <p class="text-xs text-red-700">
+            <strong>注意:</strong> 開校時期は推定です。正式なスケジュールは「今後検討」で未公表。前後する可能性があります。
+          </p>
+        </div>
+      </div>
+    )}
+
+    <dl class="text-sm space-y-2 mt-4 pt-4 border-t">
+      <div class="flex gap-2">
+        <dt class="text-muted w-24 shrink-0">学校の形:</dt>
+        <dd class="font-bold">{gakuen.type}</dd>
+      </div>
+      <div class="flex gap-2">
+        <dt class="text-muted w-24 shrink-0">統合校:</dt>
+        <dd>
+          {gakuenSchools.map(s => s.shortName).join('、')}
+          → <strong>{gakuen.name}</strong>
+        </dd>
+      </div>
+      <div class="flex gap-2">
+        <dt class="text-muted w-24 shrink-0">校舎計画:</dt>
+        <dd>{gakuen.campusplan}</dd>
+      </div>
+    </dl>
+
+    {gakuen.note && (
+      <p class="text-xs text-muted mt-3 bg-gray-50 rounded p-2">{gakuen.note}</p>
+    )}
+  </section>
+
+  <!-- ② どこに通うのか（通学距離） -->
+  <section class="bg-card rounded-lg p-6 shadow-sm mb-6 border-l-4" style={`border-color:${gakuen.color}`}>
+    <h2 class="font-bold text-lg mb-3">2. どこに通うのか</h2>
+
+    {isToyooka && toyookaToSuzaka && toyookaToTokiwa ? (
+      <!-- 豊丘小: 2つの行き先 -->
+      <div class="space-y-4">
+        <p class="text-sm mb-3">豊丘小は通学先が<strong>2回変わります</strong>。</p>
+
+        <!-- 暫定: 須坂小 -->
+        <div class="bg-amber-50 border border-amber-200 rounded-lg p-4">
+          <p class="text-sm font-bold text-amber-800 mb-2">暫定（{toyookaTransitionYear}年頃〜）: {toyookaToSuzaka.targetName}へ</p>
+          <div class="flex gap-6">
+            <div>
+              <span class="text-xs text-muted block">実歩行距離</span>
+              <span class={`text-2xl font-black ${distColor(toyookaToSuzaka.walkKm)}`}>{toyookaToSuzaka.walkKm.toFixed(1)} km</span>
+            </div>
+            <div>
+              <span class="text-xs text-muted block">徒歩</span>
+              <span class={`text-2xl font-black ${timeColor(toyookaToSuzaka.walkMin)}`}>{toyookaToSuzaka.walkMin}分</span>
+            </div>
+            <div>
+              <span class="text-xs text-muted block">直線距離</span>
+              <span class="text-sm text-muted">{toyookaToSuzaka.straightKm.toFixed(1)} km</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 統合後: 常盤中付近 -->
+        <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+          <p class="text-sm font-bold text-blue-800 mb-2">第二学園開校後（{gakuen.openingYear}年頃〜）: {toyookaToTokiwa.targetName}</p>
+          <div class="flex gap-6">
+            <div>
+              <span class="text-xs text-muted block">実歩行距離</span>
+              <span class={`text-2xl font-black ${distColor(toyookaToTokiwa.walkKm)}`}>{toyookaToTokiwa.walkKm.toFixed(1)} km</span>
+            </div>
+            <div>
+              <span class="text-xs text-muted block">徒歩</span>
+              <span class={`text-2xl font-black ${timeColor(toyookaToTokiwa.walkMin)}`}>{toyookaToTokiwa.walkMin}分</span>
+            </div>
+            <div>
+              <span class="text-xs text-muted block">直線距離</span>
+              <span class="text-sm text-muted">{toyookaToTokiwa.straightKm.toFixed(1)} km</span>
+            </div>
+          </div>
+        </div>
+
+        {(toyookaToSuzaka.walkKm > 4 || toyookaToTokiwa.walkKm > 4) && (
+          <div class="bg-red-50 border border-red-200 rounded-lg p-3">
+            <p class="text-sm text-red-700">
+              <strong>文科省基準（小学校4km）を超えています。</strong>スクールバスの対象になると思われますが、運行計画は「今後検討」です。
+            </p>
+          </div>
+        )}
+      </div>
+    ) : isElementary && distances.length > 0 ? (
+      <!-- 通常の小学校 -->
+      <div class="space-y-4">
+        {distances.map(d => (
+          <div class="bg-gray-50 rounded-lg p-4">
+            <p class="text-sm font-bold mb-2">{d.label}: {d.targetName}</p>
+            <div class="flex gap-6">
+              <div>
+                <span class="text-xs text-muted block">実歩行距離</span>
+                <span class={`text-2xl font-black ${distColor(d.walkKm)}`}>{d.walkKm.toFixed(1)} km</span>
+              </div>
+              <div>
+                <span class="text-xs text-muted block">徒歩</span>
+                <span class={`text-2xl font-black ${timeColor(d.walkMin)}`}>{d.walkMin}分</span>
+              </div>
+              <div>
+                <span class="text-xs text-muted block">直線距離</span>
+                <span class="text-sm text-muted">{d.straightKm.toFixed(1)} km</span>
+              </div>
+            </div>
+            {d.note && <p class="text-xs text-muted mt-2">{d.note}</p>}
+            {d.walkKm > 4 ? (
+              <div class="mt-2 bg-red-50 border border-red-200 rounded p-2">
+                <p class="text-xs text-red-700"><strong>文科省基準（小学校4km）を超えています。</strong>スクールバス対象と思われますが、運行計画は「今後検討」。</p>
+              </div>
+            ) : d.walkKm > 3 ? (
+              <div class="mt-2 bg-amber-50 border border-amber-200 rounded p-2">
+                <p class="text-xs text-amber-700">基準内ですが、小学1年生が毎日歩く距離としては長めです。通学支援は「今後検討」。</p>
+              </div>
+            ) : null}
+          </div>
+        ))}
+      </div>
+    ) : (
+      <p class="text-sm">
+        {school.shortName}は{gakuen.name}の中学校です。統合後も現在の校舎が使われる可能性がありますが、詳細は「今後検討」です。
+      </p>
+    )}
+
+    <!-- 計算方法の説明 -->
+    {isElementary && (
+      <details class="mt-4 text-xs text-muted">
+        <summary class="cursor-pointer hover:text-gray-700">距離・時間の計算方法</summary>
+        <div class="mt-2 bg-gray-50 rounded p-3 space-y-1">
+          <p><strong>直線距離:</strong> 2地点の緯度経度からHaversine公式で算出</p>
+          <p><strong>実歩行距離:</strong> 直線距離 × 1.3（迂回係数）。実際の道は直線より約1.3倍長くなるため</p>
+          <p><strong>徒歩時間:</strong> 実歩行距離 ÷ 時速3km。小学生の平均的な歩行速度（大人は約4〜5km/h）</p>
+          <p class="text-amber-700 mt-2">※ 概算です。実際の通学路・地形によって変わります。Google Mapsなどで自宅からの距離を確認してください。</p>
+        </div>
+      </details>
+    )}
+  </section>
+
+  <!-- ③ 教育は良くなるのか -->
+  <section class="bg-card rounded-lg p-6 shadow-sm mb-6 border-l-4" style={`border-color:${gakuen.color}`}>
+    <h2 class="font-bold text-lg mb-3">3. 教育は良くなるのか</h2>
+    <p class="text-sm text-muted mb-4">小中一貫教育には期待される効果と指摘されている課題の両面があります。</p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+      <!-- 期待される効果 -->
+      <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+        <p class="text-sm font-bold text-green-800 mb-2">期待される効果</p>
+        <ul class="text-sm space-y-2 list-disc list-inside">
+          <li>中1ギャップ（進学時の不適応）の軽減</li>
+          <li>9年間を見通したカリキュラム編成</li>
+          <li>異年齢交流による社会性の育成</li>
+          <li>小学校高学年での教科担任制の導入</li>
+        </ul>
+        <p class="text-xs text-muted mt-3">
+          出典: <a href="https://www.nier.go.jp/05_kenkyu_seika/pdf_seika/h27/1-1_all.pdf" target="_blank" class="underline">NIER調査（2015年）</a> — 導入校の約6割が「成果があった」と回答
+        </p>
+      </div>
+
+      <!-- 指摘されている課題 -->
+      <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+        <p class="text-sm font-bold text-red-800 mb-2">指摘されている課題</p>
+        <ul class="text-sm space-y-2 list-disc list-inside">
+          <li>9年間の人間関係が固定化するリスク</li>
+          <li>途中で転校した場合の不適応</li>
+          <li>教職員の業務負担の増加</li>
+          <li>小学校高学年のリーダー体験機会の減少</li>
+        </ul>
+        <p class="text-xs text-muted mt-3">
+          出典: <a href="https://www.mext.go.jp/b_menu/shingi/chukyo/chukyo3/002/siryo/attach/1353442.htm" target="_blank" class="underline">中教審での意見</a>、<a href="https://benesse.jp/educational_terms/36.html" target="_blank" class="underline">ベネッセ解説</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- エビデンスの現状 -->
+    <div class="bg-gray-50 rounded-lg p-4 mb-4">
+      <p class="text-sm font-bold mb-2">全国調査でわかっていること</p>
+      <ul class="text-sm space-y-2">
+        <li>
+          <strong>NIER調査（2015年、全国1,130校）:</strong>
+          導入校の約6割が「学力調査の結果が向上した」と回答。ただし<strong>学校側の自己申告</strong>であり、統合しなかった学校との比較による検証ではない
+        </li>
+        <li>
+          <strong>教職員の負担:</strong>
+          同調査で、業務軽減策を取っていた学校は<strong>約2割</strong>にとどまる
+        </li>
+        <li>
+          <strong>効果にばらつき:</strong>
+          「成果が出た」自治体と「特に変わらない」自治体が混在。一律に良くなるとは言えない
+        </li>
+      </ul>
+      <p class="text-xs text-muted mt-3">
+        <a href="/detail/nier-effectiveness" class="underline font-bold">NIER調査の詳しい分析 →</a>
+      </p>
+    </div>
+
+    <!-- 須坂の場合 -->
+    <div class="border border-gray-200 rounded-lg p-4">
+      <p class="text-sm font-bold mb-2">須坂市の場合</p>
+      <p class="text-sm">
+        教育委員会は上記のメリットを説明していますが、以下は公表されていません。
+      </p>
+      <ul class="text-sm mt-2 space-y-1 list-disc list-inside text-muted">
+        <li>須坂市の児童生徒に即した学力・生活面の分析データ</li>
+        <li>想定されるリスクと対策</li>
+        <li>統合せずに教育を改善する選択肢との比較</li>
+      </ul>
+      <p class="text-xs text-muted mt-3">
+        <a href="/core" class="underline font-bold">この問題の詳しい分析 →</a>
+      </p>
+    </div>
+
+    <!-- 参考リンク -->
+    <details class="mt-4 text-xs text-muted">
+      <summary class="cursor-pointer hover:text-gray-700">参考になる外部サイト</summary>
+      <ul class="mt-2 space-y-1">
+        <li><a href="https://benesse.jp/educational_terms/36.html" target="_blank" class="underline">ベネッセ「義務教育学校とは？小中一貫校との違い」</a> — 保護者向け解説</li>
+        <li><a href="https://soctama.jp/column/73190" target="_blank" class="underline">ソクラテスのたまご「小中一貫校のメリット・デメリット」</a> — 保護者向け両面解説</li>
+        <li><a href="https://www.mext.go.jp/a_menu/shotou/ikkan/1357575.htm" target="_blank" class="underline">文科省 小中一貫教育の推進について</a> — 法令・事例集・調査研究</li>
+      </ul>
+    </details>
+  </section>
+
+  <!-- ④ まだ決まっていないこと -->
+  <section class="bg-card rounded-lg p-6 shadow-sm mb-6">
+    <h2 class="font-bold text-lg mb-3">4. まだ決まっていないこと</h2>
+    <p class="text-xs text-muted mb-3">基本方針案Q&A（2025年4月）で「今後検討」とされている項目</p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      {[
+        { q: '正確な開校時期', qa: 'Q8' },
+        { q: '通学区域の見直し', qa: 'Q13' },
+        { q: 'スクールバスの運行', qa: 'Q15' },
+        { q: '新校舎の場所・設計', qa: 'Q20' },
+        { q: '費用の総額', qa: 'Q22' },
+        { q: '教員の配置', qa: 'Q23' },
+        { q: '部活動の扱い', qa: 'Q24' },
+        { q: '放課後児童クラブ', qa: 'Q26' },
+        { q: '特別支援教育の体制', qa: 'Q27' },
+        { q: '閉校後の校舎利用', qa: 'Q28' },
+      ].map(item => (
+        <div class="flex items-center gap-2 text-sm bg-gray-50 rounded px-3 py-2">
+          <span class="text-red-500 font-bold text-xs shrink-0">未定</span>
+          <span>{item.q}</span>
+          <span class="text-xs text-muted ml-auto">{item.qa}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ⑤ できること -->
+  <section class="bg-card rounded-lg p-6 shadow-sm mb-8">
+    <h2 class="font-bold text-lg mb-3">5. 知っておきたいこと</h2>
+
+    <div class="space-y-3 text-sm">
+      <p>
+        2026年6月頃に修正案が提示され、<strong>パブリックコメント</strong>（市民意見の募集）が行われる予定です。
+        あなたの意見を直接届けられる機会です。
+      </p>
+      <div class="flex flex-wrap gap-2">
+        <a href="/action" class="bg-green-50 border border-green-300 text-green-800 text-xs font-bold px-4 py-2 rounded-full hover:bg-green-600 hover:text-white transition-colors">市民にできること →</a>
+        <a href="/core" class="bg-card border border-primary/20 text-primary text-xs font-bold px-4 py-2 rounded-full hover:bg-primary hover:text-white transition-colors">何が問題なのか →</a>
+        <a href="/detail/cost-comparison" class="bg-card border border-primary/20 text-primary text-xs font-bold px-4 py-2 rounded-full hover:bg-primary hover:text-white transition-colors">5案の費用比較 →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 地図と他の学校 -->
+  <section class="bg-card rounded-lg p-6 shadow-sm mb-8">
+    <h2 class="font-bold text-lg mb-3">15校の位置と4学園の区割り</h2>
+    <p class="text-sm text-muted mb-3">
+      トップページの地図で、全15校の位置と4つの学園の区割り、徒歩4km圏を確認できます。
+    </p>
+    <a href="/#school-map-section" class="inline-block bg-card border border-primary/20 text-primary text-xs font-bold px-4 py-2 rounded-full hover:bg-primary hover:text-white transition-colors">地図を見る →</a>
+
+    <div class="mt-4 pt-4 border-t">
+      <p class="text-xs text-muted mb-2">他の学校を見る:</p>
+      <div class="flex flex-wrap gap-2">
+        {schools.filter(s => s.id !== school.id).sort((a, b) => a.sortOrder - b.sortOrder).map(s => {
+          const g = gakuens.find(g => g.id === s.gakuen)!
+          return (
+            <a href={`/school/${s.id}`}
+               class="text-xs px-3 py-1 rounded-full border hover:shadow-sm transition-shadow"
+               style={`border-color:${g.color}; color:${g.color}`}>
+              {s.shortName}
+            </a>
+          )
+        })}
+      </div>
+    </div>
+  </section>
+
+</Layout>

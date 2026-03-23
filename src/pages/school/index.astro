@@ -1,0 +1,80 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import { schools, gakuens } from '../../data/schools'
+
+const elementarySchools = schools.filter(s => s.type === 'elementary').sort((a, b) => a.sortOrder - b.sortOrder)
+const middleSchools = schools.filter(s => s.type === 'middle').sort((a, b) => a.sortOrder - b.sortOrder)
+---
+
+<Layout title="うちの子はどうなるの？ — 須坂学園構想" description="お子さんの学校を選ぶと、統合の時期・通学距離・教育への影響がわかります">
+
+  <section class="text-center mb-8">
+    <h1 class="text-2xl font-black text-primary mb-3">うちの子はどうなるの？</h1>
+    <p class="text-sm text-muted max-w-lg mx-auto">
+      お子さんが通っている（通う予定の）学校を選んでください。<br />
+      統合の時期・通学距離・教育への影響をまとめています。
+    </p>
+  </section>
+
+  <!-- 小学校 -->
+  <section class="mb-8">
+    <h2 class="font-bold text-lg mb-4">小学校</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+      {elementarySchools.map(s => {
+        const g = gakuens.find(g => g.id === s.gakuen)!
+        const isToyooka = s.id === 'toyooka'
+        return (
+          <a href={`/school/${s.id}`}
+             class={`bg-card rounded-lg p-4 shadow-sm border-l-4 hover:shadow-md transition-shadow ${isToyooka ? 'col-span-2 sm:col-span-3 border-l-[6px] ring-2 ring-amber-300' : ''}`}
+             style={`border-color:${g.color}`}>
+            {isToyooka && <span class="text-xs text-amber-700 font-bold block mb-1">最も影響が大きい学校</span>}
+            <span class="text-xs font-bold" style={`color:${g.color}`}>{g.name}</span>
+            <p class="font-bold text-sm mt-1">{s.shortName}</p>
+            <p class="text-xs text-muted">{s.students}人{isToyooka ? ' — 複式学級が発生中。統合前に須坂小へ転校する計画' : ''}</p>
+          </a>
+        )
+      })}
+    </div>
+  </section>
+
+  <!-- 中学校 -->
+  <section class="mb-8">
+    <h2 class="font-bold text-lg mb-4">中学校</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+      {middleSchools.map(s => {
+        const g = gakuens.find(g => g.id === s.gakuen)!
+        return (
+          <a href={`/school/${s.id}`}
+             class="bg-card rounded-lg p-4 shadow-sm border-l-4 hover:shadow-md transition-shadow"
+             style={`border-color:${g.color}`}>
+            <span class="text-xs font-bold" style={`color:${g.color}`}>{g.name}</span>
+            <p class="font-bold text-sm mt-1">{s.shortName}</p>
+            <p class="text-xs text-muted">{s.students}人</p>
+          </a>
+        )
+      })}
+    </div>
+  </section>
+
+  <!-- 地図 -->
+  <section class="mb-8">
+    <a href="/#school-map-section"
+       class="block bg-card rounded-lg p-6 shadow-sm border hover:shadow-md transition-shadow text-center">
+      <p class="font-bold text-primary mb-1">15校の位置と4学園の区割りを地図で見る →</p>
+      <p class="text-xs text-muted">各学園の徒歩4km圏も表示しています</p>
+    </a>
+  </section>
+
+  <!-- 注意書き -->
+  <div class="bg-gray-50 rounded-lg p-4 text-xs text-muted">
+    <p class="mb-2">
+      <strong>データについて:</strong>
+      児童生徒数は教育委員会資料（2024年度）より。通学距離は座標間の直線距離×迂回係数1.3の概算です。
+      実際の通学路とは異なる場合があります。
+    </p>
+    <p>
+      統合時期は基本方針案（2024年12月）の記載に基づく推定で、正式なスケジュールは未公表です。
+    </p>
+  </div>
+
+</Layout>

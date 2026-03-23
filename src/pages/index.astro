@@ -34,6 +34,13 @@ const refs = [
     </p>
   </section>
 
+  <!-- うちの子はどうなるの？ -->
+  <section class="bg-blue-50 border-2 border-blue-300 rounded-lg p-6 mb-8 text-center">
+    <h2 class="font-black text-lg text-blue-900 mb-2">うちの子はどうなるの？</h2>
+    <p class="text-sm text-blue-800 mb-4">学校を選ぶと、統合の時期・通学距離・教育への影響がわかります</p>
+    <a href="/school" class="inline-block bg-blue-600 text-white font-bold text-sm px-6 py-3 rounded-full hover:bg-blue-700 transition-colors">学校を選んで確認する →</a>
+  </section>
+
   <!-- クイックナビ -->
   <nav class="flex flex-wrap justify-center gap-2 mb-8 hero-nav">
     <a href="/core" class="bg-card border border-primary/20 text-primary text-xs font-bold px-4 py-2 rounded-full hover:bg-primary hover:text-white transition-colors">何が問題なのか</a>
@@ -218,7 +225,7 @@ const refs = [
   </section>
 
   <!-- 学校マップ -->
-  <section class="bg-card rounded-lg p-6 shadow-sm mb-8">
+  <section id="school-map-section" class="bg-card rounded-lg p-6 shadow-sm mb-8">
     <h2 class="font-bold text-lg text-primary mb-2">🗺 15校の位置と4学園の区割り</h2>
     <p class="text-xs text-muted mb-4">学校をホバー/タップすると詳細が表示されます。色は学園構想の区割りに対応しています。</p>
     <SchoolMap schools={[
