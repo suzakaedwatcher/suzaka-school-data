@@ -2,6 +2,9 @@
 import Layout from '../layouts/Layout.astro'
 import Cite from '../components/Cite.astro'
 import RefList from '../components/RefList.astro'
+import CountUp from '../components/CountUp.astro'
+import LineChart from '../components/LineChart.astro'
+import SchoolMap from '../components/SchoolMap.astro'
 
 const refs = [
   { n: 1, label: '須坂市教育委員会「新しい学校づくり」ページ', url: 'https://www.city.suzaka.nagano.jp/soshiki/10010/5/5525.html', detail: '基本方針案・答申書・検討委員会議事録・説明会会議録を掲載' },
@@ -22,7 +25,7 @@ const refs = [
 <Layout title="須坂学園構想ウォッチ — 須坂の学校データ" description="須坂学園構想の進捗・未回答の質問・タイムラインを整理。市民が最新状況を追えるサイト">
 
   <!-- ヒーロー -->
-  <section class="text-center mb-10">
+  <section class="text-center mb-6">
     <p class="text-sm text-muted mb-2">最終更新: 2026年3月23日</p>
     <h1 class="text-3xl font-black text-primary mb-3">須坂学園構想ウォッチ</h1>
     <p class="text-muted max-w-xl mx-auto text-sm">
@@ -31,9 +34,18 @@ const refs = [
     </p>
   </section>
 
+  <!-- クイックナビ -->
+  <nav class="flex flex-wrap justify-center gap-2 mb-8 hero-nav">
+    <a href="/core" class="bg-card border border-primary/20 text-primary text-xs font-bold px-4 py-2 rounded-full hover:bg-primary hover:text-white transition-colors">何が問題なのか</a>
+    <a href="/facility" class="bg-card border border-primary/20 text-primary text-xs font-bold px-4 py-2 rounded-full hover:bg-primary hover:text-white transition-colors">施設と財政</a>
+    <a href="/detail/cost-comparison" class="bg-card border border-primary/20 text-primary text-xs font-bold px-4 py-2 rounded-full hover:bg-primary hover:text-white transition-colors">5案の比較</a>
+    <a href="/detail/nier-analysis" class="bg-card border border-primary/20 text-primary text-xs font-bold px-4 py-2 rounded-full hover:bg-primary hover:text-white transition-colors">須坂モデルの出自</a>
+    <a href="/action" class="bg-green-50 border border-green-300 text-green-800 text-xs font-bold px-4 py-2 rounded-full hover:bg-green-600 hover:text-white transition-colors">市民にできること</a>
+  </nav>
+
   <!-- 今ここ -->
   <section class="bg-card rounded-lg p-6 shadow-sm mb-8 border-l-4 border-primary">
-    <h2 class="font-bold text-lg text-primary mb-3">📍 今ここ</h2>
+    <h2 class="font-bold text-lg text-primary mb-3"><span class="pin-drop">📍</span> 今ここ</h2>
     <div class="flex flex-wrap gap-3 mb-4">
       <span class="bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full">基本方針案 → パブコメ前</span>
       <span class="bg-red-100 text-red-800 text-xs font-bold px-3 py-1 rounded-full">費用: 未公表</span>
@@ -177,24 +189,55 @@ const refs = [
   <!-- 数字で見る現状 -->
   <section class="bg-card rounded-lg p-6 shadow-sm mb-8">
     <h2 class="font-bold text-lg text-primary mb-4">📊 数字で見る現状</h2>
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
-      <div>
-        <div class="text-2xl font-black text-accent">1.9%</div>
-        <div class="text-xs text-muted mt-1">市民が小中一貫を<br />優先した割合<Cite n={3} /></div>
-      </div>
-      <div>
-        <div class="text-2xl font-black text-accent">73%</div>
-        <div class="text-xs text-muted mt-1">児童が「今のまま<br />でよい」と回答<Cite n={4} /></div>
-      </div>
-      <div>
-        <div class="text-2xl font-black text-accent">10/28</div>
-        <div class="text-xs text-muted mt-1">Q&Aで「今後<br />検討」の回答数<Cite n={2} /></div>
-      </div>
-      <div>
-        <div class="text-2xl font-black text-accent">約2億</div>
-        <div class="text-xs text-muted mt-1">2026年度末の<br />財政調整基金<Cite n={5} /></div>
-      </div>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+      <CountUp value={1.9} suffix="%" decimals={1} label="市民が小中一貫を優先した割合" source="市民アンケート 問4-1" />
+      <CountUp value={73} suffix="%" label="児童が「今のままでよい」と回答" source="児童アンケート 問2-3" />
+      <CountUp value={10} suffix="/28" label="Q&Aで「今後検討」の回答数" source="基本方針案Q&A" />
+      <CountUp value={2} prefix="約" suffix="億" label="2026年度末の財政調整基金" source="2026年度予算案" />
     </div>
+  </section>
+
+  <!-- 児童生徒数の推移 -->
+  <section class="bg-card rounded-lg p-6 shadow-sm mb-8">
+    <h2 class="font-bold text-lg text-primary mb-2">📉 児童生徒数の推移</h2>
+    <p class="text-xs text-muted mb-4">出生数から推計した将来予測。少子化は事実であり、対策は必要です。問題は「どう対策するか」です。</p>
+    <LineChart
+      points={[
+        { year: 1990, value: 7000, label: '35年前' },
+        { year: 2016, value: 4800 },
+        { year: 2024, value: 3628, label: '現在' },
+        { year: 2030, value: 3132 },
+        { year: 2035, value: 2700 },
+        { year: 2040, value: 2300 },
+        { year: 2050, value: 1800 },
+        { year: 2065, value: 1200, label: '40年後' },
+      ]}
+      unit="人"
+    />
+    <p class="text-xs text-muted mt-2">出典: 須坂市教育委員会Q&A、国立社会保障・人口問題研究所「日本の地域別将来推計人口」</p>
+  </section>
+
+  <!-- 学校マップ -->
+  <section class="bg-card rounded-lg p-6 shadow-sm mb-8">
+    <h2 class="font-bold text-lg text-primary mb-2">🗺 15校の位置と4学園の区割り</h2>
+    <p class="text-xs text-muted mb-4">学校をホバー/タップすると詳細が表示されます。色は学園構想の区割りに対応しています。</p>
+    <SchoolMap schools={[
+      { name: '高甫小学校', lat: 36.6303, lng: 138.3118, type: 'elementary', gakuen: 1, students: 120, built: 1980 },
+      { name: '仁礼小学校', lat: 36.6113, lng: 138.3417, type: 'elementary', gakuen: 1, students: 55, built: 1982 },
+      { name: '豊丘小学校', lat: 36.6326, lng: 138.3515, type: 'elementary', gakuen: 2, students: 47, built: 1983 },
+      { name: '須坂小学校', lat: 36.6533, lng: 138.3168, type: 'elementary', gakuen: 2, students: 350, built: 1973 },
+      { name: '旭ケ丘小学校', lat: 36.6805, lng: 138.3157, type: 'elementary', gakuen: 2, students: 210, built: 1971 },
+      { name: '森上小学校', lat: 36.6511, lng: 138.3042, type: 'elementary', gakuen: 3, students: 180, built: 1983 },
+      { name: '日野小学校', lat: 36.6596, lng: 138.2922, type: 'elementary', gakuen: 3, students: 150, built: 1977 },
+      { name: '豊洲小学校', lat: 36.6780, lng: 138.2935, type: 'elementary', gakuen: 3, students: 140, built: 1977 },
+      { name: '井上小学校', lat: 36.6405, lng: 138.2861, type: 'elementary', gakuen: 4, students: 250, built: 1981 },
+      { name: '小山小学校', lat: 36.6478, lng: 138.3120, type: 'elementary', gakuen: 4, students: 200, built: 1979 },
+      { name: '日滝小学校', lat: 36.6622, lng: 138.3247, type: 'elementary', gakuen: 4, students: 160, built: 1979 },
+      { name: '東中学校', lat: 36.6232, lng: 138.3319, type: 'middle', gakuen: 1, students: 143, built: 1995 },
+      { name: '常盤中学校', lat: 36.6539, lng: 138.3200, type: 'middle', gakuen: 2, students: 351, built: 1987 },
+      { name: '相森中学校', lat: 36.6625, lng: 138.3124, type: 'middle', gakuen: 3, students: 306, built: 1990 },
+      { name: '墨坂中学校', lat: 36.6450, lng: 138.2974, type: 'middle', gakuen: 4, students: 490, built: 1993 },
+    ]} />
   </section>
 
   <!-- これまでの経緯 -->

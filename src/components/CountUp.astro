@@ -1,0 +1,56 @@
+---
+interface Props {
+  value: number
+  suffix?: string
+  prefix?: string
+  label: string
+  decimals?: number
+  source?: string
+}
+
+const { value, suffix = '', prefix = '', label, decimals = 0, source } = Astro.props
+const displayValue = decimals > 0 ? value.toFixed(decimals) : String(value)
+---
+
+<div class="text-center py-4 count-up-wrapper" data-target={value} data-decimals={decimals} data-suffix={suffix} data-prefix={prefix}>
+  <div class="text-5xl font-black text-accent">
+    <span class="count-up-value">{prefix}{displayValue}{suffix}</span>
+  </div>
+  <div class="text-sm text-muted mt-1">{label}</div>
+  {source && <div class="text-xs text-gray-400 mt-1">出典: {source}</div>}
+</div>
+
+<script>
+  function initCountUp() {
+    const els = document.querySelectorAll('.count-up-wrapper');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target as HTMLElement;
+        if (el.dataset.animated) return;
+        el.dataset.animated = '1';
+
+        const target = parseFloat(el.dataset.target || '0');
+        const decimals = parseInt(el.dataset.decimals || '0');
+        const suffix = el.dataset.suffix || '';
+        const prefix = el.dataset.prefix || '';
+        const span = el.querySelector('.count-up-value') as HTMLElement;
+        const duration = 1200;
+        const start = performance.now();
+
+        function update(now: number) {
+          const elapsed = now - start;
+          const progress = Math.min(elapsed / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const current = target * eased;
+          span.textContent = prefix + (decimals > 0 ? current.toFixed(decimals) : String(Math.round(current))) + suffix;
+          if (progress < 1) requestAnimationFrame(update);
+        }
+        requestAnimationFrame(update);
+      });
+    }, { threshold: 0.3 });
+
+    els.forEach(el => observer.observe(el));
+  }
+  initCountUp();
+</script>

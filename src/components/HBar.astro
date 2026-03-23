@@ -1,0 +1,61 @@
+---
+interface Bar {
+  label: string
+  value: number
+  displayValue: string
+  color?: string
+  note?: string
+}
+
+interface Props {
+  bars: Bar[]
+  unit?: string
+  maxValue?: number
+}
+
+const { bars, unit = '', maxValue } = Astro.props
+const max = maxValue || Math.max(...bars.map(b => b.value))
+---
+
+<div class="space-y-3 hbar-chart">
+  {bars.map((bar) => (
+    <div class="hbar-row" data-percent={Math.round((bar.value / max) * 100)}>
+      <div class="flex justify-between items-baseline mb-1">
+        <span class="text-xs font-bold">{bar.label}</span>
+        <span class="text-xs text-muted">{bar.note || ''}</span>
+      </div>
+      <div class="h-7 bg-gray-100 rounded-full overflow-hidden relative">
+        <div
+          class="hbar-fill h-full rounded-full flex items-center transition-all duration-1000 ease-out"
+          style={`width: 0%; background-color: ${bar.color || '#e74c3c'}`}
+          data-width={`${Math.round((bar.value / max) * 100)}%`}
+        >
+          <span class="text-xs font-bold text-white pl-3 whitespace-nowrap drop-shadow">{bar.displayValue}{unit}</span>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
+
+<script>
+  function initHBar() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const chart = entry.target as HTMLElement;
+        if (chart.dataset.animated) return;
+        chart.dataset.animated = '1';
+
+        const fills = chart.querySelectorAll('.hbar-fill') as NodeListOf<HTMLElement>;
+        fills.forEach((fill, i) => {
+          setTimeout(() => {
+            fill.style.width = fill.dataset.width || '0%';
+          }, i * 120);
+        });
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.hbar-chart').forEach(el => observer.observe(el));
+  }
+  initHBar();
+</script>

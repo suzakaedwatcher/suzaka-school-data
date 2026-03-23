@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 import BigNumber from '../../components/BigNumber.astro'
+import HBar from '../../components/HBar.astro'
 ---
 
 <Layout title="学園構想、教育だけでは説明がつかないデータ — 須坂の学校データ" description="須坂学園構想を施設・財政の観点から検証する">
@@ -559,7 +560,17 @@ import BigNumber from '../../components/BigNumber.astro'
       </div>
     </div>
 
-    <p class="text-sm text-muted">改修費を含めると、案Aのコストは<strong>統合せずICT・合同授業で対応する案（80〜120億円）と大差ありません。</strong>詳しくは<a href="/detail/cost-comparison" class="text-primary underline">5つの選択肢と40年比較</a>をご覧ください。</p>
+    <p class="text-sm text-muted mb-4">5つの選択肢を30年スパンで並べると以下のようになります。詳しくは<a href="/detail/cost-comparison" class="text-primary underline">5つの選択肢と40年比較</a>をご覧ください。</p>
+
+    <HBar bars={[
+      { label: 'A: 現計画（分離型）', value: 119, displayValue: '92〜119', color: '#e74c3c', note: '※改修費含む' },
+      { label: 'B: 一体型新築', value: 160, displayValue: '100〜160', color: '#c0392b', note: '4校新築＋11校解体' },
+      { label: 'C: 15校改修', value: 204, displayValue: '204', color: '#7f8c8d', note: '全15校を長寿命化' },
+      { label: 'D: 段階的再編', value: 150, displayValue: '130〜150', color: '#2980b9', note: '2〜3校統合＋残り改修' },
+      { label: 'E: 仕組みで対応', value: 120, displayValue: '80〜120', color: '#27ae60', note: 'ICT・合同授業・兼務発令' },
+    ]} unit="億円" maxValue={210} />
+
+    <p class="text-xs text-muted mt-3">案Aの公表値は73.5億円ですが、残す5校舎の改修費68.5億円を含めた場合の数値です。各案の前提・内訳は<a href="/detail/cost-comparison" class="text-primary underline">詳細ページ</a>を参照。</p>
   </section>
 
   <!-- セクション7: 時系列シミュレーション -->

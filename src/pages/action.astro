@@ -1,5 +1,23 @@
 ---
 import Layout from '../layouts/Layout.astro'
+import Cite from '../components/Cite.astro'
+import RefList from '../components/RefList.astro'
+
+const refs = [
+  { n: 1, label: '須坂市情報公開条例', url: 'https://www.city.suzaka.nagano.jp/soshiki/1010/7/416.html', detail: '実施機関に教育委員会を含む。何人も請求可能' },
+  { n: 2, label: '行政手続法 第46条', url: 'https://laws.e-gov.go.jp/law/405AC0000000088', detail: '地方公共団体は「行政手続法の趣旨にのっとり必要な措置を講ずるよう努めなければならない」' },
+  { n: 3, label: '日本国憲法 第16条', detail: '「何人も、平穏に請願する権利を有し、何人も、かかる請願をしたためにいかなる差別待遇も受けない」' },
+  { n: 4, label: '地方自治法 第124条・第125条', url: 'https://laws.e-gov.go.jp/law/322AC0000000067', detail: '第124条: 議員の紹介により請願書を提出。第125条: 採択した請願は長等に送付し処理経過・結果の報告を請求できる' },
+  { n: 5, label: '請願法（昭和22年法律第13号）', url: 'https://laws.e-gov.go.jp/law/322AC0000000013', detail: '第5条「この法律に適合する請願は、官公署において、これを受理し誠実に処理しなければならない」' },
+  { n: 6, label: '地方自治法 第74条（直接請求）', url: 'https://www.soumu.go.jp/main_sosiki/jichi_gyousei/bunken/chokusetsu_seikyu.html', detail: '有権者の50分の1以上の署名で条例の制定改廃を請求可能。署名収集期間は1か月以内' },
+  { n: 7, label: '地方自治法 第242条（住民監査請求）', url: 'https://laws.e-gov.go.jp/law/322AC0000000067', detail: '1人でも請求可能。違法・不当な財務会計行為が対象' },
+  { n: 8, label: '文科省「手引き」（2015年）p.5', url: 'https://www.mext.go.jp/component/a_menu/education/micro_detail/__icsFiles/afieldfile/2015/07/24/1354768_1.pdf', detail: '「複数の選択肢やそのメリット・デメリットを整理して議論の材料として提供する」' },
+  { n: 9, label: '西伊豆町 学校再編の経過と理由', url: 'https://www.town.nishiizu.shizuoka.jp/pdf/kyoiku/gakkosaihen12.pdf', detail: '2023年、住民懇談会を経て町長が建設計画の中止を決定' },
+  { n: 10, label: '行政機関の保有する情報の公開に関する法律（情報公開法）', url: 'https://laws.e-gov.go.jp/law/411AC0000000042/', detail: '地方自治体は各自治体の情報公開条例に基づく' },
+  { n: 11, label: '自治体問題研究所「情報公開請求は行政説明の裏を取る作業」大和幸久氏インタビュー', url: 'https://www.jichiken.jp/wp-content/uploads/2021/08/dec3a7392d9c0c1d7f873442af2b1ad0.pdf', detail: '大町市議（5期）。情報公開請求の活用方法について' },
+  { n: 12, label: '桑名の子どもと学校を守ろう — 多度学園建設費の分析', url: 'https://kuwana-gakkou.com/2025/10/11/construction-cost/', detail: '公開データから全国平均との35億円の乖離を指摘。中日新聞でも報道' },
+  { n: 13, label: '中日新聞「学校再編、検証してからでは遅い」桑名市', url: 'https://www.chunichi.co.jp/article/1080442', detail: '市民グループの活動と建設費の問題を報道' },
+]
 ---
 
 <Layout title="市民にできること — 須坂学園構想ウォッチ" description="学園構想に対して市民が使える制度的な手段を、法的根拠とともに整理">
@@ -16,7 +34,7 @@ import Layout from '../layouts/Layout.astro'
     <section class="bg-card rounded-lg p-6 shadow-sm mb-8">
       <h2 class="font-bold text-lg text-primary mb-3">前提の確認</h2>
       <p class="text-sm text-muted mb-3">
-        文科省の手引きは、学校再編を検討する際に「複数の選択肢やそのメリット・デメリットを整理して議論の材料として提供する」ことを求めています。
+        文科省の手引きは、学校再編を検討する際に「複数の選択肢やそのメリット・デメリットを整理して議論の材料として提供する」ことを求めています。<Cite n={8} />
         現状、須坂市ではこの比較検討資料が公開されていません。
       </p>
       <p class="text-sm text-muted">
@@ -34,8 +52,8 @@ import Layout from '../layouts/Layout.astro'
         <div class="border-l-4 border-green-600 pl-4">
           <h3 class="font-bold text-sm mb-1">1. 情報公開請求 <span class="text-green-700 text-xs font-normal">— 最も強力</span></h3>
           <div class="text-sm text-muted space-y-2">
-            <p>教育委員会が保有する行政文書の開示を求められます。<strong>誰でも請求可能</strong>、写しの交付は実費（1枚10円程度）。</p>
-            <p><strong>法的根拠:</strong> 須坂市情報公開条例。教育委員会は「実施機関」に含まれるため、教育委員会の文書も対象です。</p>
+            <p>教育委員会が保有する行政文書の開示を求められます。<strong>誰でも請求可能</strong>、写しの交付は実費（1枚10円程度）。<Cite n={1} /><Cite n={10} /></p>
+            <p><strong>法的根拠:</strong> 須坂市情報公開条例<Cite n={1} />。教育委員会は「実施機関」に含まれるため、教育委員会の文書も対象です。</p>
             <div class="bg-green-50 rounded p-3 mt-2">
               <p class="font-bold text-green-800 text-xs mb-1">請求すべき文書の例:</p>
               <ul class="list-disc list-inside text-xs space-y-1">
@@ -48,6 +66,17 @@ import Layout from '../layouts/Layout.astro'
             <p class="text-xs mt-2">
               <strong>文書が出てくれば</strong>計画の前提を検証できます。<strong>「不存在」と回答されれば</strong>「コスト試算もせずに計画を進めている」ことが公式に確認できます。どちらに転んでも使えます。
             </p>
+            <div class="bg-gray-50 rounded p-3 mt-3">
+              <p class="font-bold text-xs mb-2">参考: 他の自治体での活用例</p>
+              <ul class="list-disc list-inside text-xs space-y-2">
+                <li>
+                  <strong>大町市（長野県）</strong> — 大和幸久市議（5期）は、情報公開請求を「行政説明の裏を取る作業」と位置づけ、学校統合を含む行政の意思決定過程の検証に活用しています。<Cite n={11} />
+                </li>
+                <li>
+                  <strong>桑名市（三重県）</strong> — 市民グループ「桑名の子どもと学校を守ろう」が、公開データをもとに義務教育学校（多度学園）の建設費を分析。全国平均より約35億円高いことを指摘し、随意契約で上限価格が設定されていない問題を明らかにしました。<Cite n={12} /><Cite n={13} /> 教育長は議会で「試算は無意味」と答弁しています。
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
 
@@ -56,7 +85,7 @@ import Layout from '../layouts/Layout.astro'
           <h3 class="font-bold text-sm mb-1">2. パブリックコメント <span class="text-amber-700 text-xs font-normal">— 2026年6月頃に予定</span></h3>
           <div class="text-sm text-muted space-y-2">
             <p>基本方針案に対して、市民が意見を提出できる期間です。</p>
-            <p><strong>法的根拠:</strong> 自治体のパブリックコメント条例・要綱。国の行政手続法（第46条）の趣旨に基づくもの。</p>
+            <p><strong>法的根拠:</strong> 自治体のパブリックコメント条例・要綱。国の行政手続法（第46条）の趣旨に基づくもの。<Cite n={2} /></p>
             <p><strong>注意:</strong> 提出された意見に<strong>法的拘束力はありません</strong>。市は意見を「考慮」する義務を負いますが、採用する義務はありません。</p>
             <div class="bg-amber-50 rounded p-3 mt-2">
               <p class="font-bold text-amber-800 text-xs mb-1">参考: 意見に含められる論点の例</p>
@@ -82,9 +111,9 @@ import Layout from '../layouts/Layout.astro'
         <div class="border-l-4 border-blue-500 pl-4">
           <h3 class="font-bold text-sm mb-1">4. 請願 <span class="text-blue-700 text-xs font-normal">— 紹介議員が必要</span></h3>
           <div class="text-sm text-muted space-y-2">
-            <p>議会に対して正式に要望を提出する制度です。<strong>最低1名の紹介議員</strong>が必要です。</p>
-            <p><strong>法的根拠:</strong> 日本国憲法第16条、請願法、地方自治法第124条・第125条。</p>
-            <p>採択されれば教育委員会等に送付され、議会は<strong>処理経過・結果の報告を請求できます</strong>（地方自治法第125条）。法的拘束力はありませんが、政治的な圧力になります。</p>
+            <p>議会に対して正式に要望を提出する制度です。<strong>最低1名の紹介議員</strong>が必要です。<Cite n={4} /></p>
+            <p><strong>法的根拠:</strong> 日本国憲法第16条<Cite n={3} />、請願法<Cite n={5} />、地方自治法第124条・第125条<Cite n={4} />。</p>
+            <p>採択されれば教育委員会等に送付され、議会は<strong>処理経過・結果の報告を請求できます</strong>（地方自治法第125条）。<Cite n={4} /> 法的拘束力はありませんが、政治的な圧力になります。</p>
           </div>
         </div>
 
@@ -92,8 +121,8 @@ import Layout from '../layouts/Layout.astro'
         <div class="border-l-4 border-purple-500 pl-4">
           <h3 class="font-bold text-sm mb-1">5. 直接請求（住民投票条例） <span class="text-purple-700 text-xs font-normal">— 署名が必要</span></h3>
           <div class="text-sm text-muted space-y-2">
-            <p>有権者の<strong>50分の1以上</strong>の署名で、条例の制定を首長に請求できます。須坂市なら約<strong>800筆</strong>程度。</p>
-            <p><strong>法的根拠:</strong> 地方自治法第74条。署名収集期間は1か月以内。</p>
+            <p>有権者の<strong>50分の1以上</strong>の署名で、条例の制定を首長に請求できます。須坂市なら約<strong>800筆</strong>程度。<Cite n={6} /></p>
+            <p><strong>法的根拠:</strong> 地方自治法第74条。署名収集期間は1か月以内。<Cite n={6} /></p>
             <p><strong>注意:</strong> 首長は自らの意見を付けて議会に付議しますが、全国的に<strong>約90%が議会で否決</strong>されています。ただし署名活動自体が世論を可視化する効果があり、否決後の選挙で議会構成が変わった事例もあります。</p>
           </div>
         </div>
@@ -102,8 +131,8 @@ import Layout from '../layouts/Layout.astro'
         <div class="border-l-4 border-gray-400 pl-4">
           <h3 class="font-bold text-sm mb-1">6. 住民監査請求 <span class="text-gray-600 text-xs font-normal">— 具体的な支出が始まってから</span></h3>
           <div class="text-sm text-muted space-y-2">
-            <p><strong>1人でも請求可能</strong>。違法または不当な公金の支出等に対して監査を求められます。</p>
-            <p><strong>法的根拠:</strong> 地方自治法第242条。</p>
+            <p><strong>1人でも請求可能</strong>。違法または不当な公金の支出等に対して監査を求められます。<Cite n={7} /></p>
+            <p><strong>法的根拠:</strong> 地方自治法第242条。<Cite n={7} /></p>
             <p>対象は<strong>財務会計上の行為</strong>に限定されます。学園構想の「方針」自体は対象外ですが、新校舎の建設契約やコンサルタント委託契約など、具体的な支出が始まれば対象になります。</p>
           </div>
         </div>
@@ -117,7 +146,7 @@ import Layout from '../layouts/Layout.astro'
       <div class="space-y-4 text-sm">
         <div class="bg-green-50 rounded p-4">
           <p class="font-bold text-green-800 mb-1">西伊豆町（静岡県） — 住民懇談会で中止</p>
-          <p class="text-muted">小中一貫校の建設計画を8年間議論。2023年の住民懇談会で安全性・費用の指摘を受け、町長が「地元住民の同意が得られなかった」として計画を中止。</p>
+          <p class="text-muted">小中一貫校の建設計画を8年間議論。2023年の住民懇談会で安全性・費用の指摘を受け、町長が「地元住民の同意が得られなかった」として計画を中止。<Cite n={9} /></p>
         </div>
         <div class="bg-green-50 rounded p-4">
           <p class="font-bold text-green-800 mb-1">池田市（大阪府） — 住民学習会で阻止</p>
@@ -148,30 +177,21 @@ import Layout from '../layouts/Layout.astro'
       <p class="text-xs text-muted mb-3">参考として、これらの制度を組み合わせるとどういう流れになるかを整理しました。</p>
       <ol class="space-y-3 text-sm list-decimal pl-5">
         <li>
-          <strong>情報公開請求</strong>で、費用試算の内部資料があるか確認する。「不存在」であれば、試算なしで計画が進められていることが確認できる。
+          <strong>情報公開請求</strong><Cite n={1} />で、費用試算の内部資料があるか確認する。「不存在」であれば、試算なしで計画が進められていることが確認できる。
         </li>
         <li>
           <strong>パブリックコメント</strong>（6月予定）で意見を提出する。
         </li>
         <li>
-          <strong>陳情</strong>（紹介議員不要）や<strong>請願</strong>（紹介議員必要）で、議会に対して比較検討資料の公開を求める。
+          <strong>陳情</strong>（紹介議員不要）や<strong>請願</strong><Cite n={4} />（紹介議員必要）で、議会に対して比較検討資料の公開を求める。
         </li>
         <li>
-          <strong>直接請求</strong>は、有権者の1/50（約800筆）の署名で住民投票条例を議会に付議させることができる。
+          <strong>直接請求</strong><Cite n={6} />は、有権者の1/50（約800筆）の署名で住民投票条例を議会に付議させることができる。
         </li>
       </ol>
     </section>
 
     <!-- 出典 -->
-    <section class="text-sm text-muted mb-8">
-      <h2 class="font-bold text-primary mb-3">出典</h2>
-      <ul class="list-disc list-inside space-y-1">
-        <li><a href="https://laws.e-gov.go.jp/law/322AC0000000013" target="_blank" class="text-primary underline">請願法</a>（昭和22年法律第13号）</li>
-        <li><a href="https://laws.e-gov.go.jp/law/322AC0000000067" target="_blank" class="text-primary underline">地方自治法</a> 第74条（直接請求）、第124条・第125条（請願）、第242条（住民監査請求）</li>
-        <li><a href="https://laws.e-gov.go.jp/law/411AC0000000042/" target="_blank" class="text-primary underline">行政機関の保有する情報の公開に関する法律</a>（情報公開法）</li>
-        <li><a href="https://www.city.suzaka.nagano.jp/soshiki/1010/7/416.html" target="_blank" class="text-primary underline">須坂市 情報公開制度</a></li>
-        <li><a href="https://www.soumu.go.jp/main_sosiki/jichi_gyousei/bunken/chokusetsu_seikyu.html" target="_blank" class="text-primary underline">総務省 直接請求制度</a></li>
-      </ul>
-    </section>
+    <RefList refs={refs} />
   </article>
 </Layout>

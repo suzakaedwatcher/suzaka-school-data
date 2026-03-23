@@ -1,0 +1,59 @@
+---
+interface Props {
+  value: number
+  total: number
+  label: string
+  sublabel?: string
+  color?: string
+  bgColor?: string
+}
+
+const { value, total, label, sublabel, color = '#e74c3c', bgColor = '#e5e7eb' } = Astro.props
+const pct = (value / total) * 100
+const circumference = 2 * Math.PI * 45
+const offset = circumference * (1 - pct / 100)
+---
+
+<div class="donut-wrapper flex flex-col items-center" data-pct={pct}>
+  <div class="relative w-32 h-32">
+    <svg viewBox="0 0 100 100" class="w-full h-full -rotate-90">
+      <circle cx="50" cy="50" r="45" fill="none" stroke={bgColor} stroke-width="8" />
+      <circle
+        class="donut-arc"
+        cx="50" cy="50" r="45" fill="none"
+        stroke={color} stroke-width="8"
+        stroke-linecap="round"
+        stroke-dasharray={circumference}
+        stroke-dashoffset={circumference}
+        data-target-offset={offset}
+      />
+    </svg>
+    <div class="absolute inset-0 flex flex-col items-center justify-center">
+      <span class="text-2xl font-black text-accent">{value}/{total}</span>
+    </div>
+  </div>
+  <div class="text-sm font-bold mt-2 text-center">{label}</div>
+  {sublabel && <div class="text-xs text-muted text-center">{sublabel}</div>}
+</div>
+
+<script>
+  function initDonut() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target as HTMLElement;
+        if (el.dataset.animated) return;
+        el.dataset.animated = '1';
+
+        const arc = el.querySelector('.donut-arc') as SVGCircleElement;
+        if (!arc) return;
+        const targetOffset = parseFloat(arc.dataset.targetOffset || '0');
+        arc.style.transition = 'stroke-dashoffset 1.2s ease-out';
+        arc.style.strokeDashoffset = String(targetOffset);
+      });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('.donut-wrapper').forEach(el => observer.observe(el));
+  }
+  initDonut();
+</script>
