@@ -29,7 +29,7 @@ const refs = [
     <h1 class="text-3xl font-black text-primary mb-3">何が問題なのか</h1>
     <p class="text-base leading-relaxed text-muted mb-10">
       問題は「統合すべきか否か」ではありません。<br />
-      <strong class="text-gray-900">費用も選択肢も示さないまま、方針だけ決めようとしている</strong>ことが問題です。
+      <strong class="text-gray-900">「市民の合意がある」とする根拠のアンケートが、根拠になっていない</strong>ことが問題です。
     </p>
 
     <!-- 問題は本物 -->
@@ -60,15 +60,19 @@ const refs = [
 
     <!-- 進め方への疑問 -->
     <section class="mb-10">
-      <h2 class="font-bold text-xl text-primary mb-6 border-b-2 border-primary pb-2">現在の進め方への疑問</h2>
+      <h2 class="font-bold text-xl text-primary mb-6 border-b-2 border-primary pb-2">何が問題なのか — 5つの疑問</h2>
 
       <div class="space-y-6">
         <!-- 1 -->
-        <div class="bg-card rounded-lg p-6 shadow-sm border-l-4 border-primary">
+        <div class="bg-card rounded-lg p-6 shadow-sm border-l-4 border-accent">
           <div class="flex items-baseline gap-3 mb-3">
-            <span class="text-2xl font-black text-primary/30">1</span>
-            <h3 class="font-bold">結論に至るプロセスが見えない</h3>
+            <span class="text-2xl font-black text-accent/30">1</span>
+            <h3 class="font-bold">「市民の合意」の根拠が成り立っていない</h3>
           </div>
+
+          <p class="text-sm leading-relaxed text-muted mb-4">
+            教育委員会は「学校再編に肯定的な回答が7割を超える」としています。しかし根拠となるアンケート（2022年実施）には、設問設計に複数の問題があります。
+          </p>
 
           <!-- アンケート: 学校再編についての考え方 -->
           <div class="bg-gray-50 rounded-lg p-4 mb-4">
@@ -99,31 +103,75 @@ const refs = [
               <p class="text-xs">今後さらに減少しても、<strong>現在の学校数が望ましい</strong></p>
             </div>
 
-            <div class="border-t pt-3 space-y-2">
+            <div class="border-t pt-3">
               <p class="text-xs text-muted">
-                <strong>教育委員会の考察:</strong> 「どのアンケートでも学校再編に肯定的な回答が7割を超える」（27%+49%=76%）
-              </p>
-              <p class="text-xs text-muted">
-                <strong>別の読み方:</strong> 「全校を対象に進めるべき」は27%。最多の49%は「今の学校数が望ましいが」という前提付きの消極的容認。一部の喫緊の学校への対応は支持されているが、15校全体の再編を積極的に求める声は多数派ではない。
+                <strong>教育委員会の解釈:</strong> 27%+49%=76%を「肯定的」とカウント
               </p>
             </div>
           </div>
 
-          <!-- 小中一貫の優先度 / 児童の声 -->
-          <div class="flex flex-wrap gap-4 mb-4">
-            <div class="bg-gray-50 rounded-lg px-4 py-3 text-center">
-              <div class="text-xl font-black text-primary">1.9%</div>
-              <div class="text-xs text-muted">小中一貫を優先課題に<br />挙げた市民の割合<Cite n={1} /></div>
+          <!-- 問題点 -->
+          <div class="space-y-4 mb-4">
+            <div class="bg-yellow-50 rounded-lg p-4">
+              <p class="text-sm font-bold mb-2">問題① 27%すら「4学園構想」への支持とは言えない</p>
+              <p class="text-xs text-muted leading-relaxed">
+                選択肢の文面は「計画的に学校再編を進めるべき」です。「再編」には学区見直し、一部統合、段階的対応など何でも含まれます。「15校を4学園にすべき」かどうかは聞いていません。この27%が何を支持しているのか、実はわかりません。
+              </p>
             </div>
-            <div class="bg-gray-50 rounded-lg px-4 py-3 text-center">
-              <div class="text-xl font-black text-primary">73%</div>
-              <div class="text-xs text-muted">「今のままでよい」<br />と答えた児童<Cite n={2} /></div>
+
+            <div class="bg-yellow-50 rounded-lg p-4">
+              <p class="text-sm font-bold mb-2">問題② 49%の「やむを得ない」は「肯定的」ではない</p>
+              <p class="text-xs text-muted leading-relaxed">
+                「今の学校数が<strong>望ましいが</strong>」という前置きのついた消極的受容です。しかも次の問題③の通り、代替案が示されていない状態で「他に方法がないなら仕方ない」と答えているだけです。
+              </p>
             </div>
+
+            <div class="bg-yellow-50 rounded-lg p-4">
+              <p class="text-sm font-bold mb-2">問題③ 統廃合以外の選択肢が設問にない</p>
+              <p class="text-xs text-muted leading-relaxed">
+                「教員加配で教育の質を確保」「学校間連携（合同授業）」「小規模特認校」といった代替案が選択肢に含まれていません。代替案を示さずに「統廃合をどう思うか」だけ聞けば、「仕方ない」と答えるしかありません。
+              </p>
+            </div>
+
+            <div class="bg-yellow-50 rounded-lg p-4">
+              <p class="text-sm font-bold mb-2">問題④ 統廃合のデメリットを一問も聞いていない</p>
+              <p class="text-xs text-muted leading-relaxed">
+                通学距離の増大、地域から学校がなくなること、転校の負担、大規模校での不適応——こうした懸念を聞く設問がゼロです。メリットだけ聞けば肯定的な結果になるのは当然です。
+              </p>
+            </div>
+
+            <div class="bg-yellow-50 rounded-lg p-4">
+              <p class="text-sm font-bold mb-2">問題⑤ 子どもの声が反映されていない</p>
+              <div class="flex flex-wrap gap-4 my-3">
+                <div class="bg-white rounded-lg px-4 py-3 text-center">
+                  <div class="text-xl font-black text-primary">73%</div>
+                  <div class="text-xs text-muted">「今のままでよい」<br />と答えた児童<Cite n={2} /></div>
+                </div>
+                <div class="bg-white rounded-lg px-4 py-3 text-center">
+                  <div class="text-xl font-black text-primary">57〜62%</div>
+                  <div class="text-xs text-muted">小規模校でも<br />「今のままでよい」<Cite n={2} /></div>
+                </div>
+                <div class="bg-white rounded-lg px-4 py-3 text-center">
+                  <div class="text-xl font-black text-primary">1.9%</div>
+                  <div class="text-xs text-muted">小中一貫を優先課題に<br />挙げた市民の割合<Cite n={1} /></div>
+                </div>
+              </div>
+              <p class="text-xs text-muted leading-relaxed">
+                統廃合の対象となる小規模校でも、豊丘小57%、豊洲小62%、高甫小62%が「今のままでよい」と回答しています（一方で約4割は「増えてほしい」）。大人のアンケート結果は根拠に採用しながら、子どもの声は提言に反映されていません。こども基本法第11条は子どもの意見を反映する機会の確保を求めています。
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-gray-50 rounded-lg p-4 mb-4">
+            <p class="text-sm leading-relaxed">
+              <strong>つまり:</strong> このアンケートからわかるのは「何らかの対応が必要だと思う人が多い」ということだけです。<strong>4学園構想を望んでいる人がどれだけいるかは、聞いていないのでわかりません。</strong>
+            </p>
           </div>
 
           <p class="text-sm leading-relaxed text-muted mb-3">
-            市民の多くは「喫緊の学校への対応は必要」と認めつつも、15校すべてを4学園に再編する構想がどのように導き出されたのかが見えにくい状況です。
+            さらに、Q&A（2025年4月）で28問中10問が「今後検討」<Cite n={3} />、保護者説明会アンケートでは「結論ありきではないか」という批判が複数寄せられています。<strong>3回にわたって市民の声を集めながら、3回とも方針は変わりませんでした。</strong>
           </p>
+
           <p class="text-sm leading-relaxed text-muted">
             2020〜2021年度の2つの検討会議の提言には「小中一貫」の文言が一切ありません。「須坂モデル」の中身は2021年2月の<strong>NIER講演会の内容と酷似</strong>しており、文科省「手引き」第4章（小規模校存続の選択肢）は検討された形跡がありません。
             <a href="/detail/nier-analysis" class="text-primary underline">詳しい分析 →</a>
